@@ -23,9 +23,7 @@ const About = () => {
   return (
     <section className="max-container">
       <Link to="/cv" className="fixed bottom-6 left-14 z-10">
-        <div
-          className="btn-icon"
-        >
+        <div className="btn-icon">
           <i className="fa fa-file-pdf-o text-lg sm:hidden" aria-hidden="true"></i>
           <p className="hidden sm:inline text-sm md:text-base">
             <span className="hidden md:inline">View PDF CV</span>
@@ -121,7 +119,7 @@ const About = () => {
 
         <div className="mt-5 flex flex-col gap-3 text-slate-700 text-lg">
           <div className="flex flex-row justify-between text-slate-700">
-            <h3 className="subhead-text text-slate-700">University of Information Technology</h3>
+            <h3 className="text-3xl font-semibold text-slate-700">University of Information Technology</h3>
             <p className="rotate-up text-white text-xs sm:text-sm md:text-base  sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded">
               Sep 2019 - Now
             </p>

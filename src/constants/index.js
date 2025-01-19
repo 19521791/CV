@@ -182,12 +182,7 @@ export const projects = [
     company_name: "NINE DASH LINE (Personal Project)",
     image: ninedash,
     iconBg: "#a2d2ff",
-    date: "Feb 2023 - Mar 2023",
-    points: [
-        "Designed and developed a server using Node.js, following the Model-View-Controller (MVC) design pattern.",
-        "Conducted thorough testing and debugging to ensure the server was fully functional.",
-        "Deployed using Docker."
-    ],
-    github: "https://github.com/19521791/server-nodejs"
+    description: "Nine Dash Line",
+    link: "https://github.com/19521791/server-nodejs"
 }
 ];

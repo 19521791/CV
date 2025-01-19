@@ -4,7 +4,7 @@ import Tooltip from '@mui/material/Tooltip'
 const Skills = () => {
   return (
     <div className="max-container">
-      <div className="py-10 flex flex-col">
+      <div className="flex flex-col">
         <h3 className="subhead-text">My Skills</h3>
 
         <p className="mt-6 text-base sm:text-lg md:text-xl text-slate-700 font-semibold">
@@ -47,27 +47,27 @@ const Skills = () => {
         <p className="mt-10 text-base sm:text-lg md:text-xl text-slate-700 font-semibold">
           Workflow:
         </p>
-        <ul className="mt-6 text-base sm:text-lg md:text-xl text-slate-700">
+        <ul className="mt-2 text-base sm:text-lg md:text-xl text-slate-700">
           <li>
-            <i className="fa fa fa-check text-green-500 mr-2" />
+            <i className="fa fa-check text-green-500 mr-2" />
             <span className="font-semibold">
               Testing & Debugging
             </span>
           </li>
-          <li>
-            <i className="fa fa fa-check text-green-500 mr-2" />
+          <li className="mt-1">
+            <i className="fa fa-check text-green-500 mr-2" />
             <span className="font-semibold">
               Git, Github for Teamwork
             </span>
           </li>
-          <li>
-            <i className="fa fa fa-check text-green-500 mr-2" />
+          <li className="mt-1">
+            <i className="fa fa-check text-green-500 mr-2" />
             <span className="font-semibold">
               Agile Development & Scrum
             </span>
           </li>
-          <li>
-            <i className="fa fa fa-check text-green-500 mr-2" />
+          <li className="mt-1">
+            <i className="fa fa-check text-green-500 mr-2" />
             <span className="font-semibold">
               English for work
             </span>

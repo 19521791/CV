@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import { projects } from "constants"
 
-// import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
 
 const ProjectCard = ({ name, description, image, link }) => (
@@ -24,11 +23,7 @@ const ProjectCard = ({ name, description, image, link }) => (
       </div>
     </div>
   </a>
-);
-
-
-
-
+)
 
 
 const Projects = () => {
@@ -50,9 +45,9 @@ const Projects = () => {
   return (
     <section className="max-container">
       <div className="flex flex-col justify-center gap-10">
-        <h3 className="subhead-text">
+        <h2 className="subhead-text">
         Projects
-        </h3>
+        </h2>
         <p className="text-base sm:text-lg md:text-xl text-slate-700">
           Here are a few of my standout projects:
         </p>

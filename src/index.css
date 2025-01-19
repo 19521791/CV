@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Karla:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Karla", sans-serif;
 }
 
 body:has(.card[data-color="blue"]:hover) {
@@ -31,7 +31,7 @@ body:has(.card[data-color="green"]:hover) {
   }
 
   .subhead-text {
-    @apply font-semibold sm:text-3xl text-xl relative font-poppins;
+    @apply font-semibold md:text-5xl sm:text-3xl text-xl relative font-poppins;
   }
 
   .blue-gradient_text {
@@ -54,8 +54,8 @@ body:has(.card[data-color="green"]:hover) {
     @apply relative inline-block overflow-hidden text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2;
   }
 
-  .header {
-    @apply flex justify-between items-center sm:px-16 px-8 py-4 max-w-5xl mx-auto absolute top-0 bg-transparent z-10 right-0 left-0;
+  .top-menu-item {
+    @apply cursor-pointer py-1 hover:text-slate-950 relative after:lg:absolute after:lg:bottom-0 after:lg:left-0 after:lg:bg-underline after:lg:h-0.5 after:lg:w-0 hover:after:lg:w-full after:lg:transition-all after:lg:ease-in-out after:lg:duration-300;
   }
 
   .footer {
@@ -219,4 +219,51 @@ body:has(.card[data-color="green"]:hover) {
   transform: rotate(-3deg);
 }
 
+.email-highlight {
+  display: inline-block;
+  position: relative;
+  padding: 0.5em 1em;
+}
+
+.email-highlight::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  background-color: rgba(255, 255, 0, 0.4);
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.email {
+  position: relative;
+  z-index: 1;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .email-highlight {
+    padding: 0.3em 0.6em;
+  }
+  
+  .email {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .email-highlight {
+    padding: 0.2em 0.4em;
+  }
+  
+  .email {
+    font-size: 0.8em;
+  }
+}
 
