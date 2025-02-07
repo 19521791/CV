@@ -186,3 +186,6 @@ export const projects = [
     link: "https://github.com/19521791/server-nodejs"
 }
 ];
+
+export const helloCleverLink = "https://helloclever.co/"
+export const trelloLink = "https://github.com/19521791/trello-backend"

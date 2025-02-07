@@ -1,77 +1,65 @@
-import { skills } from "constants"
-import Tooltip from '@mui/material/Tooltip'
+/* eslint-disable react/prop-types */
+import { skills } from "constants";
+import Tooltip from '@mui/material/Tooltip';
+
+const SkillItem = ({ skill }) => (
+  <Tooltip
+    title={skill.name}
+    placement="top"
+    componentsProps={{
+      tooltip: {
+        sx: {
+          bgcolor: '#1C1C1E',
+          borderRadius: '12px',
+          fontSize: '14px',
+          '& .MuiTooltip-arrow': {
+            color: '#BDBFC6',
+          },
+        },
+      },
+    }}
+  >
+    <div className="block-container w-20 h-20">
+      <div className="btn-back rounded-xl" />
+      <div className="btn-front rounded-xl flex justify-center items-center">
+        <img 
+          src={skill.imageUrl}
+          alt={skill.name}
+          className="w-1/2 h-1/2 object-contain"
+        />
+      </div>
+    </div>
+  </Tooltip>
+);
+
+const WorkflowItem = ({ children }) => (
+  <li className="mb-1">
+    <i className="fa fa-check text-green-500 mr-2" />
+    <span className="font-semibold">{children}</span>
+  </li>
+);
 
 const Skills = () => {
   return (
-    <div className="max-container">
-      <div className="flex flex-col">
-        <h3 className="subhead-text">My Skills</h3>
-
-        <p className="mt-6 text-base sm:text-lg md:text-xl text-slate-700 font-semibold">
-            Programming Languages & Tools:
-        </p>
-
-        <div className="mt-10 flex flex-wrap gap-12">
+    <div className="max-container text-slate-700">
+      <h1 className="font-semibold text-5xl font-poppins mb-4 leading-snug">My Skills</h1>
+      <div>
+        <p className="text-xl font-semibold mb-6">Programming Languages & Tools:</p>
+        <div className="flex flex-wrap gap-12 cursor-pointer mb-6">
           {skills.map((skill, index) => (
-            <Tooltip
-              key={index}
-              title={skill.name}
-              placement="top"
-              componentsProps={{
-                tooltip: {
-                  sx: {
-                    bgcolor: '#1C1C1E',
-                    borderRadius: '12px',
-                    fontSize: '14px',
-                    '& .MuiTooltip-arrow': {
-                      color: '#BDBFC6',
-                    },
-                  },
-                },
-              }}
-            >
-              <div key={index} className="block-container w-20 h-20">
-              <div className="btn-back rounded-x1" />
-              <div className="btn-front rounded-x1 flex justify-center items-center">
-                <img 
-                  src={skill.imageUrl}
-                  alt={skill.name}
-                  className="w-1/2 h-1/2 object-contain"
-                />
-              </div>
-            </div>
-            </Tooltip>
+            <SkillItem key={index} skill={skill} />
           ))}
         </div>
 
-        <p className="mt-10 text-base sm:text-lg md:text-xl text-slate-700 font-semibold">
-          Workflow:
-        </p>
-        <ul className="mt-2 text-base sm:text-lg md:text-xl text-slate-700">
+        <p className="text-xl font-semibold mb-1">Workflow:</p>
+        <ul className="text-xl">
+          <WorkflowItem>Testing & Debugging</WorkflowItem>
+          <WorkflowItem>Git, Github for Teamwork</WorkflowItem>
+          <WorkflowItem>Agile Development & Scrum</WorkflowItem>
           <li>
             <i className="fa fa-check text-green-500 mr-2" />
-            <span className="font-semibold">
-              Testing & Debugging
-            </span>
-          </li>
-          <li className="mt-1">
-            <i className="fa fa-check text-green-500 mr-2" />
-            <span className="font-semibold">
-              Git, Github for Teamwork
-            </span>
-          </li>
-          <li className="mt-1">
-            <i className="fa fa-check text-green-500 mr-2" />
-            <span className="font-semibold">
-              Agile Development & Scrum
-            </span>
-          </li>
-          <li className="mt-1">
-            <i className="fa fa-check text-green-500 mr-2" />
-            <span className="font-semibold">
-              English for work
-            </span>
-            <ul className="list-disc list-inside text-base sm:text-lg md:text-lg text-slate-700 ml-6">
+            <span className="font-semibold">English for work</span>
+            <ul className="list-disc list-inside text-lg ml-6">
               <li className="pl-1 py-0.5">
                 <span className="-ml-1.5">For Reading: I can comfortably read and interpret documentation, project specifications.</span>
               </li>
@@ -83,7 +71,7 @@ const Skills = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

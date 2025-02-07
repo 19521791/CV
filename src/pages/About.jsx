@@ -1,81 +1,54 @@
-import { useState, useEffect } from "react"
-import CTA from "components/CTA"
 import ruby from "../assets/icons/ruby-svgrepo-com.svg"
 import react from "../assets/icons/react.svg"
-import { Link } from "react-router-dom"
 import { githubLink, linkedinLink } from "constants"
 
 const About = () => {
-  const [showButton, setShowButton] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowButton(window.scrollY > 300)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
   return (
-    <section className="max-container">
-      <Link to="/cv" className="fixed bottom-6 left-14 z-10">
-        <div className="btn-icon">
-          <i className="fa fa-file-pdf-o text-lg sm:hidden" aria-hidden="true"></i>
-          <p className="hidden sm:inline text-sm md:text-base">
-            <span className="hidden md:inline">View PDF CV</span>
-            <span className="inline md:hidden">PDF CV</span>
-          </p>
-        </div>
-      </Link>
-
-      <h1 className="head-text">
-        Nguyen Phi <span className="blue-gradient_text font-semibold drop-shadow">Long</span>
+    <section className="max-container text-slate-700">
+      <h1 className="text-5xl font-semibold font-poppins leading-snug mb-2 -ml-1">
+        Nguyen Phi <span className="blue-gradient_text drop-shadow">Long</span>
       </h1>
 
-      <div className="flex flex-col">
-        <div>
-          <div className="icon-box">
-          <i className="fa fa-address-card icon-relative" />
-          <p className="icon-text">
+      <div className="mb-4 font-semibold">
+        <div className="mb-3">
+          <i className="fa fa-address-card text-lg inline-block mr-2" />
+          <span className="text-xl">
             Backend Web Developer
-          </p>
-          </div>
-
-          <div className="icon-box">
-            <i className="fa fa-map icon-relative" />
-            <p className="icon-text">
-              Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City
-            </p>
-          </div>
-
-          <div className="icon-box">
-            <i className="fa fa-phone icon-relative" />
-            <p className="icon-text">
-              +84 393277584
-            </p>
-          </div>
-
-          <div className="icon-box">
-            <i className="fa fa-envelope icon-relative" />
-            <p className="icon-text">
-              toannguyenvan145@gmail.com
-            </p>
-          </div>
+          </span>
         </div>
 
-        <div className="block-container w-20 h-20 flex flex-row justify-center items-center space-x-4">
-          <a href={githubLink.link} target="_blank" rel="noopener noreferrer" className="rounded-lg flex justify-center items-center w-10 h-10 transition-transform transform hover:scale-110">
+        <div className="mb-3">
+          <i className="fa fa-map text-lg inline-block mr-2" />
+          <span className="text-xl">
+            Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City
+          </span>
+        </div>
+
+        <div className="mb-3">
+          <i className="fa fa-phone text-lg inline-block mr-2" />
+          <span className="text-xl">
+            +84 393277584
+          </span>
+        </div>
+
+        <div className="mb-3">
+          <i className="fa fa-envelope text-lg inline-block mr-2" />
+          <span className="text-xl">
+            toannguyenvan145@gmail.com
+          </span>
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <div className="flex flex-row items-center gap-4">
+          <a href={githubLink.link} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
             <img 
               src={githubLink.iconUrl}
               alt="Github"
               className="w-full h-full object-contain"
             />
           </a>
-          <a href={linkedinLink.link} target="_blank" rel="noopener noreferrer" className="rounded-lg flex justify-center items-center w-10 h-10 transition-transform transform hover:scale-110">
+          <a href={linkedinLink.link} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
             <img 
               src={linkedinLink.iconUrl}
               alt="Linkedin"
@@ -85,8 +58,8 @@ const About = () => {
         </div>
       </div>
 
-      <div className="mb-8 mt-3 p-4 bg-blue-100 border-l-4 rounded-r shadow-md">
-        <p className="text-sm sm:text-base italic text-gray-700">
+      <div className="mb-6 p-4 bg-blue-100 rounded-md shadow-md">
+        <p className="text-lg italic text-gray-700">
           Thank you for taking the time to visit my CV.
           <br />
           My background in <span className="font-semibold">Ruby on Rails and fintech, honed over the past year</span>, equips me with the
@@ -95,66 +68,72 @@ const About = () => {
         </p>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <div className="rounded-xl flex justify-center items-center gap-1">
-          <p className="text-base sm:text-lg md:text-xl text-slate-700">
-            <img src={ruby} alt="rails" className="w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 inline-block mr-1 mb-2 opacity-80 filter brightness-90"/>
+      <div className="mb-8">
+        <div className="text-xl mb-2">
+          <img src={ruby} alt="rails" className="w-4 h-4 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
+          <span>
             <span className="font-semibold">Back-end: </span>
             I have experience working with <span className="font-semibold">Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq</span>.
             NodeJS, ExpressJS, MongoDB (gained through Personal Projects)
-          </p>
+          </span>
         </div>
 
-        <div className="rounded-xl flex items-center gap-1">
-          <p className="text-base sm:text-lg md:text-xl text-slate-700">
-            <img src={react} alt="react" className="w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 inline-block mr-1 mb-2"/>
+        <div className="text-xl">
+          <img src={react} alt="react" className="w-4 h-4 md:w-5 md:h-5 inline-block mr-0.5 mb-1"/>
+          <span>
             <span className="font-semibold">Front-end: </span>
             I am currently learning <span className="font-semibold">ReactJS, Material UI, TailwindCSS, Axios</span>.
-          </p>
+          </span>
+        </div>
+      </div>
+      
+      <div className="mb-6">
+        <p className="text-3xl font-semibold mb-2">Education</p>
+        <div className="flex flex-col md:flex-row md:justify-between">
+          <div className="flex-1">
+            <div className="flex flex-col">
+              <div className="flex flex-col md:flex-row md:justify-between mb-0.5">
+                <span className="text-2xl font-semibold mb-0.5">
+                  University of Information Technology
+                </span>
+                <span className="text-sky-600 whitespace-nowrap font-semibold text-lg mb-0.5">
+                  Sep 2019 - Now
+                </span>
+              </div>
+
+              <p className="text-lg mb-1">
+                I have completed all my courses and am currently waiting for the
+                graduation ceremony, so I am available to work full-time without any
+                obstacles.
+              </p>
+              <div className="text-lg mb-1">
+                <i className="fa fa-book text-blue-500 mr-1.5" />
+                <span className="font-semibold">Major: </span>
+                <span>Computer Science</span>
+              </div>
+              <div className="text-lg">
+                <i className="fa fa-bookmark text-yellow-500 mr-1.5" />
+                <span className="font-semibold">GPA: </span>
+                <span>7.46</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="py-16">
-        <h3 className="subhead-text">Education</h3>
 
-        <div className="mt-5 flex flex-col gap-3 text-slate-700 text-lg">
-          <div className="flex flex-row justify-between text-slate-700">
-            <h3 className="text-3xl font-semibold text-slate-700">University of Information Technology</h3>
-            <p className="rotate-up text-white text-xs sm:text-sm md:text-base  sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded">
-              Sep 2019 - Now
-            </p>
-          </div>
-
-          <p className="text-base sm:text-lg md:text-xl text-slate-700">
-            I have completed all my courses and am currently waiting for the graduation ceremony, so I am available to work full-time without any obstacles.
-          </p>
-
-          <div className="flex flex-row items-center gap-1 text-slate-700">
-            <i className="fa fa-book icon-relative text-blue-500" />
-            <p className="font-semibold">
-              Major: Computer Science
-            </p>
-          </div>
-
-          <div className="flex flex-row items-center gap-1 text-slate-700">
-            <i className="fa fa-bookmark icon-relative text-yellow-500" />
-            <p className="font-semibold">
-              GPA: 7.46
-            </p>
+      <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between gap-4">
+        <div className="flex items-center">
+          <p className="font-extrabold text-2xl">Let&apos;s build something together!</p>
+        </div>
+        <div className="dlous-email">
+          <div className="w-full h-full flex justify-center items-center relative">
+            <div className="absolute text-gray-600 text-lg">
+              toannguyenvan145@gmail.com
+            </div>
           </div>
         </div>
       </div>
-
-      <CTA />
-
-      {showButton && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-full shadow-md"
-        >
-          <i className="fas fa-arrow-up"></i> 
-        </button>
-      )}
     </section>
   )
 }
