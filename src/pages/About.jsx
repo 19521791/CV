@@ -10,28 +10,28 @@ const About = () => {
       </h1>
 
       <div className="mb-4 font-semibold">
-        <div className="mb-3">
+        <div className="mb-1.5">
           <i className="fa fa-address-card text-lg inline-block mr-2" />
           <span className="text-xl">
             Backend Web Developer
           </span>
         </div>
 
-        <div className="mb-3">
+        <div className="mb-1.5">
           <i className="fa fa-map text-lg inline-block mr-2" />
           <span className="text-xl">
             Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City
           </span>
         </div>
 
-        <div className="mb-3">
+        <div className="mb-1.5">
           <i className="fa fa-phone text-lg inline-block mr-2" />
           <span className="text-xl">
             +84 393277584
           </span>
         </div>
 
-        <div className="mb-3">
+        <div className="mb-1.5">
           <i className="fa fa-envelope text-lg inline-block mr-2" />
           <span className="text-xl">
             toannguyenvan145@gmail.com
@@ -68,7 +68,7 @@ const About = () => {
         </p>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="text-xl mb-2">
           <img src={ruby} alt="rails" className="w-4 h-4 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
           <span>
@@ -87,7 +87,7 @@ const About = () => {
         </div>
       </div>
       
-      <div className="mb-6">
+      <div className="mb-5">
         <p className="text-3xl font-semibold mb-2">Education</p>
         <div className="flex flex-col md:flex-row md:justify-between">
           <div className="flex-1">
