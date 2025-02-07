@@ -1,68 +1,84 @@
-import { payid, bsb, payto, card } from "../assets/images/payment_icons"
-import { ninedash, note, helloclever, trelloboard } from "assets/images/project_icons"
-import {
-  css,
-  express,
-  git,
-  html,
-  javascript,
-  mongodb,
-  nodejs,
-  python,
-  rails,
-  ruby,
-  github,
-  linkedin
-} from "../assets/icons"
+export const paymentIcon = {
+  payid: "/images/payment_icons/payid.png",
+  bsb: "/images/payment_icons/bsb.png",
+  payto: "/images/payment_icons/payto.png",
+  card: "/images/payment_icons/card.svg",
+}
+
+export const imagePaths = {
+  clever: "/images/project_icons/clever.png",
+  ninedash: "/images/project_icons/nine-dash.png",
+  note: "/images/project_icons/note.png",
+  trello: "/images/project_icons/trello.png",
+  cvPage1: "/images/project_icons/cv-page-0.jpg",
+  cvPage2: "/images/project_icons/cv-page-1.jpg",
+  helloclever: "/images/project_icons/hello-clever.png",
+  trelloboard: "/images/project_icons/trello-board.png",
+}
+
+export const iconPaths = {
+  css: "/icons/css.svg",
+  express: "/icons/express.svg",
+  git: "/icons/git.svg",
+  github: "/icons/github.svg",
+  html: "/icons/html.svg",
+  javascript: "/icons/javascript.svg",
+  linkedin: "/icons/linkedin.svg",
+  mongodb: "/icons/mongodb.svg",
+  nodejs: "/icons/nodejs.svg",
+  python: "/icons/python-svgrepo-com.svg",
+  rails: "/icons/rails-svgrepo-com.svg",
+  ruby: "/icons/ruby-svgrepo-com.svg",
+}
 
 export const skills = [
   {
-    imageUrl: ruby,
+    imageUrl: iconPaths.ruby,
     name: "Ruby",
     type: "Backend"
   },
   {
-    imageUrl: rails,
+    imageUrl: iconPaths.rails,
     name: "Ruby On Rails",
     type: "Backend"
   },
   {
-    imageUrl: javascript,
+    imageUrl: iconPaths.javascript,
     name: "JavaScript",
     type: "Frontend",
   },
   {
-    imageUrl: nodejs,
+    imageUrl: iconPaths.nodejs,
     name: "Node.js",
     type: "Backend",
   },
   {
-    imageUrl: express,
+    imageUrl: iconPaths.express,
     name: "Express",
     type: "Backend",
   },
   {
-    imageUrl: python,
+    imageUrl: iconPaths.python,
     name: "Python",
     type: "Backend"
   },
   {
-      imageUrl: git,
+      imageUrl: iconPaths.git,
       name: "Git",
       type: "Version Control",
   },
   {
-      imageUrl: html,
+      imageUrl: iconPaths.html,
       name: "HTML",
       type: "Frontend",
   },
   {
-    imageUrl: css,
+    imageUrl: iconPaths.css,
     name: "CSS",
     type: "Frontend",
   },
   {
-      imageUrl: mongodb,
+      imageUrl: iconPaths.mongodb,
       name: "MongoDB",
       type: "Database",
   }
@@ -70,19 +86,19 @@ export const skills = [
 
 export const paymentMethod = [
   {
-    imageUrl: payid,
+    imageUrl: paymentIcon.payid,
     name: 'PayID'
   },
   {
-    imageUrl: bsb,
+    imageUrl: paymentIcon.bsb,
     name: 'BSB'
   },
   {
-    imageUrl: payto,
+    imageUrl: paymentIcon.payto,
     name: 'PayTo'
   },
   {
-    imageUrl: card,
+    imageUrl: paymentIcon.card,
     name: 'Card'
   }
 ]
@@ -91,7 +107,7 @@ export const experiences = [
     {
         title: "Backend Developer",
         company_name: "HELLO CLEVER",
-        image: helloclever,
+        image: imagePaths.helloclever,
         iconBg: "#accbe1",
         date: "Jun 2023 - August 2024",
         points: [
@@ -104,7 +120,7 @@ export const experiences = [
     {
         title: "Trello Board Clone (Personal Project)",
         company_name: "TRELLO BOARD",
-        image: trelloboard,
+        image: imagePaths.trelloboard,
         iconBg: "#fbc3bc",
         date: "Jan 2021 - Feb 2022",
         points: [
@@ -117,7 +133,7 @@ export const experiences = [
     {
         title: "Sticky Note (Personal Project)",
         company_name: "STICKY NOTE",
-        image: note,
+        image: imagePaths.note,
         iconBg: "#b7e4c7",
         date: "Jan 2022 - Jan 2023",
         points: [
@@ -130,7 +146,7 @@ export const experiences = [
     {
         title: "Detect Nine Dash Line (Personal Project)",
         company_name: "NINE DASH LINE",
-        image: ninedash,
+        image: imagePaths.ninedash,
         iconBg: "#a2d2ff",
         date: "Feb 2023 - Mar 2023",
         points: [
@@ -144,13 +160,13 @@ export const experiences = [
 
 export const githubLink = {
   name: 'GitHub',
-  iconUrl: github,
+  iconUrl: iconPaths.github,
   link: 'https://github.com/19521791'
 }
 
 export const linkedinLink = {
   name: 'LinkedIn',
-  iconUrl: linkedin,
+  iconUrl: iconPaths.linkedin,
   link: 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/',
 }
 
@@ -158,21 +174,21 @@ export const projects = [
   {
     title: "Backend Developer",
     company_name: "HELLO CLEVER",
-    image: helloclever,
+    image: imagePaths.helloclever,
     description: "Hello Clever Payment Gateway",
     link: "https://helloclever.co/"
 },
 {
     title: "Trello Board",
     company_name: "TRELLO BOARD (Personal Project)",
-    image: trelloboard,
+    image: imagePaths.trelloboard,
     description: "Trello Board Clone",
     link: "https://github.com/19521791/trello-backend"
 },
 {
     title: "Sticky Note (Personal Project)",
     company_name: "STICKY NOTE (Personal Project)",
-    image: note,
+    image: imagePaths.note,
     iconBg: "#b7e4c7",
     description: "Sticky Note",
     link: "https://github.com/19521791/note-app"
@@ -180,7 +196,7 @@ export const projects = [
 {
     title: "Detect Nine Dash Line (Personal Project)",
     company_name: "NINE DASH LINE (Personal Project)",
-    image: ninedash,
+    image: imagePaths.ninedash,
     iconBg: "#a2d2ff",
     description: "Nine Dash Line",
     link: "https://github.com/19521791/server-nodejs"

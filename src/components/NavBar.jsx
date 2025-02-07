@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import clown from "../assets/images/clown.png"
+import clown from "/images/clown.png"
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import arrow from '../assets/icons/arrow.svg'
+import arrow from '../../public/icons/arrow.svg'
 
 const InfoBox = ({ text, link, btnText }) => {
   return (

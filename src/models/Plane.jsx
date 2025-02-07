@@ -1,5 +1,7 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
 import { useAnimations, useGLTF } from '@react-three/drei'
-import planeScene from '../assets/3d/plane.glb'
+import planeScene from '/3d/plane.glb'
 import { useEffect, useRef } from 'react'
 
 const Plane = ({ isRotating, ...props }) => {

@@ -1,5 +1,5 @@
-import ruby from "../assets/icons/ruby-svgrepo-com.svg"
-import react from "../assets/icons/react.svg"
+import ruby from "/icons/ruby-svgrepo-com.svg"
+import react from "/icons/react.svg"
 import { githubLink, linkedinLink } from "constants"
 
 const About = () => {

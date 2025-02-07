@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unknown-property */
 import { useRef, useEffect } from 'react'
 import { useAnimations, useGLTF } from '@react-three/drei'
-import birdScene from '../assets/3d/bird.glb'
+import birdScene from '/3d/bird.glb'
 import { useFrame } from '@react-three/fiber'
 
 const Bird = () => {
