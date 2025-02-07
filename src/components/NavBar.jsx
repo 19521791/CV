@@ -18,7 +18,7 @@ const NavBar = () => {
   
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 768) {
         setIsMenuOpen(false);
       }
     };
