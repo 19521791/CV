@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "start": "vite --host",
-    "build": "vite build",
+    "clean": "rm -rf ./dist",
+    "build": "vite build --base=./",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -1,19 +1,20 @@
-import { Link } from "react-router-dom"
-import arrow from '../../public/icons/arrow.svg'
+/* eslint-disable react/prop-types */
+// import { Link } from "react-router-dom"
+// import { iconPaths } from "constants"
 
-const InfoBox = ({ text, link, btnText }) => {
-  return (
-    <div className="info-box">
-      <p className="font-medium sm:text-xl text-center">
-        {text}
-      </p>
-      <Link to={link} className="neo-brutalism-white neo-btn" >
-        {btnText}
-        <img src={arrow} className="w-4 h-4 object-contain" />
-      </Link>
-    </div>
-  )
-}
+// const InfoBox = ({ text, link, btnText }) => {
+//   return (
+//     <div className="info-box">
+//       <p className="font-medium sm:text-xl text-center">
+//         {text}
+//       </p>
+//       <Link to={link} className="neo-brutalism-white neo-btn" >
+//         {btnText}
+//         <img src={iconPaths.arrow} className="w-4 h-4 object-contain" />
+//       </Link>
+//     </div>
+//   )
+// }
 
 const renderContent = {
   // 1: (

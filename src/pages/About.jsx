@@ -41,16 +41,16 @@ const About = () => {
 
       <div className="mb-4">
         <div className="flex flex-row items-center gap-4">
-          <a href={githubLink.link} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
+          <a href={githubLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
             <img 
-              src={githubLink.iconUrl}
+              src="/icons/github.svg"
               alt="Github"
               className="w-full h-full object-contain"
             />
           </a>
-          <a href={linkedinLink.link} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
+          <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
             <img 
-              src={linkedinLink.iconUrl}
+              src="/icons/linkedin.svg"
               alt="Linkedin"
               className="w-full h-full object-contain"
             />

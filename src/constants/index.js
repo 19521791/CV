@@ -29,6 +29,8 @@ export const iconPaths = {
   python: "/icons/python-svgrepo-com.svg",
   rails: "/icons/rails-svgrepo-com.svg",
   ruby: "/icons/ruby-svgrepo-com.svg",
+  arrow: "/icons/arrow.svg",
+  react: "/icons/react.svg"
 }
 
 export const skills = [
@@ -103,92 +105,25 @@ export const paymentMethod = [
   }
 ]
 
-export const experiences = [
-    {
-        title: "Backend Developer",
-        company_name: "HELLO CLEVER",
-        image: imagePaths.helloclever,
-        iconBg: "#accbe1",
-        date: "Jun 2023 - August 2024",
-        points: [
-            "Design and implement additional functionalities based on the requirements of the Product Owner.",
-            "Collaborating with cross-functional teams including designers and other developers to create high-quality products.",
-            "Refactor code and write documentation for public APIs.",
-            "Integrate multiple suppliers into the system.",
-        ],
-    },
-    {
-        title: "Trello Board Clone (Personal Project)",
-        company_name: "TRELLO BOARD",
-        image: imagePaths.trelloboard,
-        iconBg: "#fbc3bc",
-        date: "Jan 2021 - Feb 2022",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-    {
-        title: "Sticky Note (Personal Project)",
-        company_name: "STICKY NOTE",
-        image: imagePaths.note,
-        iconBg: "#b7e4c7",
-        date: "Jan 2022 - Jan 2023",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-    {
-        title: "Detect Nine Dash Line (Personal Project)",
-        company_name: "NINE DASH LINE",
-        image: imagePaths.ninedash,
-        iconBg: "#a2d2ff",
-        date: "Feb 2023 - Mar 2023",
-        points: [
-            "Designed and developed a server using Node.js, following the Model-View-Controller (MVC) design pattern.",
-            "Conducted thorough testing and debugging to ensure the server was fully functional.",
-            "Deployed using Docker."
-        ],
-        github: "https://github.com/19521791/server-nodejs"
-    },
-];
-
-export const githubLink = {
-  name: 'GitHub',
-  iconUrl: iconPaths.github,
-  link: 'https://github.com/19521791'
-}
-
-export const linkedinLink = {
-  name: 'LinkedIn',
-  iconUrl: iconPaths.linkedin,
-  link: 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/',
-}
-
 export const projects = [
   {
     title: "Backend Developer",
     company_name: "HELLO CLEVER",
-    image: imagePaths.helloclever,
+    image: "/images/project_icons/hello-clever.png",
     description: "Hello Clever Payment Gateway",
     link: "https://helloclever.co/"
 },
 {
     title: "Trello Board",
     company_name: "TRELLO BOARD (Personal Project)",
-    image: imagePaths.trelloboard,
+    image: "/images/project_icons/trello-board.png",
     description: "Trello Board Clone",
     link: "https://github.com/19521791/trello-backend"
 },
 {
     title: "Sticky Note (Personal Project)",
     company_name: "STICKY NOTE (Personal Project)",
-    image: imagePaths.note,
+    image: "/images/project_icons/note.png",
     iconBg: "#b7e4c7",
     description: "Sticky Note",
     link: "https://github.com/19521791/note-app"
@@ -196,7 +131,7 @@ export const projects = [
 {
     title: "Detect Nine Dash Line (Personal Project)",
     company_name: "NINE DASH LINE (Personal Project)",
-    image: imagePaths.ninedash,
+    image: "/images/project_icons/nine-dash.png",
     iconBg: "#a2d2ff",
     description: "Nine Dash Line",
     link: "https://github.com/19521791/server-nodejs"
@@ -205,3 +140,5 @@ export const projects = [
 
 export const helloCleverLink = "https://helloclever.co/"
 export const trelloLink = "https://github.com/19521791/trello-backend"
+export const linkedinLink = 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/'
+export const githubLink = 'https://github.com/19521791'
