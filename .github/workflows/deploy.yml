@@ -13,29 +13,20 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v3
 
-      - name: SSH Agent
-        uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Setup SSH Known Hosts
+      - name: Add SSH Key for GitHub
         run: |
-          mkdir -p -m 0700 ~/.ssh
-
-          echo "Add domain to known hosts"
-          ssh-keyscan -t rsa -p 22 172.96.190.154 > ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/known_hosts
-      - name: Test SSH
-        run: |
-          ssh -vvv ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "echo 'SSH connected successfully'"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GITHUB_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSH_SERVER_PRIVATE_KEY }}
           script: |
             if [ ! -d ~/portfolio ]; then
               git clone git@github.com:19521791/CV.git ~/portfolio
@@ -50,4 +41,3 @@ jobs:
             sudo chmod -R 755 /var/www/portfolio/dist
             sudo nginx -t
             sudo systemctl restart nginx
-
