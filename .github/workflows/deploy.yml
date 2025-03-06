@@ -16,8 +16,10 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
-          host: "172.96.190.154"
-          username: "development"
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_SERVER_PRIVATE_KEY }}
           debug: true
           script: |
