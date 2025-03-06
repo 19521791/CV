@@ -1,0 +1,36 @@
+name: Deploy CV Online
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    step:
+      - name: Clone Repo
+        uses: actions/checkout@v3
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: "172.96.190.154"
+          username: "development"
+          key: ${{ secrets.SSH_SERVER_PRIVATE_KEY }}
+          script: |
+            if [ ! -d ~/portfolio ]; then
+              git clone git@github.com:19521791/CV.git ~/portfolio
+            fi
+            cd ~/portfolio
+            git pull origin main
+            npm install
+            npm run build
+            sudo rm -rf /var/www/portfolio/dist
+            sudo sp -r ~/portfolio/dist/* /var/www/portfolio/dist
+            sudo chown -R www-data:www-data /var/www/portfolio/dist
+            sudo chmod -R 755 /var/www/portfolio/dist
+            sudo nginx -t
+            sudo systemcts restart nginx
+
