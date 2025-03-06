@@ -13,20 +13,11 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v3
 
-      - name: Read Host
-        run: echo "Host is ${{ secrets.HOST }}"
-
-      - name: Read Username
-        run: echo "Username is ${{ secrets.USERNAME }}"
-
-      - name: Read Password
-        run: echo "Password is ${{ secrets.PASSWORD }}"
-
-      - name: Read Port
-        run: echo "Port is ${{ secrets.PORT }}"
-
-      - name: Read Private key
-        run: echo "Private key is ${{ secrets.SSH_PRIVATE_KEY }}"
+      - name: Debug SSH Connection
+        run: |
+          echo "Host: ${{ secrets.HOST }}"
+          echo "User: ${{ secrets.SSH_USER }}"
+          ssh -vvv ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "echo 'SSH connected successfully'"
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
