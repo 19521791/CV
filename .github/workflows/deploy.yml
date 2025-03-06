@@ -15,8 +15,6 @@ jobs:
 
       - name: Debug SSH Connection
         run: |
-          echo "Host: ${{ secrets.HOST }}"
-          echo "User: ${{ secrets.SSH_USER }}"
           ssh -vvv ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "echo 'SSH connected successfully'"
 
       - name: Deploy to Server
