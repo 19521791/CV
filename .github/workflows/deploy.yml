@@ -19,11 +19,11 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Setup SSH Known Hosts
         run: |
-          mkdir -p -m 0700 /root/.ssh
+          mkdir -p -m 0700 ~/.ssh
 
           echo "Add domain to known hosts"
-          ssh-keyscan -t rsa -p 22 172.96.190.154 > /root/.ssh/known_hosts
-          chmod 600 /root/.ssh/known_hosts
+          ssh-keyscan -t rsa -p 22 172.96.190.154 > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
       - name: Test SSH
         run: |
           ssh -vvv ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "echo 'SSH connected successfully'"
