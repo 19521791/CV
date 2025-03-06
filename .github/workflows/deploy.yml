@@ -14,7 +14,7 @@ jobs:
       - name: Add SSH Key for GitHub
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.GITHUB_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SERVER_DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
