@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    step:
+    steps:
       - name: Clone Repo
         uses: actions/checkout@v3
 
@@ -28,9 +28,9 @@ jobs:
             npm install
             npm run build
             sudo rm -rf /var/www/portfolio/dist
-            sudo sp -r ~/portfolio/dist/* /var/www/portfolio/dist
+            sudo cp -r ~/portfolio/dist/* /var/www/portfolio/dist
             sudo chown -R www-data:www-data /var/www/portfolio/dist
             sudo chmod -R 755 /var/www/portfolio/dist
             sudo nginx -t
-            sudo systemcts restart nginx
+            sudo systemctl restart nginx
 
