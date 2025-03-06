@@ -13,7 +13,18 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v3
 
-      - name: Debug SSH Connection
+      - name: SSH Agent
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup SSH Known Hosts
+        run: |
+          mkdir -p -m 0700 /root/.ssh
+
+          echo "Add domain to known hosts"
+          ssh-keyscan -t rsa -p 22 172.96.190.154 > /root/.ssh/known_hosts
+          chmod 600 /root/.ssh/known_hosts
+      - name: Test SSH
         run: |
           ssh -vvv ${{ secrets.SSH_USER }}@${{ secrets.HOST }} "echo 'SSH connected successfully'"
 
