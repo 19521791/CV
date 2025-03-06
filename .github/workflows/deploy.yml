@@ -11,12 +11,14 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v3
 
-      - name: Add SSH Key for GitHub
+      - name: Setup SSH Keys and known_hosts
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SERVER_DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SERVER_DEPLOY_KEY }}"
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
@@ -26,16 +28,26 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            if [ ! -d ~/portfolio ]; then
+            if ! command -v node &> /dev/null; then
+              echo "Node.js is not installed!"
+              exit 1
+            fi
+
+            if [ -d ~/portfolio/.git ]; then
+              cd ~/portfolio
+              git pull origin main
+            else
+              rm -rf ~/portfolio
               git clone git@github.com:19521791/CV.git ~/portfolio
             fi
+
             cd ~/portfolio
-            git pull origin main
-            npm install
+            [ ! -d node_modules ] && npm install
             npm run build
+
             sudo rm -rf /var/www/portfolio/dist
             sudo cp -r ~/portfolio/dist/* /var/www/portfolio/dist
-            sudo chown -R www-data:www-data /var/www/portfolio/dist
+            sudo chown -R $USER:www-data /var/www/portfolio/dist
             sudo chmod -R 755 /var/www/portfolio/dist
-            sudo nginx -t
-            sudo systemctl restart nginx
+
+            sudo nginx -t && sudo systemctl restart nginx
