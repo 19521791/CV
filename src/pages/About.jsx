@@ -1,10 +1,15 @@
 import ruby from "/icons/ruby-svgrepo-com.svg"
 import react from "/icons/react.svg"
 import { githubLink, linkedinLink } from "constants"
+import Astronaut from "models/Astronaut"
 
 const About = () => {
   return (
-    <section className="max-container text-slate-700">
+    <section className="relative max-container text-slate-700">
+      <div className="absolute right-0 top-1/6 hidden lg:block justify-center w-[400px] h-[600px]">
+        <Astronaut />
+      </div>
+
       <h1 className="text-5xl font-semibold font-poppins leading-snug mb-2 -ml-1">
         Nguyen Phi <span className="blue-gradient_text drop-shadow">Long</span>
       </h1>

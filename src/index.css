@@ -221,6 +221,139 @@ html::-webkit-scrollbar {
   background-repeat: no-repeat;
 }
 
+/* Loading Animation */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 60px;
+  aspect-ratio: .5;
+  display: grid;
+}
+.loader:before {
+  content: "";
+  width: 30%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin: auto auto 0;
+  background: #CF4647;
+  animation: l9-0 .5s cubic-bezier(0,800,1,800) infinite;
+}
+.loader:after {
+  content: "";
+  width: 100%;
+  aspect-ratio: 1/cos(30deg);
+  margin: 0 auto auto;
+  clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
+  background: #524656;
+  animation: l9-1 .5s linear infinite;
+}
+@keyframes l9-0 {
+  0%,2%  {translate: 0   0%}
+  98%,to {translate: 0 -.2%}
+}
+@keyframes l9-1 {
+  0%,5%  {rotate:  0deg}
+  95%,to {rotate:-60deg}
+}
+
+/* Page Loading Animation */
+.page-loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 30px;
+  padding-bottom: 8px;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: l2 2s linear infinite;
+}
+.page-loader:before {
+  content:"Loading..."
+}
+@keyframes l2 {to{background-size: 100% 3px}}
+
+/* Wheel Animation */
+.cog-wheel-left, .cog-wheel-right{
+  transform:scale(0.7);
+}
+
+.cog-left, .cog-right{
+  width:40vmin;
+  height:40vmin;
+  border-radius:50%;
+  border:6vmin solid #f3c623;
+  position: relative;
+  transform-origin: center center;
+}
+
+
+.cog-right{
+  border:6vmin solid #4f8a8b;
+}
+
+.top, .down, .left, .right, .left-top, .left-down, .right-top, .right-down{
+  width:10vmin;
+  height:10vmin;
+  background-color: #f3c623;
+  position: absolute;
+}
+
+.cog-right .top,.cog-right  .down,.cog-right  .left,.cog-right  .right,.cog-right  .left-top,.cog-right  .left-down,.cog-right  .right-top,.cog-right  .right-down{
+  background-color: #4f8a8b;
+}
+
+.top{
+  top:-14vmin;
+  left:9vmin;
+}
+
+.down{
+  bottom:-14vmin;
+  left:9vmin;
+}
+
+.left{
+  left:-14vmin;
+  top:9vmin;
+}
+
+.right{
+  right:-14vmin;
+  top:9vmin;
+}
+
+.left-top{
+  transform:rotateZ(-45deg);
+  left:-8vmin;
+  top:-8vmin;
+}
+
+.left-down{
+  transform:rotateZ(45deg);
+  left:-8vmin;
+  top:25vmin;
+}
+
+.right-top{
+  transform:rotateZ(45deg);
+  right:-8vmin;
+  top:-8vmin;
+}
+
+.right-down{
+  transform:rotateZ(-45deg);
+  right:-8vmin;
+  top:25vmin;
+}
+
+.cog-right{
+  position: relative;
+  left:-10.2vmin;
+  bottom:10vmin;
+}
 
 @media (max-width: 480px) {
   .dlous-email {
