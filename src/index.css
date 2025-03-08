@@ -278,7 +278,7 @@ html::-webkit-scrollbar {
 }
 
 /* Wheel Animation */
-.container{
+/* .container{
   height: 500px;
   width: 500px;
   background: #000;
@@ -291,7 +291,7 @@ html::-webkit-scrollbar {
   height: 100px;
   position: absolute;
   width: 100px;
-  /*background: #000;*/
+  background: #000;
 }
 .wheel:after{
   background: none repeat scroll 0 0 #111111;
@@ -370,7 +370,7 @@ html::-webkit-scrollbar {
 }
 .wheel.two .wheel-inner {
   -webkit-animation: anticlockwise 5s linear infinite;
-}
+} */
 
 @media (max-width: 480px) {
   .dlous-email {
