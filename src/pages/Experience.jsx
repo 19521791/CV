@@ -27,8 +27,8 @@ const Experience = () => {
         Experience
       </h1>
 
-      <div className="mb-6">
-        <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
+      <div className="mb-6 leading-tight">
+        <div className="flex flex-col sm:flex-row justify-between items-start mb-1">
           <div className="text-3xl font-semibold text-blue-500 hover:text-sky-500 hover:underline">
             <a href={helloCleverLink} target="_blank" rel="noopener noreferrer">
               <span className="mr-1.5">Hello Clever</span>
@@ -65,8 +65,8 @@ const Experience = () => {
         />
       </div>
 
-      <div className="mb-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
+      <div className="mb-8 leading-tight">
+        <div className="flex flex-col sm:flex-row justify-between items-start mb-1">
           <div className="text-3xl font-semibold text-blue-500 hover:text-sky-500 hover:underline">
             <a href={trelloLink} target="_blank" rel="noopener noreferrer">
               <span className="mr-1.5">Trello Board Clone</span>

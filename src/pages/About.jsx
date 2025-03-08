@@ -6,11 +6,11 @@ import Astronaut from "models/Astronaut"
 const About = () => {
   return (
     <section className="relative max-container text-slate-700">
-      <div className="absolute right-0 top-1/6 hidden lg:block justify-center w-[400px] h-[600px]">
+      <div className="absolute right-0 top-1/6 hidden lg:block justify-center w-[400px] h-[400px]">
         <Astronaut />
       </div>
 
-      <h1 className="text-5xl font-semibold font-poppins leading-snug mb-2 -ml-1">
+      <h1 className="text-5xl font-semibold font-poppins leading-snug mb-3 -ml-1">
         Nguyen Phi <span className="blue-gradient_text drop-shadow">Long</span>
       </h1>
 
@@ -36,7 +36,7 @@ const About = () => {
           </span>
         </div>
 
-        <div className="mb-1.5">
+        <div className="">
           <i className="fa fa-envelope text-lg inline-block mr-2" />
           <span className="text-xl">
             toannguyenvan145@gmail.com
@@ -44,7 +44,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-5">
         <div className="flex flex-row items-center gap-4">
           <a href={githubLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
             <img 
@@ -63,7 +63,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="mb-6 p-4 bg-blue-100 rounded-md shadow-md">
+      <div className="mb-7 p-4 bg-blue-100 rounded-md shadow-md">
         <p className="text-lg italic text-gray-700">
           Thank you for taking the time to visit my CV.
           <br />
@@ -102,7 +102,7 @@ const About = () => {
                   University of Information Technology
                 </span>
                 <span className="text-sky-600 whitespace-nowrap font-semibold text-lg mb-0.5">
-                  Sep 2019 - Now
+                  Sep 2019 - Up to Present
                 </span>
               </div>
 

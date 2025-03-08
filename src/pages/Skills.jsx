@@ -51,7 +51,7 @@ const Skills = () => {
           ))}
         </div>
 
-        <p className="text-xl font-semibold mb-1">Workflow:</p>
+        <p className="text-xl font-semibold mb-1 leading-tight">Workflow:</p>
         <ul className="text-xl">
           <WorkflowItem>Testing & Debugging</WorkflowItem>
           <WorkflowItem>Git, Github for Teamwork</WorkflowItem>

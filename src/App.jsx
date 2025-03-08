@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Loader from "components/Loader";
@@ -11,12 +11,20 @@ const Skills = lazy(() => import("./pages/Skills"))
 const NotFound = lazy(() => import("./components/NotFound"))
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 200)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <Suspense fallback={<Loader />}>
       <main className='bg-slate-300/20 min-h-[100vh]'>
         <Router>
           <NavBar />
-          <Routes>
+          { isLoading ? ( <Loader /> ) :(
+            <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/projects' element={<Projects />} />
@@ -24,6 +32,7 @@ const App = () => {
             <Route path='/skills' element={<Skills />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
+          )}
         </Router>
       </main>
     </Suspense>

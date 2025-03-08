@@ -59,7 +59,6 @@ const NavBar = () => {
             to='/'
             className="basis-3/6 text-center text-2xl font-semibold cursor-pointer pr-10 md:pr-0 flex flex-row justify-center items-center gap-2"
           >
-            {/* <span>All In</span> */}
             <img src={clown} className="w-[30px] h-[30px]"/>
           </NavLink>
     
@@ -67,8 +66,8 @@ const NavBar = () => {
             id="top-menu"
             ref={menuRef}
             className={`${
-              isMenuOpen ? "absolute flex flex-col items-center top-10 z-50 left-8 right-8 bg-slate-200 animate-slideDown rounded-lg" : "hidden"
-            } basis-3/6 lg:basis-2/6 md:flex md:items-center md:justify-end md:gap-8 uppercase text-gray-500 md:text-slate-800 font-medium`}  
+              isMenuOpen ? "absolute flex flex-col items-center gap-1 py-2 top-6 z-50 left-8 right-8 bg-slate-200 animate-slideDown rounded-lg" : "hidden"
+            } basis-3/6 lg:basis-2/6 md:flex md:items-center md:justify-end md:gap-10 uppercase text-gray-500 md:text-slate-800 font-medium`}  
           >
             <NavLink
               to='/about'
