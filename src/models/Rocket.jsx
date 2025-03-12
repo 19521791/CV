@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 import { useGLTF } from '@react-three/drei'
 import rocketScene from '/3d/toy_rocket.glb'

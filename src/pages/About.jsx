@@ -1,4 +1,4 @@
-import { githubLink, linkedinLink, github, linkedin, ruby, reactjs, pencil } from "constants"
+import { githubLink, linkedinLink, github, linkedin, ruby, reactjs } from "constants"
 import Astronaut from "models/Astronaut"
 
 const About = () => {
