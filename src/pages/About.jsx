@@ -1,6 +1,4 @@
-import ruby from "/icons/ruby-svgrepo-com.svg"
-import react from "/icons/react.svg"
-import { githubLink, linkedinLink } from "constants"
+import { githubLink, linkedinLink, github, linkedin, ruby, reactjs, pencil } from "constants"
 import Astronaut from "models/Astronaut"
 
 const About = () => {
@@ -48,14 +46,14 @@ const About = () => {
         <div className="flex flex-row items-center gap-4">
           <a href={githubLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
             <img 
-              src="/icons/github.svg"
+              src={github}
               alt="Github"
               className="w-full h-full object-contain"
             />
           </a>
           <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
             <img 
-              src="/icons/linkedin.svg"
+              src={linkedin}
               alt="Linkedin"
               className="w-full h-full object-contain"
             />
@@ -84,7 +82,7 @@ const About = () => {
         </div>
 
         <div className="text-xl">
-          <img src={react} alt="react" className="w-4 h-4 md:w-5 md:h-5 inline-block mr-0.5 mb-1"/>
+          <img src={reactjs} alt="react" className="w-4 h-4 md:w-5 md:h-5 inline-block mr-0.5 mb-1"/>
           <span>
             <span className="font-semibold">Front-end: </span>
             I am currently learning <span className="font-semibold">ReactJS, Material UI, TailwindCSS, Axios</span>.

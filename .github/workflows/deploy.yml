@@ -60,6 +60,8 @@ jobs:
           script: |
             set -e
 
+            rm -rf ~/portfolio_backup_*
+
             if [ -d ~/portfolio ]; then
               mv ~/portfolio ~/portfolio_backup_$(date +%s)
             fi

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
-import { iconPaths } from "constants"
+import { arrow } from "constants"
 
 const InfoBox = ({ text, link, btnText }) => {
   return (
@@ -10,7 +10,7 @@ const InfoBox = ({ text, link, btnText }) => {
       </p>
       <Link to={link} className="neo-brutalism-white neo-btn" >
         {btnText}
-        <img src={iconPaths.arrow} className="w-4 h-4 object-contain" />
+        <img src={arrow} className="w-4 h-4 object-contain" />
       </Link>
     </div>
   )

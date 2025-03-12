@@ -1,107 +1,85 @@
-export const paymentIcon = {
-  payid: "/images/payment_icons/payid.png",
-  bsb: "/images/payment_icons/bsb.png",
-  payto: "/images/payment_icons/payto.png",
-  card: "/images/payment_icons/card.svg",
-}
+// LINK
+export const helloCleverLink = "https://helloclever.co/"
+export const trelloLink = "https://github.com/19521791/trello-backend"
+export const linkedinLink = 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/'
+export const githubLink = 'https://github.com/19521791'
 
-export const imagePaths = {
-  clever: "/images/project_icons/clever.png",
-  ninedash: "/images/project_icons/nine-dash.png",
-  note: "/images/project_icons/note.png",
-  trello: "/images/project_icons/trello.png",
-  cvPage1: "/images/project_icons/cv-page-0.jpg",
-  cvPage2: "/images/project_icons/cv-page-1.jpg",
-  helloclever: "/images/project_icons/hello-clever.png",
-  trelloboard: "/images/project_icons/trello-board.png",
-}
+// IMAGE
+export const clown = 'https://douglus.s3.ap-southeast-1.amazonaws.com/clown.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T020204Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6fbceb68150ccc720d869a581fb9d4cea9ddd6e1e53198b5a96b77d76645e095'
+export const pencil = 'https://douglus.s3.ap-southeast-1.amazonaws.com/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T060944Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=90a15ef0cc11b4a2e0108a64424fa52087440b16448018a2fcc2eebcd357f218'
+export const ninedash = 'https://douglus.s3.ap-southeast-1.amazonaws.com/project_icons/nine-dash.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061512Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3232dfb4d70fbe9c73c58d7ccee133f826e21a6f5fcca4f0858c6a1e3badd2fe'
+export const note = 'https://douglus.s3.ap-southeast-1.amazonaws.com/project_icons/note.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061604Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f74767111d1703296a436c1a07a802796005cfc8d07172ddc04d0dde239800cb'
+export const trelloboard = 'https://douglus.s3.ap-southeast-1.amazonaws.com/project_icons/trello-board.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061649Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=48c6f46a8a88ab43cdcfb2bfb3c1ccecc286fddea261d328e091e59262a126b2'
+export const helloclever = 'https://douglus.s3.ap-southeast-1.amazonaws.com/project_icons/hello-clever.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T081403Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8a5d4b09bbf9cd417d4e42d97b84d2898f1303d205d59400c4a954ff461821bf'
 
-export const iconPaths = {
-  css: "/icons/css.svg",
-  express: "/icons/express.svg",
-  git: "/icons/git.svg",
-  github: "/icons/github.svg",
-  html: "/icons/html.svg",
-  javascript: "/icons/javascript.svg",
-  linkedin: "/icons/linkedin.svg",
-  mongodb: "/icons/mongodb.svg",
-  nodejs: "/icons/nodejs.svg",
-  python: "/icons/python-svgrepo-com.svg",
-  rails: "/icons/rails-svgrepo-com.svg",
-  ruby: "/icons/ruby-svgrepo-com.svg",
-  arrow: "/icons/arrow.svg",
-  react: "/icons/react.svg"
-}
+// SVG
+export const css = 'https://douglus.s3.ap-southeast-1.amazonaws.com/css.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T054741Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=bc44839192c63e814ed7fd4d688d9a2a3d111a90f114aa29c0478361314de157'
+export const express = 'https://douglus.s3.ap-southeast-1.amazonaws.com/express.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T054845Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d879dc534c96837f1c5afc0cf941500ac9e6b17d54a979abbfa2e503fa263430'
+export const git = 'https://douglus.s3.ap-southeast-1.amazonaws.com/git.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T054919Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4267633115cd95220cf00073dc4ca073428cf40d36202d7118b8070f5f208a92'
+export const github = 'https://douglus.s3.ap-southeast-1.amazonaws.com/github.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T060701Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4ef131c05a175859f77128c18fbc1112ba1fe298b813e17560f8e7d07eb940b6'
+export const html = 'https://douglus.s3.ap-southeast-1.amazonaws.com/html.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T060756Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dd58a7b87fc239699151255a668f8a34cb082916bb8298e97f1f678db4d211e3'
+export const favicon = 'https://douglus.s3.ap-southeast-1.amazonaws.com/ice_favicon.ico?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T060840Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1b05b298f907b316161564d5cb32816f24f989aebfc2524c28deb9eed569a497'
+export const javascript = 'https://douglus.s3.ap-southeast-1.amazonaws.com/javascript.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061014Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7621a4feb07a08b03c7d279b0fde608a7d523f1c94358f4347ed18e197f3144b'
+export const linkedin = 'https://douglus.s3.ap-southeast-1.amazonaws.com/linkedin.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061048Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4f3eeebbf9a903466592a6b41955893e5c042daa349adde52f2644da90dd1057'
+export const mongodb = 'https://douglus.s3.ap-southeast-1.amazonaws.com/mongodb.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061128Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3fc0b26404e522cdcb139ffffbf6df17fefae961ca2aa5727caa6c9d3506fc66'
+export const nodejs = 'https://douglus.s3.ap-southeast-1.amazonaws.com/nodejs.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061152Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fb4b5451e32148c794112229c327e017bac746a35787a9795f50dde23d512a04'
+export const python = 'https://douglus.s3.ap-southeast-1.amazonaws.com/python-svgrepo-com.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061258Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=92a510cad25df34968c36427543dd9b7b7252492f567e05d4683834c5fc80618'
+export const rails = 'https://douglus.s3.ap-southeast-1.amazonaws.com/rails-svgrepo-com.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061343Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=90ff9801f0e162dc7fb0fedc6cdb04a70ede7e011ad07e2a5b7e2e3c7001402f'
+export const ruby = 'https://douglus.s3.ap-southeast-1.amazonaws.com/ruby-svgrepo-com.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061407Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c89f43095cc8dbae897699a1c950732a988def5661504de8f9a22dd2095d18a8'
+export const reactjs = 'https://douglus.s3.ap-southeast-1.amazonaws.com/react.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T061428Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ea6a9ee25240c026f39f9b9a81a09c6f72a07f1667f742a07ebb702158edd913'
+export const arrow = 'https://douglus.s3.ap-southeast-1.amazonaws.com/arrow.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T082235Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6a80534b625de700430cfee8326e7eb44deecdf950b0471ed05ed4d489d54a23'
+
 
 export const skills = [
   {
-    imageUrl: iconPaths.ruby,
+    imageUrl: ruby,
     name: "Ruby",
     type: "Backend"
   },
   {
-    imageUrl: iconPaths.rails,
+    imageUrl: rails,
     name: "Ruby On Rails",
     type: "Backend"
   },
   {
-    imageUrl: iconPaths.javascript,
+    imageUrl: javascript,
     name: "JavaScript",
     type: "Frontend",
   },
   {
-    imageUrl: iconPaths.nodejs,
+    imageUrl: nodejs,
     name: "Node.js",
     type: "Backend",
   },
   {
-    imageUrl: iconPaths.express,
+    imageUrl: express,
     name: "Express",
     type: "Backend",
   },
   {
-    imageUrl: iconPaths.python,
+    imageUrl: python,
     name: "Python",
     type: "Backend"
   },
   {
-      imageUrl: iconPaths.git,
+      imageUrl: git,
       name: "Git",
       type: "Version Control",
   },
   {
-      imageUrl: iconPaths.html,
+      imageUrl: html,
       name: "HTML",
       type: "Frontend",
   },
   {
-    imageUrl: iconPaths.css,
+    imageUrl: css,
     name: "CSS",
     type: "Frontend",
   },
   {
-      imageUrl: iconPaths.mongodb,
+      imageUrl: mongodb,
       name: "MongoDB",
       type: "Database",
-  }
-]
-
-export const paymentMethod = [
-  {
-    imageUrl: paymentIcon.payid,
-    name: 'PayID'
-  },
-  {
-    imageUrl: paymentIcon.bsb,
-    name: 'BSB'
-  },
-  {
-    imageUrl: paymentIcon.payto,
-    name: 'PayTo'
-  },
-  {
-    imageUrl: paymentIcon.card,
-    name: 'Card'
   }
 ]
 
@@ -109,21 +87,21 @@ export const projects = [
   {
     title: "Backend Developer",
     company_name: "HELLO CLEVER",
-    image: "/images/project_icons/hello-clever.png",
+    image: helloclever,
     description: "Hello Clever Payment Gateway",
     link: "https://helloclever.co/"
 },
 {
     title: "Trello Board",
     company_name: "TRELLO BOARD (Personal Project)",
-    image: "/images/project_icons/trello-board.png",
+    image: trelloboard,
     description: "Trello Board Clone",
     link: "https://github.com/19521791/trello-backend"
 },
 {
     title: "Sticky Note (Personal Project)",
     company_name: "STICKY NOTE (Personal Project)",
-    image: "/images/project_icons/note.png",
+    image: note,
     iconBg: "#b7e4c7",
     description: "Sticky Note",
     link: "https://github.com/19521791/note-app"
@@ -131,14 +109,9 @@ export const projects = [
 {
     title: "Detect Nine Dash Line (Personal Project)",
     company_name: "NINE DASH LINE (Personal Project)",
-    image: "/images/project_icons/nine-dash.png",
+    image: ninedash,
     iconBg: "#a2d2ff",
     description: "Nine Dash Line",
     link: "https://github.com/19521791/server-nodejs"
 }
 ];
-
-export const helloCleverLink = "https://helloclever.co/"
-export const trelloLink = "https://github.com/19521791/trello-backend"
-export const linkedinLink = 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/'
-export const githubLink = 'https://github.com/19521791'
