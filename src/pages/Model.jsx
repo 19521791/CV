@@ -9,7 +9,7 @@ import Bird from "models/Bird"
 import Plane from "models/Plane"
 import HomeInfo from "components/HomeInfo"
 
-const Home = () => {
+const Model = () => {
   const [currentStage, setCurrentStage] = useState(1)
   const [isRotating, setIsRotating] = useState(false)
   const [isCanvasLoading, setIsCanvasLoading] = useState(true);
@@ -96,4 +96,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Model

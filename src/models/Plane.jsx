@@ -4,6 +4,8 @@ import { useAnimations, useGLTF } from '@react-three/drei'
 import planeScene from '/3d/plane.glb'
 import { useEffect, useRef } from 'react'
 
+useGLTF.preload(planeScene)
+
 const Plane = ({ isRotating, ...props }) => {
   const ref = useRef()
   const { scene, animations } = useGLTF(planeScene)

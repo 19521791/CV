@@ -10,12 +10,13 @@ Title: Fox
 
 import { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
+import foxScene from '/3d/fox.glb'
 
-import scene from '/3d/fox.glb'
+useGLTF.preload(foxScene)
 
 const Fox = ({ currentAnimation, ...props }) => {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF(scene)
+  const { nodes, materials, animations } = useGLTF(foxScene)
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {

@@ -4,6 +4,8 @@ import { useAnimations, useGLTF } from '@react-three/drei'
 import birdScene from '/3d/bird.glb'
 import { useFrame } from '@react-three/fiber'
 
+useGLTF.preload(birdScene)
+
 const Bird = () => {
   const { scene, animations } = useGLTF(birdScene)
   const birdRef = useRef()

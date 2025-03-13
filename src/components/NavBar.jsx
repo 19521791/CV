@@ -112,6 +112,17 @@ const NavBar = () => {
             >
               Skills
             </NavLink>
+
+            {/* <NavLink
+              to='/cover-letter'
+              className={({ isActive }) =>
+              isActive
+                ? "text-blue-500 font-semibold"
+                : "top-menu-item"
+              }
+            >
+              Letter
+            </NavLink> */}
           </div>
 
           <div 

@@ -13,8 +13,9 @@ import { useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { a } from '@react-spring/three'
-
 import islandScene from '/3d/foxs_islands.glb'
+
+useGLTF.preload(islandScene)
 
 const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   const islandRef = useRef()
