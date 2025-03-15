@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import NavBar from './components/NavBar'
-import Loader from "components/Loader";
+import NavBar from '@/components/NavBar'
+import Loader from "@/components/Loader";
 
-import { Model } from "pages";
-import { About } from "pages";
-import { Projects } from "pages";
-import { Experience } from "pages";
-import { Skills } from "pages";
-import NotFound from "components/NotFound";
-import { CoverLetter } from "pages";
+import { Model } from "@/pages";
+import { About } from "@/pages";
+import { Projects } from "@/pages";
+import { Experience } from "@/pages";
+import { Skills } from "@/pages";
+import NotFound from "@/components/NotFound";
+import { CoverLetter } from "@/pages";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -25,13 +25,13 @@ const App = () => {
         <NavBar />
         { isLoading ? ( <Loader /> ) :(
           <Routes>
-          <Route path='/' element={<Model />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/projects' element={<Projects />} />
-          <Route path='/experience' element={<Experience />} />
-          <Route path='/skills' element={<Skills />} />
-          <Route path='/cover-letter' element={<CoverLetter />} />
-          <Route path='*' element={<NotFound />} />
+            <Route exact path='/' element={<Model />} />
+            <Route exact path='/about' element={<About />} />
+            <Route exact path='/projects' element={<Projects />} />
+            <Route exact path='/experience' element={<Experience />} />
+            <Route exact path='/skills' element={<Skills />} />
+            <Route exact path='/cover-letter' element={<CoverLetter />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
         )}
       </Router>

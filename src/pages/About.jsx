@@ -1,5 +1,5 @@
-import { githubLink, linkedinLink, github, linkedin, ruby, reactjs } from "constants"
-import Astronaut from "models/Astronaut"
+import { githubLink, linkedinLink, github, linkedin, ruby, reactjs, whale } from "@/constants"
+import Astronaut from "@/models/Astronaut"
 
 const About = () => {
   return (
@@ -76,16 +76,24 @@ const About = () => {
           <img src={ruby} alt="rails" className="w-4 h-4 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
           <span>
             <span className="font-semibold">Back-end: </span>
-            I have experience working with <span className="font-semibold">Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq</span>.
-            NodeJS, ExpressJS, MongoDB (gained through Personal Projects)
+            I have experience working with <span className="font-semibold">Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, Capistrano</span>.
+            ExpressJS, MongoDB, Typescript, TypeOrm (gained through Personal Projects)
           </span>
         </div>
 
-        <div className="text-xl">
+        <div className="text-xl mb-2">
           <img src={reactjs} alt="react" className="w-4 h-4 md:w-5 md:h-5 inline-block mr-0.5 mb-1"/>
           <span>
             <span className="font-semibold">Front-end: </span>
-            I am currently learning <span className="font-semibold">ReactJS, Material UI, TailwindCSS, Axios</span>.
+            ReactJS, Material UI, TailwindCSS, Axios (gained through Personal Projects).
+          </span>
+        </div>
+
+        <div className="text-xl mb-2">
+          <img src={whale} alt="rails" className="w-5 h-5 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
+          <span>
+            <span className="font-semibold">Devops: </span>
+            Docker, Docker Compose, Github Actions, Nginx, Ansible (gained through Personal Projects).
           </span>
         </div>
       </div>

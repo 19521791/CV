@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { skills } from "constants";
+import { skills } from "@/constants";
 import Tooltip from '@mui/material/Tooltip';
 
 const SkillItem = ({ skill }) => (

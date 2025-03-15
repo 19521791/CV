@@ -1,39 +1,28 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useRef } from "react";
-import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "tailwindcss/tailwind.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CoverLetter = () => {
-  const sections = useRef([]);
+export default function CoverLetter() {
+  const sectionsRef = useRef([]);
 
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      smooth: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    sections.current.forEach((section, _) => {
+    sectionsRef.current.forEach((el, index) => {
       gsap.fromTo(
-        section,
-        { opacity: 0, y: 50 },
+        el,
+        { opacity: 0, y: 20 },
         {
           opacity: 1,
           y: 0,
           duration: 1,
-          ease: "power2.out",
+          delay: index * 0.2,
           scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
+            trigger: el,
+            start: "top 90%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            once: true
           },
         }
       );
@@ -41,21 +30,52 @@ const CoverLetter = () => {
   }, []);
 
   return (
-    <div className="max-container flex flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold mb-6">My Cover Letter</h1>
-      <div className="max-w-2xl space-y-12">
-        {["Dear Hiring Manager,", "I am excited to apply for the role...", "With my experience in...", "I look forward to hearing from you!", ";lkajsdf;lkajsdfl;kjas;dlkfja;lskdjf;lkasdjf"].map((text, index) => (
-          <p
-            key={index}
-            ref={(el) => (sections.current[index] = el)}
-            className="text-lg opacity-0"
-          >
-            {text}
-          </p>
-        ))}
+    <div className="max-container bg-gray-100 flex justify-center items-center">
+      <div
+        className="max-w-3xl bg-white shadow-xl p-4 md:p-10 rounded-lg text-lg md:text-xl leading-relaxed text-gray-700 md:text-justify md:leading-7"
+      >
+        <h1 className="text-6xl font-serif font-bold text-center tracking-wide mb-6">
+          COVER LETTER
+        </h1>
+        <div className="border-t border-gray-300 mb-6"></div>
+
+        <p ref={(el) => (sectionsRef.current[0] = el)} className="md:indent-6">
+          <span className="text-5xl font-serif font-bold">D</span>
+          ear Hiring Manager,
+        </p>
+
+        <p ref={(el) => (sectionsRef.current[1] = el)} className=" mt-4 md:indent-6">
+          Throughout my software development journey, I have always focused on building{" "}
+          secure, scalable, and efficient systems. With experience in{" "}
+          Ruby on Rails, PostgreSQL, Sidekiq, and Redis, I have contributed
+          to various critical features, including system security, transaction processing, and third-party integrations.
+        </p>
+
+        <p ref={(el) => (sectionsRef.current[2] = el)} className=" mt-4">
+          I have developed a two-factor authentication (2FA) system, allowing users to verify
+          their identity via Google Authenticator or SMS OTP, enhancing platform security.
+          Additionally, I have worked on fraud detection and transaction monitoring,
+          ensuring transparency and safety within the system.
+        </p>
+
+        <p ref={(el) => (sectionsRef.current[3] = el)} className=" mt-4">
+          Moreover, I have built payout functionalities for the merchant dashboard,
+          optimized fee calculations for payout transactions, and expanded the{" "}
+          public API to support various business use cases. My experience also includes{" "}
+          integrating suppliers into the system, enhancing service scalability, and{" "}
+          implementing Google Captcha v3 to protect against bots and abusive behaviors.
+        </p>
+
+        <p ref={(el) => (sectionsRef.current[4] = el)} className=" mt-4">
+          With a strong problem-solving mindset and a deep understanding of backend optimization, I am eager
+          to contribute to Company by developing robust and high-performance systems. I would love
+          the opportunity to discuss how my skills align with your team’s goals.
+        </p>
+
+        <p ref={(el) => (sectionsRef.current[5] = el)} className=" mt-4">
+          <strong>Best regards,</strong><br /> Nguyen Phi Long
+        </p>
       </div>
     </div>
-  )
+  );
 }
-
-export default CoverLetter

@@ -1,13 +1,17 @@
 name: Deploy CV Online
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types:
+      - closed
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Checkout Repo
@@ -17,13 +21,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
-          path: node-modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-          restore-keys: node-modules-
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install Dependencies
         run: |
@@ -62,6 +68,7 @@ jobs:
 
             rm -rf ~/portfolio_backup_*
 
+            echo "Backup current project..."
             if [ -d ~/portfolio ]; then
               mv ~/portfolio ~/portfolio_backup_$(date +%s)
             fi
@@ -84,15 +91,12 @@ jobs:
             fi
 
             sudo mkdir -p /var/www/portfolio
-
             sudo rm -rf /var/www/portfolio/dist
-
             sudo cp -r ~/portfolio/dist /var/www/portfolio/
-
             sudo chown -R www-data:www-data /var/www/portfolio/dist
-
             sudo chmod -R 755 /var/www/portfolio/dist
             
+            echo "Restarting Nginx..."
             if command -v nginx &> /dev/null; then
               sudo nginx -t && sudo systemctl restart nginx
             else
@@ -101,7 +105,9 @@ jobs:
             fi
 
       - name: Clean up SSH keys
-        run: rm -rf ~/.ssh/github_rsa
+        run: |
+          rm -rf ~/.ssh/github_rsa
+          unset SSH_AUTH_SOCK
 
       - name: Notify Telegram on Success
         if: success()
@@ -110,10 +116,10 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Deploy to production successfully!
+            Deploy to Staging successfully!
 
-            ${{ github.actor }} created commit:
-            Commit message: ${{ github.event.commits[0].message }}
+            ${{ github.actor }} created commit
+            PR: `${{ github.event.commits[0].message }}` has been merged
 
             Repository: ${{ github.repository }}
 
@@ -126,12 +132,13 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Deploy to production failed!
+            Deploy to Staging failed!
 
-            ${{ github.actor }} created commit:
-            Commit message: ${{ github.event.commits[0].message }}
+            The PR: `${{ github.event.commits[0].message }}` was merged, but  an error occured
+            ${{ github.actor }} created commit
+            Error: ${{ job.status }}
 
-            Repository: ${{ github.repository }}
+            Check logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 
 

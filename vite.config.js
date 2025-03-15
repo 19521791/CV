@@ -1,13 +1,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path';
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
+import rewriteAll from 'vite-plugin-rewrite-all'
+import { fileURLToPath } from 'url';
 
-// https://vitejs.dev/config/
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 export default defineConfig({
+  base: "/",
   plugins: [
     react(),
+    rewriteAll(),
     tsconfigPaths(),
     ViteImageOptimizer(),
     chunkSplitPlugin({
@@ -23,6 +30,21 @@ export default defineConfig({
       },
     }),
   ],
+  preview: {
+    port: 4173,
+    open: true,
+    strictPort: true,
+    historyApiFallback: {
+      rewrites: [
+        { from: /\/.*/, to: '/index.html' },
+      ],
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
   assetsInclude: ['**/*.glb'],
   optimizeDeps: {
     force: true,

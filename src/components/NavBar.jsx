@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { clown } from "constants"
+import { clown } from "@/constants"
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,8 +53,8 @@ const NavBar = () => {
 
   return (
     <div className="max-w-screen-xl text-base mx-auto absolute top-0 bg-transparent z-10 right-0 left-0">
-      <header className="py-6 md:mr-9">
-        <nav className="flex flex-row justify-between items-center relative">
+      <header className="py-6 md:mr-9 md:px-6">
+        <nav className="flex flex-row justify-between md:justify-start items-center relative">
           <NavLink
             to='/'
             className="basis-3/6 text-center text-2xl font-semibold cursor-pointer pr-10 md:pr-0 flex flex-row justify-center items-center gap-2"
@@ -113,7 +113,7 @@ const NavBar = () => {
               Skills
             </NavLink>
 
-            {/* <NavLink
+            <NavLink
               to='/cover-letter'
               className={({ isActive }) =>
               isActive
@@ -122,7 +122,7 @@ const NavBar = () => {
               }
             >
               Letter
-            </NavLink> */}
+            </NavLink>
           </div>
 
           <div 
