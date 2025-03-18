@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react"
-import { Link } from "react-router-dom"
-import { ImageContext } from "@/utils/ImageGallery"
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { ImageContext } from '@/utils/ImageGallery'
 
 const InfoBox = ({ text, link, btnText }) => {
   const { images } = useContext(ImageContext)

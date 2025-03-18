@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react"
-import { projects } from "@/constants"
-import { ImageContext } from "@/utils/ImageGallery"
+import { useContext } from 'react'
+import { projects } from '@/constants'
+import { ImageContext } from '@/utils/ImageGallery'
 
 import 'react-vertical-timeline-component/style.min.css'
-import Tilt from "react-parallax-tilt"
+import Tilt from 'react-parallax-tilt'
 
 const ProjectCard = ({ description, image, link }) => (
   <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} scale={1.05} transitionSpeed={250}>
-    <div 
+    <div
       className="bg-cover bg-center h-64 rounded-lg shadow-lg"
       style={{ backgroundImage: `url('${image}')` }}
     >

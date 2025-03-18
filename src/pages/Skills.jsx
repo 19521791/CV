@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react"
-import { skills } from "@/constants"
+import { useContext } from 'react'
+import { skills } from '@/constants'
 import Tooltip from '@mui/material/Tooltip'
-import { ImageContext } from "@/utils/ImageGallery"
+import { ImageContext } from '@/utils/ImageGallery'
 
 const SkillItem = ({ skill }) => {
   const { images } = useContext(ImageContext)
@@ -18,16 +18,16 @@ const SkillItem = ({ skill }) => {
             borderRadius: '12px',
             fontSize: '14px',
             '& .MuiTooltip-arrow': {
-              color: '#BDBFC6',
-            },
-          },
-        },
+              color: '#BDBFC6'
+            }
+          }
+        }
       }}
     >
       <div className="block-container w-20 h-20">
         <div className="btn-back rounded-xl" />
         <div className="btn-front rounded-xl flex justify-center items-center">
-          <img 
+          <img
             src={images[skill.imageUrl]}
             alt={skill.name}
             className="w-1/2 h-1/2 object-contain"
@@ -36,14 +36,14 @@ const SkillItem = ({ skill }) => {
       </div>
     </Tooltip>
   )
-};
+}
 
 const WorkflowItem = ({ children }) => (
   <li className="mb-1">
     <i className="fa fa-check text-green-500 mr-2" />
     <span className="font-semibold">{children}</span>
   </li>
-);
+)
 
 const Skills = () => {
   return (
@@ -77,7 +77,7 @@ const Skills = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Skills;
+export default Skills

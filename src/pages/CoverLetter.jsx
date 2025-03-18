@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 export default function CoverLetter() {
-  const sectionsRef = useRef([]);
+  const sectionsRef = useRef([])
 
   useEffect(() => {
     sectionsRef.current.forEach((el, index) => {
@@ -19,15 +19,15 @@ export default function CoverLetter() {
           delay: index * 0.2,
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
+            start: 'top 90%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none none',
             once: true
-          },
+          }
         }
-      );
-    });
-  }, []);
+      )
+    })
+  }, [])
 
   return (
     <div className="max-container bg-gray-100 flex justify-center items-center">
@@ -45,8 +45,8 @@ export default function CoverLetter() {
         </p>
 
         <p ref={(el) => (sectionsRef.current[1] = el)} className=" mt-4 md:indent-6">
-          Throughout my software development journey, I have always focused on building{" "}
-          secure, scalable, and efficient systems. With experience in{" "}
+          Throughout my software development journey, I have always focused on building{' '}
+          secure, scalable, and efficient systems. With experience in{' '}
           Ruby on Rails, PostgreSQL, Sidekiq, and Redis, I have contributed
           to various critical features, including system security, transaction processing, and third-party integrations.
         </p>
@@ -60,9 +60,9 @@ export default function CoverLetter() {
 
         <p ref={(el) => (sectionsRef.current[3] = el)} className=" mt-4">
           Moreover, I have built payout functionalities for the merchant dashboard,
-          optimized fee calculations for payout transactions, and expanded the{" "}
-          public API to support various business use cases. My experience also includes{" "}
-          integrating suppliers into the system, enhancing service scalability, and{" "}
+          optimized fee calculations for payout transactions, and expanded the{' '}
+          public API to support various business use cases. My experience also includes{' '}
+          integrating suppliers into the system, enhancing service scalability, and{' '}
           implementing Google Captcha v3 to protect against bots and abusive behaviors.
         </p>
 
@@ -77,5 +77,5 @@ export default function CoverLetter() {
         </p>
       </div>
     </div>
-  );
+  )
 }

@@ -1,111 +1,111 @@
 import { useEffect, useRef } from 'react'
-import { gsap } from "gsap";
-import { CSSPlugin } from "gsap/all";
+import { gsap } from 'gsap'
+import { CSSPlugin } from 'gsap/all'
 
-gsap.registerPlugin(CSSPlugin);
+gsap.registerPlugin(CSSPlugin)
 
 const Astronaut = () => {
-  const headStripeRef = useRef(null);
-  const spacemanRef = useRef(null);
-  const craterSmallRef = useRef(null);
-  const craterBigRef = useRef(null);
-  const planetRef = useRef(null);
-  const starsBigRef = useRef(null);
-  const starsSmallRef = useRef(null);
-  const circlesSmallRef = useRef(null);
-  const circlesBigRef = useRef(null);
-  const glassShineRef = useRef(null);
+  const headStripeRef = useRef(null)
+  const spacemanRef = useRef(null)
+  const craterSmallRef = useRef(null)
+  const craterBigRef = useRef(null)
+  const planetRef = useRef(null)
+  const starsBigRef = useRef(null)
+  const starsSmallRef = useRef(null)
+  const circlesSmallRef = useRef(null)
+  const circlesBigRef = useRef(null)
+  const glassShineRef = useRef(null)
 
   useEffect(() => {
-    if (!starsBigRef.current || !starsSmallRef.current || !circlesSmallRef.current || !circlesBigRef.current) return;
+    if (!starsBigRef.current || !starsSmallRef.current || !circlesSmallRef.current || !circlesBigRef.current) return
 
-    gsap.set("svg", { visibility: "visible" });
+    gsap.set('svg', { visibility: 'visible' })
 
     gsap.to(headStripeRef.current, {
       y: 0.5,
       rotation: 1,
       yoyo: true,
       repeat: -1,
-      ease: "sine.inOut",
-      duration: 1,
-    });
+      ease: 'sine.inOut',
+      duration: 1
+    })
 
     gsap.to(spacemanRef.current, {
       y: 0.5,
       rotation: 1,
       yoyo: true,
       repeat: -1,
-      ease: "sine.inOut",
-      duration: 1,
-    });
+      ease: 'sine.inOut',
+      duration: 1
+    })
 
     gsap.to(craterSmallRef.current, {
       x: -3,
       yoyo: true,
       repeat: -1,
       duration: 1,
-      ease: "sine.inOut",
-    });
+      ease: 'sine.inOut'
+    })
 
     gsap.to(craterBigRef.current, {
       x: 3,
       yoyo: true,
       repeat: -1,
       duration: 1,
-      ease: "sine.inOut",
-    });
+      ease: 'sine.inOut'
+    })
 
     gsap.to(planetRef.current, {
       rotation: -2,
       yoyo: true,
       repeat: -1,
       duration: 1,
-      ease: "sine.inOut",
-      transformOrigin: "50% 50%",
-    });
+      ease: 'sine.inOut',
+      transformOrigin: '50% 50%'
+    })
 
-    gsap.to(starsBigRef.current.querySelectorAll("g"), {
-      rotation: "random(-30,30)",
-      transformOrigin: "50% 50%",
+    gsap.to(starsBigRef.current.querySelectorAll('g'), {
+      rotation: 'random(-30,30)',
+      transformOrigin: '50% 50%',
       yoyo: true,
       repeat: -1,
-      ease: "sine.inOut",
-    });
+      ease: 'sine.inOut'
+    })
 
     gsap.fromTo(
-      starsSmallRef.current.querySelectorAll("g"),
-      { scale: 0, transformOrigin: "50% 50%" },
-      { scale: 1, transformOrigin: "50% 50%", yoyo: true, repeat: -1, stagger: 0.1 }
-    );
+      starsSmallRef.current.querySelectorAll('g'),
+      { scale: 0, transformOrigin: '50% 50%' },
+      { scale: 1, transformOrigin: '50% 50%', yoyo: true, repeat: -1, stagger: 0.1 }
+    )
 
-    gsap.to(circlesSmallRef.current.querySelectorAll("circle"), {
+    gsap.to(circlesSmallRef.current.querySelectorAll('circle'), {
       y: -4,
       yoyo: true,
       duration: 1,
-      ease: "sine.inOut",
-      repeat: -1,
-    });
+      ease: 'sine.inOut',
+      repeat: -1
+    })
 
-    gsap.to(circlesBigRef.current.querySelectorAll("circle"), {
+    gsap.to(circlesBigRef.current.querySelectorAll('circle'), {
       y: -2,
       yoyo: true,
       duration: 1,
-      ease: "sine.inOut",
-      repeat: -1,
-    });
+      ease: 'sine.inOut',
+      repeat: -1
+    })
 
-    gsap.set(glassShineRef.current, { x: -68 });
+    gsap.set(glassShineRef.current, { x: -68 })
 
     gsap.to(glassShineRef.current, {
       x: 80,
       duration: 2,
       rotation: -30,
-      ease: "expo.inOut",
-      transformOrigin: "50% 50%",
+      ease: 'expo.inOut',
+      transformOrigin: '50% 50%',
       repeat: -1,
       repeatDelay: 8,
-      delay: 2,
-    });
+      delay: 2
+    })
   }, [])
 
   return (

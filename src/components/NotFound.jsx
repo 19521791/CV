@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
-import { Canvas } from "@react-three/fiber"
-import { OrbitControls } from "@react-three/drei";
-import Rocket from "@/models/Rocket"
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import Rocket from '@/models/Rocket'
 
 const NotFound = () => {
   return (

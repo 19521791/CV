@@ -1,7 +1,7 @@
-import { useContext } from "react"
-import { githubLink, linkedinLink } from "@/constants"
-import Astronaut from "@/models/Astronaut"
-import { ImageContext } from "@/utils/ImageGallery"
+import { useContext } from 'react'
+import { githubLink, linkedinLink } from '@/constants'
+import Astronaut from '@/models/Astronaut'
+import { ImageContext } from '@/utils/ImageGallery'
 
 const About = () => {
   const { images } = useContext(ImageContext)
@@ -49,14 +49,14 @@ const About = () => {
       <div className="mb-5">
         <div className="flex flex-row items-center gap-4">
           <a href={githubLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
-            <img 
+            <img
               src={images['github']}
               alt="Github"
               className="w-full h-full object-contain"
             />
           </a>
           <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
-            <img 
+            <img
               src={images['linkedin']}
               alt="Linkedin"
               className="w-full h-full object-contain"
@@ -101,7 +101,7 @@ const About = () => {
           </span>
         </div>
       </div>
-      
+
       <div className="mb-5">
         <p className="text-3xl font-semibold mb-2">Education</p>
         <div className="flex flex-col md:flex-row md:justify-between">

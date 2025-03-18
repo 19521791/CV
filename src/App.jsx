@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from '@/components/NavBar'
-import Loader from "@/components/Loader";
+import Loader from '@/components/Loader'
 
-import { Model } from "@/pages";
-import { About } from "@/pages";
-import { Projects } from "@/pages";
-import { Experience } from "@/pages";
-import { Skills } from "@/pages";
-import NotFound from "@/components/NotFound";
-import { CoverLetter } from "@/pages";
-import { ImageProvider } from "@/utils/ImageGallery"
+import { Model } from '@/pages'
+import { About } from '@/pages'
+import { Projects } from '@/pages'
+import { Experience } from '@/pages'
+import { Skills } from '@/pages'
+import NotFound from '@/components/NotFound'
+import { CoverLetter } from '@/pages'
+import { ImageProvider } from '@/utils/ImageGallery'
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -34,7 +34,7 @@ const App = () => {
               <Route exact path='/skills' element={<Skills />} />
               <Route exact path='/cover-letter' element={<CoverLetter />} />
               <Route path="*" element={<NotFound />} />
-          </Routes>
+            </Routes>
           )}
         </ImageProvider>
       </Router>
