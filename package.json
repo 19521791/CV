@@ -31,8 +31,7 @@
     "react-vertical-timeline-component": "^3.6.0",
     "three": "^0.174.0",
     "vite-plugin-chunk-split": "^0.5.0",
-    "vite-plugin-image-optimizer": "^1.1.8",
-    "vite-plugin-rewrite-all": "^1.0.2"
+    "vite-plugin-image-optimizer": "^1.1.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

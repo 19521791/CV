@@ -116,14 +116,13 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Deploy to Staging successfully!
+            ✅ Deploy to Staging successfully! 🚀
 
-            ${{ github.actor }} created commit
-            PR: `${{ github.event.commits[0].message }}` has been merged
+            👤 Author: ${{ github.actor }}  
+            🔥 PR: `${{ github.event.pull_request.title || github.event.head_commit.message || 'Unknown PR' }}` has been merged  
+            📂 Repository: ${{ github.repository }}  
 
-            Repository: ${{ github.repository }}
-
-            See changes: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+            🔗 See changes: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
 
       - name: Notify Telegram on Failure
         if: failure()
@@ -132,13 +131,14 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Deploy to Staging failed!
+            ❌ Deploy to Staging failed!  
 
-            The PR: `${{ github.event.commits[0].message }}` was merged, but  an error occured
-            ${{ github.actor }} created commit
-            Error: ${{ job.status }}
+            👤 Author: ${{ github.actor }}  
+            🔥 PR: `${{ github.event.pull_request.title || github.event.head_commit.message || 'Unknown PR' }}`  
+            ⚠️ Error: Deployment failed at `${{ steps.build.outcome || 'unknown step' }}`  
 
-            Check logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            📜 Check logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
 
 
 
