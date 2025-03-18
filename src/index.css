@@ -159,21 +159,3 @@ html::-webkit-scrollbar {
   content:"Loading..."
 }
 
-.dlous-email {
-  background-image: url('https://douglus.s3.ap-southeast-1.amazonaws.com/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWAA66FXGPGBUMN6S%2F20250312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250312T060944Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=90a15ef0cc11b4a2e0108a64424fa52087440b16448018a2fcc2eebcd357f218');
-  width: 400px;
-  height: 130px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-@media (max-width: 480px) {
-  .dlous-email {
-    width: 320px;
-    height: 110px; 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-}

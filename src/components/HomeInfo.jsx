@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { arrow } from "@/constants"
+import { ImageContext } from "@/utils/ImageGallery"
 
 const InfoBox = ({ text, link, btnText }) => {
+  const { images } = useContext(ImageContext)
+
   return (
     <div className="info-box">
       <p className="font-medium sm:text-xl text-center">
@@ -10,7 +13,7 @@ const InfoBox = ({ text, link, btnText }) => {
       </p>
       <Link to={link} className="neo-brutalism-white neo-btn" >
         {btnText}
-        <img src={arrow} className="w-4 h-4 object-contain" />
+        <img src={images['arrow']} className="w-4 h-4 object-contain" />
       </Link>
     </div>
   )

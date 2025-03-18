@@ -10,6 +10,7 @@ import { Experience } from "@/pages";
 import { Skills } from "@/pages";
 import NotFound from "@/components/NotFound";
 import { CoverLetter } from "@/pages";
+import { ImageProvider } from "@/utils/ImageGallery"
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -22,18 +23,20 @@ const App = () => {
   return (
     <main className='bg-slate-300/20 min-h-[100vh]'>
       <Router>
-        <NavBar />
-        { isLoading ? ( <Loader /> ) :(
-          <Routes>
-            <Route exact path='/' element={<Model />} />
-            <Route exact path='/about' element={<About />} />
-            <Route exact path='/projects' element={<Projects />} />
-            <Route exact path='/experience' element={<Experience />} />
-            <Route exact path='/skills' element={<Skills />} />
-            <Route exact path='/cover-letter' element={<CoverLetter />} />
-            <Route path="*" element={<NotFound />} />
-        </Routes>
-        )}
+        <ImageProvider>
+          <NavBar />
+          { isLoading ? ( <Loader /> ) :(
+            <Routes>
+              <Route exact path='/' element={<Model />} />
+              <Route exact path='/about' element={<About />} />
+              <Route exact path='/projects' element={<Projects />} />
+              <Route exact path='/experience' element={<Experience />} />
+              <Route exact path='/skills' element={<Skills />} />
+              <Route exact path='/cover-letter' element={<CoverLetter />} />
+              <Route path="*" element={<NotFound />} />
+          </Routes>
+          )}
+        </ImageProvider>
       </Router>
     </main>
   )

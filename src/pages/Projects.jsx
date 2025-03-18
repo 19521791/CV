@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react"
 import { projects } from "@/constants"
+import { ImageContext } from "@/utils/ImageGallery"
 
 import 'react-vertical-timeline-component/style.min.css'
 import Tilt from "react-parallax-tilt"
@@ -22,6 +24,8 @@ const ProjectCard = ({ description, image, link }) => (
 )
 
 const Projects = () => {
+  const { images } = useContext(ImageContext)
+
   return (
     <div className="max-container text-slate-700">
       <h1 className="font-semibold text-5xl font-poppins mb-4 leading-snug">
@@ -32,11 +36,11 @@ const Projects = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 cursor-pointer px-2 sm:mx-8 md:mx-0">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <ProjectCard
-            key={project.id}
+            key={index}
             description={project.description}
-            image={project.image}
+            image={images[project.image]}
             link={project.link}
           />
         ))}

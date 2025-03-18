@@ -1,12 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { clown } from "@/constants"
+import { ImageContext } from "@/utils/ImageGallery"
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
   const location = useLocation();
+  const { images } = useContext(ImageContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -59,7 +60,7 @@ const NavBar = () => {
             to='/'
             className="basis-3/6 text-center text-2xl font-semibold cursor-pointer pr-10 md:pr-0 flex flex-row justify-center items-center gap-2"
           >
-            <img src={clown} className="w-[30px] h-[30px]"/>
+            <img src={images['clown']} className="w-[30px] h-[30px]"/>
           </NavLink>
     
           <div
