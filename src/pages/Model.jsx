@@ -1,26 +1,26 @@
 /* eslint-disable react/no-unknown-property */
-import { Canvas } from "@react-three/fiber"
-import { Suspense, useState, useEffect } from "react"
-import LoadObject from "@/components/LoadObject"
-import Loader from "@/components/Loader"
-import Island from "@/models/Island"
-import Sky from "@/models/Sky"
-import Bird from "@/models/Bird"
-import Plane from "@/models/Plane"
-import HomeInfo from "@/components/HomeInfo"
+import { Canvas } from '@react-three/fiber'
+import { Suspense, useState, useEffect } from 'react'
+import LoadObject from '@/components/LoadObject'
+import Loader from '@/components/Loader'
+import Island from '@/models/Island'
+import Sky from '@/models/Sky'
+import Bird from '@/models/Bird'
+import Plane from '@/models/Plane'
+import HomeInfo from '@/components/HomeInfo'
 
 const Model = () => {
   const [currentStage, setCurrentStage] = useState(1)
   const [isRotating, setIsRotating] = useState(false)
-  const [isCanvasLoading, setIsCanvasLoading] = useState(true);
+  const [isCanvasLoading, setIsCanvasLoading] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsCanvasLoading(false);
-    }, 100);
+      setIsCanvasLoading(false)
+    }, 100)
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timer)
+  }, [])
 
   const adjustIslandForScreenSize = () => {
     let screenScale = null
@@ -64,7 +64,7 @@ const Model = () => {
           </div>
 
           <Canvas
-            className={`w-full h-screen bg-transparent ${isRotating ? "cursor-grabbing" : "cursor-grab"}`}
+            className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
             camera={{ near: 0.1, far: 1000 }}
           >
             <Suspense fallback={ <LoadObject />}>

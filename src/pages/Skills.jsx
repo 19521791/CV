@@ -1,43 +1,49 @@
 /* eslint-disable react/prop-types */
-import { skills } from "@/constants";
-import Tooltip from '@mui/material/Tooltip';
+import { useContext } from 'react'
+import { skills } from '@/constants'
+import Tooltip from '@mui/material/Tooltip'
+import { ImageContext } from '@/utils/ImageGallery'
 
-const SkillItem = ({ skill }) => (
-  <Tooltip
-    title={skill.name}
-    placement="top"
-    componentsProps={{
-      tooltip: {
-        sx: {
-          bgcolor: '#1C1C1E',
-          borderRadius: '12px',
-          fontSize: '14px',
-          '& .MuiTooltip-arrow': {
-            color: '#BDBFC6',
-          },
-        },
-      },
-    }}
-  >
-    <div className="block-container w-20 h-20">
-      <div className="btn-back rounded-xl" />
-      <div className="btn-front rounded-xl flex justify-center items-center">
-        <img 
-          src={skill.imageUrl}
-          alt={skill.name}
-          className="w-1/2 h-1/2 object-contain"
-        />
+const SkillItem = ({ skill }) => {
+  const { images } = useContext(ImageContext)
+
+  return (
+    <Tooltip
+      title={skill.name}
+      placement="top"
+      componentsProps={{
+        tooltip: {
+          sx: {
+            bgcolor: '#1C1C1E',
+            borderRadius: '12px',
+            fontSize: '14px',
+            '& .MuiTooltip-arrow': {
+              color: '#BDBFC6'
+            }
+          }
+        }
+      }}
+    >
+      <div className="block-container w-20 h-20">
+        <div className="btn-back rounded-xl" />
+        <div className="btn-front rounded-xl flex justify-center items-center">
+          <img
+            src={images[skill.imageUrl]}
+            alt={skill.name}
+            className="w-1/2 h-1/2 object-contain"
+          />
+        </div>
       </div>
-    </div>
-  </Tooltip>
-);
+    </Tooltip>
+  )
+}
 
 const WorkflowItem = ({ children }) => (
   <li className="mb-1">
     <i className="fa fa-check text-green-500 mr-2" />
     <span className="font-semibold">{children}</span>
   </li>
-);
+)
 
 const Skills = () => {
   return (
@@ -71,7 +77,7 @@ const Skills = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Skills;
+export default Skills

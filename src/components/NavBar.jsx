@@ -1,34 +1,35 @@
-import { useState, useEffect, useRef } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { clown } from "@/constants"
+import { useState, useEffect, useRef, useContext } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
+import { ImageContext } from '@/utils/ImageGallery'
 
 const NavBar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
-  const toggleButtonRef = useRef(null);
-  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef(null)
+  const toggleButtonRef = useRef(null)
+  const location = useLocation()
+  const { images } = useContext(ImageContext)
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location]);
-  
+    setIsMenuOpen(false)
+  }, [location])
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setIsMenuOpen(false);
+        setIsMenuOpen(false)
       }
-    };
+    }
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -38,18 +39,18 @@ const NavBar = () => {
         toggleButtonRef.current &&
         !toggleButtonRef.current.contains(event.target)
       ) {
-        setIsMenuOpen(false);
-      } 
+        setIsMenuOpen(false)
+      }
     }
 
     if (isMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
+      document.addEventListener('mousedown', handleClickOutside)
     } else {
-      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
 
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [isMenuOpen]);
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isMenuOpen])
 
   return (
     <div className="max-w-screen-xl text-base mx-auto absolute top-0 bg-transparent z-10 right-0 left-0">
@@ -59,22 +60,22 @@ const NavBar = () => {
             to='/'
             className="basis-3/6 text-center text-2xl font-semibold cursor-pointer pr-10 md:pr-0 flex flex-row justify-center items-center gap-2"
           >
-            <img src={clown} className="w-[30px] h-[30px]"/>
+            <img src={images['clown']} className="w-[30px] h-[30px]"/>
           </NavLink>
-    
+
           <div
             id="top-menu"
             ref={menuRef}
             className={`${
-              isMenuOpen ? "absolute flex flex-col items-center gap-1 py-2 top-6 z-50 left-8 right-8 bg-slate-200 animate-slideDown rounded-lg" : "hidden"
-            } basis-3/6 lg:basis-2/6 md:flex md:items-center md:justify-end md:gap-10 uppercase text-gray-500 md:text-slate-800 font-medium`}  
+              isMenuOpen ? 'absolute flex flex-col items-center gap-1 py-2 top-6 z-50 left-8 right-8 bg-slate-200 animate-slideDown rounded-lg' : 'hidden'
+            } basis-3/6 lg:basis-2/6 md:flex md:items-center md:justify-end md:gap-10 uppercase text-gray-500 md:text-slate-800 font-medium`}
           >
             <NavLink
               to='/about'
               className={({ isActive }) =>
                 isActive
-                  ? "text-blue-500 font-semibold"
-                  : "top-menu-item"
+                  ? 'text-blue-500 font-semibold'
+                  : 'top-menu-item'
               }
             >
               About
@@ -83,9 +84,9 @@ const NavBar = () => {
             <NavLink
               to='/projects'
               className={({ isActive }) =>
-              isActive
-                ? "text-blue-500 font-semibold"
-                : "top-menu-item"
+                isActive
+                  ? 'text-blue-500 font-semibold'
+                  : 'top-menu-item'
               }
             >
               Projects
@@ -94,9 +95,9 @@ const NavBar = () => {
             <NavLink
               to='/experience'
               className={({ isActive }) =>
-              isActive
-                ? "text-blue-500 font-semibold"
-                : "top-menu-item"
+                isActive
+                  ? 'text-blue-500 font-semibold'
+                  : 'top-menu-item'
               }
             >
               Experience
@@ -105,9 +106,9 @@ const NavBar = () => {
             <NavLink
               to='/skills'
               className={({ isActive }) =>
-              isActive
-                ? "text-blue-500 font-semibold"
-                : "top-menu-item"
+                isActive
+                  ? 'text-blue-500 font-semibold'
+                  : 'top-menu-item'
               }
             >
               Skills
@@ -116,16 +117,16 @@ const NavBar = () => {
             <NavLink
               to='/cover-letter'
               className={({ isActive }) =>
-              isActive
-                ? "text-blue-500 font-semibold"
-                : "top-menu-item"
+                isActive
+                  ? 'text-blue-500 font-semibold'
+                  : 'top-menu-item'
               }
             >
               Letter
             </NavLink>
           </div>
 
-          <div 
+          <div
             id="top-menu-icon"
             ref={toggleButtonRef}
             className="basis-1/6 md:hidden flex items-center cursor-pointer px-4"
@@ -139,6 +140,6 @@ const NavBar = () => {
       </header>
     </div>
   )
-};
+}
 
-export default NavBar;
+export default NavBar

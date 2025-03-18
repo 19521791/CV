@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { helloCleverLink, trelloLink } from "@/constants"
+import { helloCleverLink, trelloLink } from '@/constants'
 
 const BulletPoint = ({ children }) => (
   <div>
@@ -45,22 +45,22 @@ const Experience = () => {
           title="Main project with Australia Merchant"
           description='"Hello Clever Payment Gateway, the first Australian buy-to-earn platform, simplifies shopping, payments, and managing money for everyone."'
           bullets={[
-            "Design and implement additional functionalities based on the requirements of the Product Owner.",
+            'Design and implement additional functionalities based on the requirements of the Product Owner.'
           ]}
         />
 
         <ProjectDetail
           title="Adapts well to tech stack changes. Deliver tasks consistently on time."
           bullets={[
-            "Collaborate with the Front-end team and the QA team to deliver new features on time.",
+            'Collaborate with the Front-end team and the QA team to deliver new features on time.'
           ]}
         />
 
         <ProjectDetail
           title="Analyze work, ask questions to relevant departments to clarify work."
           bullets={[
-            "Refactor code and write documentation for public APIs",
-            "Integrate multiple suppliers into the system.",
+            'Refactor code and write documentation for public APIs',
+            'Integrate multiple suppliers into the system.'
           ]}
         />
       </div>
@@ -82,14 +82,14 @@ const Experience = () => {
         <ProjectDetail
           title="Cloning core features such as adding lists, and managing tasks."
           bullets={[
-            "Enable drag-and-drop functionality for intuitive task organization.",
+            'Enable drag-and-drop functionality for intuitive task organization.'
           ]}
         />
 
         <ProjectDetail
           title="Utilize modern technologies, including React.js, Node.js, Express.js, MongoDB, and Tailwind CSS."
           bullets={[
-            "Integrate React Beautiful DnD for seamless drag-and-drop interactions.",
+            'Integrate React Beautiful DnD for seamless drag-and-drop interactions.'
           ]}
         />
       </div>

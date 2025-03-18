@@ -7,7 +7,7 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "strict": true,
-    "noEmit": true
+    "noEmit": true,
   },
   "include": ["src", "public/3d"],
   "exclude": ["node_modules", "dist"],

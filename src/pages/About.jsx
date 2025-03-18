@@ -1,7 +1,11 @@
-import { githubLink, linkedinLink, github, linkedin, ruby, reactjs, whale } from "@/constants"
-import Astronaut from "@/models/Astronaut"
+import { useContext } from 'react'
+import { githubLink, linkedinLink } from '@/constants'
+import Astronaut from '@/models/Astronaut'
+import { ImageContext } from '@/utils/ImageGallery'
 
 const About = () => {
+  const { images } = useContext(ImageContext)
+
   return (
     <section className="relative max-container text-slate-700">
       <div className="absolute right-0 top-1/6 hidden lg:block justify-center w-[400px] h-[400px]">
@@ -45,15 +49,15 @@ const About = () => {
       <div className="mb-5">
         <div className="flex flex-row items-center gap-4">
           <a href={githubLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
-            <img 
-              src={github}
+            <img
+              src={images['github']}
               alt="Github"
               className="w-full h-full object-contain"
             />
           </a>
           <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
-            <img 
-              src={linkedin}
+            <img
+              src={images['linkedin']}
               alt="Linkedin"
               className="w-full h-full object-contain"
             />
@@ -73,7 +77,7 @@ const About = () => {
 
       <div className="mb-6">
         <div className="text-xl mb-2">
-          <img src={ruby} alt="rails" className="w-4 h-4 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
+          <img src={images['ruby']} alt="rails" className="w-4 h-4 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
           <span>
             <span className="font-semibold">Back-end: </span>
             I have experience working with <span className="font-semibold">Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, Capistrano</span>.
@@ -82,7 +86,7 @@ const About = () => {
         </div>
 
         <div className="text-xl mb-2">
-          <img src={reactjs} alt="react" className="w-4 h-4 md:w-5 md:h-5 inline-block mr-0.5 mb-1"/>
+          <img src={images['reactjs']} alt="react" className="w-4 h-4 md:w-5 md:h-5 inline-block mr-0.5 mb-1"/>
           <span>
             <span className="font-semibold">Front-end: </span>
             ReactJS, Material UI, TailwindCSS, Axios (gained through Personal Projects).
@@ -90,14 +94,14 @@ const About = () => {
         </div>
 
         <div className="text-xl mb-2">
-          <img src={whale} alt="rails" className="w-5 h-5 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
+          <img src={images['whale']} alt="rails" className="w-5 h-5 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
           <span>
             <span className="font-semibold">Devops: </span>
             Docker, Docker Compose, Github Actions, Nginx, Ansible (gained through Personal Projects).
           </span>
         </div>
       </div>
-      
+
       <div className="mb-5">
         <p className="text-3xl font-semibold mb-2">Education</p>
         <div className="flex flex-col md:flex-row md:justify-between">
@@ -137,7 +141,10 @@ const About = () => {
         <div className="flex items-center">
           <p className="font-extrabold text-2xl">Let&apos;s build something together!</p>
         </div>
-        <div className="dlous-email">
+        <div
+          className="w-[400px] h-[130px] bg-cover bg-center bg-no-repeat sm:w-[320px] sm:h-[110px]"
+          style={{ backgroundImage: `url(${images['pencil']})` }}
+        >
           <div className="w-full h-full flex justify-center items-center relative">
             <div className="absolute text-gray-600 text-lg">
               toannguyenvan145@gmail.com
