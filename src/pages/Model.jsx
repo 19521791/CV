@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas } from "@react-three/fiber"
 import { Suspense, useState, useEffect } from "react"
-import LoadObject from "components/LoadObject"
-import Loader from "components/Loader"
-import Island from "models/Island"
-import Sky from "models/Sky"
-import Bird from "models/Bird"
-import Plane from "models/Plane"
-import HomeInfo from "components/HomeInfo"
+import LoadObject from "@/components/LoadObject"
+import Loader from "@/components/Loader"
+import Island from "@/models/Island"
+import Sky from "@/models/Sky"
+import Bird from "@/models/Bird"
+import Plane from "@/models/Plane"
+import HomeInfo from "@/components/HomeInfo"
 
 const Model = () => {
   const [currentStage, setCurrentStage] = useState(1)

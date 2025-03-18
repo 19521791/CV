@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { projects } from "constants"
+import { projects } from "@/constants"
 
 import 'react-vertical-timeline-component/style.min.css'
 import Tilt from "react-parallax-tilt"

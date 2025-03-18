@@ -2,8 +2,14 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "*": ["src/*"]
-    }
+      "@/*": ["./*"]
+    },
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "strict": true,
+    "noEmit": true
   },
-  "include": ["src", "public/icons", "public/images"]
+  "include": ["src", "public/3d"],
+  "exclude": ["node_modules", "dist"],
+  "assetsInclude": ["**/*.gltf", "**/*.glb"]
 }

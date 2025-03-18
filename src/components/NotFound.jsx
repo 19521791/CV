@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei";
-import Rocket from "models/Rocket"
+import Rocket from "@/models/Rocket"
 
 const NotFound = () => {
   return (
     <div className="max-w-7xl m-auto p-4 sm:p-8 md:p-12 pb-12 !pt-[100px] md:!pt-[50px] min-h-[calc(100vh-80px)] text-slate-700">
-      <div className="flex flex-col md:flex-row justify-center items-center">
+      <div className="flex flex-col xl:flex-row justify-center items-center pt-16 xl:pt-0">
         <div className="basis-1/2 flex flex-col justify-center items-center">
           <h1 className="text-3xl font-semibold font-poppins leading-snug mb-2">404</h1>
           <h2 className="text-xl font-medium font-poppins leading-snug mb-2">UH OH! You&apos;re lost.</h2>

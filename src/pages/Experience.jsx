@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { helloCleverLink, trelloLink } from "constants"
+import { helloCleverLink, trelloLink } from "@/constants"
 
 const BulletPoint = ({ children }) => (
   <div>

@@ -7,7 +7,7 @@
     "dev": "vite",
     "start": "vite --host",
     "clean": "rm -rf ./dist",
-    "build": "vite build --base=./",
+    "build": "vite build --base=/",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -21,6 +21,7 @@
     "@react-three/drei": "^9.109.5",
     "@react-three/fiber": "^8.17.5",
     "firebase": "^11.3.0",
+    "framer-motion": "^12.5.0",
     "gsap": "^3.12.7",
     "lenis": "^1.2.3",
     "react": "^18.3.1",
@@ -30,7 +31,8 @@
     "react-vertical-timeline-component": "^3.6.0",
     "three": "^0.174.0",
     "vite-plugin-chunk-split": "^0.5.0",
-    "vite-plugin-image-optimizer": "^1.1.8"
+    "vite-plugin-image-optimizer": "^1.1.8",
+    "vite-plugin-rewrite-all": "^1.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
