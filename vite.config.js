@@ -4,7 +4,6 @@ import path from 'path';
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
-import rewriteAll from 'vite-plugin-rewrite-all'
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url)
@@ -14,7 +13,6 @@ export default defineConfig({
   base: "/",
   plugins: [
     react(),
-    rewriteAll(),
     tsconfigPaths(),
     ViteImageOptimizer(),
     chunkSplitPlugin({
