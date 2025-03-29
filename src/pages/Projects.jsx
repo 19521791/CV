@@ -1,51 +1,40 @@
-/* eslint-disable react/prop-types */
-import { useContext } from 'react'
-import { projects } from '@/constants'
+import { useContext, useState } from 'react'
 import { ImageContext } from '@/utils/ImageGallery'
-
-import 'react-vertical-timeline-component/style.min.css'
-import Tilt from 'react-parallax-tilt'
-
-const ProjectCard = ({ description, image, link }) => (
-  <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} scale={1.05} transitionSpeed={250}>
-    <div
-      className="bg-cover bg-center h-64 rounded-lg shadow-lg"
-      style={{ backgroundImage: `url('${image}')` }}
-    >
-      <a href={link} target="_blank" rel="noopener noreferrer">
-        <div className="w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-40 rounded-lg hover:bg-gray-900 hover:bg-opacity-20 transition-all ease-in-out duration-400">
-          <div className="mx-16 text-white text-center uppercase font-medium text-xl">
-            {description}
-          </div>
-        </div>
-      </a>
-    </div>
-  </Tilt>
-)
+import ProjectCard from '@/components/ProjectCard'
+import Modal from '@/components/Modal'
+import { projectItems } from '@/constants'
 
 const Projects = () => {
   const { images } = useContext(ImageContext)
-
+  const [modal, setModal] = useState({ active: false, index: 0 })
   return (
-    <div className="max-container text-slate-700">
-      <h1 className="font-semibold text-5xl font-poppins mb-4 leading-snug">
-        Projects
-      </h1>
-      <p className="text-xl mb-5">
-        Here are a few of my standout projects:
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 cursor-pointer px-2 sm:mx-8 md:mx-0">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={index}
-            description={project.description}
-            image={images[project.image]}
-            link={project.link}
-          />
-        ))}
+    <main className="max-container max-w-[1500px]">
+      <p className='uppercase pb-10 lg:pb-5 text-gray-500'>Standout Projects</p>
+      <div className='project-body flex flex-col items-center justify-center lg:block'>
+        <div className='grid grid-cols-1 grid-rows-1 sm:grid-cols-2 sm:gap-4 md:gap-8 lg:gap-0 lg:flex lg:flex-col'>
+          {
+            projectItems.map(( project, index ) => {
+              return <ProjectCard
+                key={index}
+                index={index}
+                title={project.title}
+                link={project.link}
+                signed_url={images?.[project.src] || ''}
+                color={project.color}
+                setModal={setModal}
+              />
+            })
+          }
+        </div>
       </div>
-    </div>
+      <Modal
+        modal={modal}
+        projects={projectItems.map((p) => ({
+          ...p,
+          signed_url: images?.[p.src] || ''
+        }))}
+      />
+    </main>
   )
 }
 

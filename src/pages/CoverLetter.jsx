@@ -51,14 +51,14 @@ export default function CoverLetter() {
           to various critical features, including system security, transaction processing, and third-party integrations.
         </p>
 
-        <p ref={(el) => (sectionsRef.current[2] = el)} className=" mt-4">
+        <p ref={(el) => (sectionsRef.current[2] = el)} className=" mt-4 md:indent-6">
           I have developed a two-factor authentication (2FA) system, allowing users to verify
           their identity via Google Authenticator or SMS OTP, enhancing platform security.
           Additionally, I have worked on fraud detection and transaction monitoring,
           ensuring transparency and safety within the system.
         </p>
 
-        <p ref={(el) => (sectionsRef.current[3] = el)} className=" mt-4">
+        <p ref={(el) => (sectionsRef.current[3] = el)} className=" mt-4 md:indent-6">
           Moreover, I have built payout functionalities for the merchant dashboard,
           optimized fee calculations for payout transactions, and expanded the{' '}
           public API to support various business use cases. My experience also includes{' '}
@@ -66,7 +66,7 @@ export default function CoverLetter() {
           implementing Google Captcha v3 to protect against bots and abusive behaviors.
         </p>
 
-        <p ref={(el) => (sectionsRef.current[4] = el)} className=" mt-4">
+        <p ref={(el) => (sectionsRef.current[4] = el)} className=" mt-4 md:indent-6">
           With a strong problem-solving mindset and a deep understanding of backend optimization, I am eager
           to contribute to Company by developing robust and high-performance systems. I would love
           the opportunity to discuss how my skills align with your team’s goals.

@@ -1,159 +1,147 @@
-import { useContext } from 'react'
-import { githubLink, linkedinLink } from '@/constants'
-import Astronaut from '@/models/Astronaut'
-import { ImageContext } from '@/utils/ImageGallery'
+/* eslint-disable react/prop-types */
+import { githubLink, linkedinLink, svgs } from '@/constants'
+// import Astronaut from '@/models/Astronaut'
+
+const Item = ({ src, text }) => {
+  return (
+    <div className='flex items-center gap-2'>
+      <div className='rounded-lg w-6 h-6'>
+        <img src={src} className='w-full h-full object-contain' />
+      </div>
+      <div>{ text }</div>
+    </div>
+  )
+}
 
 const About = () => {
-  const { images } = useContext(ImageContext)
+  const getTimeByTimeZone = (timeZone) => {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).format(new Date())
+  }
 
   return (
-    <section className="relative max-container text-slate-700">
-      <div className="absolute right-0 top-1/6 hidden lg:block justify-center w-[400px] h-[400px]">
-        <Astronaut />
-      </div>
+    <main className="relative max-container max-w-7xl flex items-center justify-center">
+      <div className='info-container flex flex-col w-full'>
+        <div className='flex flex-row gap-10 pb-[80px] w-full'>
+          <div className='w-full flex justify-center'>
+            <img src={svgs['myself']} alt='My Self' className='h-[450px] w-[400px] rounded-md object-cover' />
+          </div>
 
-      <h1 className="text-5xl font-semibold font-poppins leading-snug mb-3 -ml-1">
-        Nguyen Phi <span className="blue-gradient_text drop-shadow">Long</span>
-      </h1>
+          <div className='pt-5 flex flex-col gap-10'>
+            <div className='paragraph mr-[80px]'>
+              <h1 className='text-5xl mb-3 font-semibold'>Who I Am, Briefly</h1>
+              <div className='text-lg'>Hi, My name is Nguyen Phi Long. I&apos;m from Dak Lak and work as a backend developer.
+                I&apos;m passionate about building robust backend systems and exploring new technologies.
+                When I&apos;m not coding, if I&apos;m not hanging out with friends, I often hop on my motorbike and go on a trip to clear my mind.</div>
+            </div>
 
-      <div className="mb-4 font-semibold">
-        <div className="mb-1.5">
-          <i className="fa fa-address-card text-lg inline-block mr-2" />
-          <span className="text-xl">
-            Backend Web Developer
-          </span>
-        </div>
+            <div className='contact info-details pt-8'>
+              <div className='flex flex-row gap-20'>
+                <div className='info-contact flex flex-col gap-3'>
+                  <Item src={svgs['envelope']} text={'toannguyenvan145@gmail.com'} />
+                  <Item src={svgs['phone']} text={'+84 393 277 584'} />
+                  <Item src={svgs['location']} text={'Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City'} />
+                </div>
 
-        <div className="mb-1.5">
-          <i className="fa fa-map text-lg inline-block mr-2" />
-          <span className="text-xl">
-            Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City
-          </span>
-        </div>
+                <div className='info-contact flex flex-col gap-3'>
+                  <div>
+                    <a href={githubLink}>
+                      <Item src={svgs['github']} text={'Github'} />
+                    </a>
+                  </div>
+                  <div>
+                    <a href={linkedinLink}>
+                      <Item src={svgs['linkedin']} text={'LinkedIn'} />
+                    </a>
+                  </div>
 
-        <div className="mb-1.5">
-          <i className="fa fa-phone text-lg inline-block mr-2" />
-          <span className="text-xl">
-            +84 393277584
-          </span>
-        </div>
-
-        <div className="">
-          <i className="fa fa-envelope text-lg inline-block mr-2" />
-          <span className="text-xl">
-            toannguyenvan145@gmail.com
-          </span>
-        </div>
-      </div>
-
-      <div className="mb-5">
-        <div className="flex flex-row items-center gap-4">
-          <a href={githubLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
-            <img
-              src={images['github']}
-              alt="Github"
-              className="w-full h-full object-contain"
-            />
-          </a>
-          <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
-            <img
-              src={images['linkedin']}
-              alt="Linkedin"
-              className="w-full h-full object-contain"
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="mb-7 p-4 bg-blue-100 rounded-md shadow-md">
-        <p className="text-lg italic text-gray-700">
-          Thank you for taking the time to visit my CV.
-          <br />
-          My background in <span className="font-semibold">Ruby on Rails and fintech, honed over the past year</span>, equips me with the
-          skills to develop impactful solutions and optimize financial technologies for enhanced user
-          experiences.
-        </p>
-      </div>
-
-      <div className="mb-6">
-        <div className="text-xl mb-2">
-          <img src={images['ruby']} alt="rails" className="w-4 h-4 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
-          <span>
-            <span className="font-semibold">Back-end: </span>
-            I have experience working with <span className="font-semibold">Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, Capistrano</span>.
-            ExpressJS, MongoDB, Typescript, TypeOrm (gained through Personal Projects)
-          </span>
-        </div>
-
-        <div className="text-xl mb-2">
-          <img src={images['reactjs']} alt="react" className="w-4 h-4 md:w-5 md:h-5 inline-block mr-0.5 mb-1"/>
-          <span>
-            <span className="font-semibold">Front-end: </span>
-            ReactJS, Material UI, TailwindCSS, Axios (gained through Personal Projects).
-          </span>
-        </div>
-
-        <div className="text-xl mb-2">
-          <img src={images['whale']} alt="rails" className="w-5 h-5 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
-          <span>
-            <span className="font-semibold">Devops: </span>
-            Docker, Docker Compose, Github Actions, Nginx, Ansible (gained through Personal Projects).
-          </span>
-        </div>
-      </div>
-
-      <div className="mb-5">
-        <p className="text-3xl font-semibold mb-2">Education</p>
-        <div className="flex flex-col md:flex-row md:justify-between">
-          <div className="flex-1">
-            <div className="flex flex-col">
-              <div className="flex flex-col md:flex-row md:justify-between mb-0.5">
-                <span className="text-2xl font-semibold mb-0.5">
-                  University of Information Technology
-                </span>
-                <span className="text-sky-600 whitespace-nowrap font-semibold text-lg mb-0.5">
-                  Sep 2019 - Up to Present
-                </span>
-              </div>
-
-              <p className="text-lg mb-1">
-                I have completed all my courses and am currently waiting for the
-                graduation ceremony, so I am available to work full-time without any
-                obstacles.
-              </p>
-              <div className="text-lg mb-1">
-                <i className="fa fa-book text-blue-500 mr-1.5" />
-                <span className="font-semibold">Major: </span>
-                <span>Computer Science</span>
-              </div>
-              <div className="text-lg">
-                <i className="fa fa-bookmark text-yellow-500 mr-1.5" />
-                <span className="font-semibold">GPA: </span>
-                <span>7.46</span>
+                  <Item src={svgs['time']} text={getTimeByTimeZone('Asia/Ho_Chi_Minh')} />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
+        <p>Tech Stack</p>
+        <div className='info flex flex-row justify-between info-contact'>
+          <div className='ml-20 flex flex-col gap-3 rounded-lg border-2 border-cyan-500 p-3'>
+            <Item src={svgs['ruby']} text={'Ruby'} />
+            <Item src={svgs['rails']} text={'Ruby on Rails'} />
+            <Item src={svgs['postgresql']} text={'Postgresql'} />
+            <Item src={svgs['redis']} text={'Redis'} />
+            <Item src={svgs['capistrano']} text={'Capistrano'} />
+            <Item src={svgs['git']} text={'GIT'} />
+          </div>
 
-      <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between gap-4">
-        <div className="flex items-center">
-          <p className="font-extrabold text-2xl">Let&apos;s build something together!</p>
+          <div className='flex flex-col gap-3 py-3'>
+            <Item src={svgs['python']} text={'Python'} />
+            <Item src={svgs['nodejs']} text={'NodeJS'}/>
+            <Item src={svgs['express']} text={'ExpressJS'} />
+            <Item src={svgs['mongodb']} text={'MongoDB'} />
+            <Item src={svgs['typescript']} text={'Typescript'} />
+          </div>
+
+          <div className='flex flex-col gap-3 py-3'>
+            <Item src={svgs['ansible']} text={'Ansible'} />
+            <Item src={svgs['nginx']} text={'Nginx'} />
+            <Item src={svgs['actions']} text={'Github Actions'} />
+            <Item src={svgs['docker']} text={'Docker'} />
+            <Item src={svgs['compose']} text={'Docker Compose'} />
+          </div>
+
+          <div className='mr-20 flex flex-col gap-3 py-3'>
+            <Item src={svgs['react']} text={'ReactJS'} />
+            <Item src={svgs['javascript']} text={'Javascript'} />
+            <Item src={svgs['html']} text={'HTML'} />
+            <Item src={svgs['css']} text={'CSS'} />
+            <Item src={svgs['material']} text={'MUI'} />
+            <Item src={svgs['tailwind']} text={'Tailwind'} />
+          </div>
         </div>
-        <div
-          className="w-[400px] h-[130px] bg-cover bg-center bg-no-repeat sm:w-[320px] sm:h-[110px]"
-          style={{ backgroundImage: `url(${images['pencil']})` }}
-        >
-          <div className="w-full h-full flex justify-center items-center relative">
-            <div className="absolute text-gray-600 text-lg">
-              toannguyenvan145@gmail.com
-            </div>
+
+        <p>University</p>
+        <div className='info info-contact flex flex-col gap-3'>
+          <div>
+            <Item src={svgs['university']} text={'University Information of Technology'} />
+          </div>
+          <div>
+            <Item src={svgs['major']} text={'Major: Computer Science'} />
+          </div>
+          <div>
+            <Item src={svgs['score']} text={'GPA: 7.4'} />
+          </div>
+          <div>
+            <Item src={svgs['degree']} text={'Status: Completed courses (Awaiting graduation)'} />
           </div>
         </div>
       </div>
-    </section>
+    </main>
   )
 }
 
 export default About
+
+{/* <div className="absolute bottom-20 -right-1/4 hidden lg:block justify-center w-[400px] h-[400px]">
+        <Astronaut />
+      </div> */}
+
+{/* <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between gap-4">
+          <div className="flex items-center">
+            <p className="font-extrabold text-2xl">Let&aposs build something together!</p>
+          </div>
+          <div
+            className="w-[400px] h-[130px] bg-cover bg-center bg-no-repeat sm:w-[320px] sm:h-[110px]"
+            style={{ backgroundImage: `url(${images['pencil']})` }}
+          >
+            <div className="w-full h-full flex justify-center items-center relative">
+              <div className="absolute text-gray-600 text-lg">
+                toannguyenvan145@gmail.com
+              </div>
+            </div>
+          </div>
+        </div> */}

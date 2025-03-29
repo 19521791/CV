@@ -51,8 +51,8 @@ const renderContent = {
   )
 }
 
-const HomeInfo = ({ currentStage }) => {
+const ModelInfo = ({ currentStage }) => {
   return renderContent[currentStage] || null
 }
 
-export default HomeInfo
+export default ModelInfo
