@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import Magnetic from './Magnetic'
+import Magnetic from '../utils/Magnetic'
 
 const RoundedButton = ({ children, backgroundColor='#455CE9', ...attribute }) => {
   const circle = useRef(null)
@@ -17,7 +17,7 @@ const RoundedButton = ({ children, backgroundColor='#455CE9', ...attribute }) =>
   }, [])
 
   const manageMouseEnter = () => {
-    if(timeoutId) clearTimeout(timeoutId)
+    if (timeoutId) clearTimeout(timeoutId)
     timeline.current.tweenFromTo('enter', 'exit')
   }
 

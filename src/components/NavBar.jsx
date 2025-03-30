@@ -2,31 +2,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { githubLink, linkedinLink } from '@/constants'
+import { githubLink, linkedinLink, navItems } from '@/constants'
 import Curve from './Curve'
-
-const navItems = [
-  {
-    title: 'Home',
-    href: '/'
-  },
-  {
-    title: 'Work',
-    href: '/work'
-  },
-  {
-    title: 'About',
-    href: '/about'
-  },
-  {
-    title: 'Letter',
-    href: '/cover-letter'
-  },
-  {
-    title: '3D',
-    href: '/model'
-  }
-]
 
 const NavItem = ({ data }) => {
   const isActive = location.pathname === data.href

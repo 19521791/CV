@@ -81,7 +81,7 @@ export const projectItems = [
   },
   {
     title: 'Portfolio',
-    src: 'note',
+    src: 'portfolio',
     description: 'Portfolio',
     color: '#48494A',
     link: 'https://github.com/19521791/CV'
@@ -133,3 +133,25 @@ export const svgs = {
   actions: '/images_test/git-compare-svgrepo-com.svg',
   myself: '/images_test/about_me.jpg'
 }
+export const navItems = [
+  {
+    title: 'Home',
+    href: '/'
+  },
+  {
+    title: 'Work',
+    href: '/work'
+  },
+  {
+    title: 'About',
+    href: '/about'
+  },
+  {
+    title: 'Letter',
+    href: '/cover-letter'
+  },
+  {
+    title: '3D',
+    href: '/model'
+  }
+]

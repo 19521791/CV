@@ -2,7 +2,8 @@
 const ProjectCard = ({ index, title, link, signed_url, color, setModal }) => {
   return (
     <div
-      className="w-full h-full flex flex-col lg:flex-row items-center justify-between lg:justify-center lg:border-t lg:border-gray-300 mb-28 sm:mb-20 md:mb-28 lg:mb-0"
+      className="w-full h-full flex flex-col lg:flex-row items-center justify-between lg:justify-center lg:border-t lg:border-gray-300 mb-28 sm:mb-20
+    md:mb-28 lg:mb-0"
       onMouseEnter={() => { if (window.matchMedia('(min-width: 1024px)').matches) setModal({ active: true, index: index }) }}
       onMouseLeave={() => { if (window.matchMedia('(min-width: 1024px)').matches) setModal({ active: false, index: index }) }}
     >

@@ -18,10 +18,10 @@ const App = () => {
     (
       async () => {
         setTimeout( () => {
-          setIsLoading(false);
+          setIsLoading(false)
           document.body.style.cursor = 'default'
           window.scrollTo(0, 0)
-        }, 1000)
+        }, 2000)
       }
     )()
   }, [])
