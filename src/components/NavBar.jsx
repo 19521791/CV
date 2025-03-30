@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { githubLink, linkedinLink, navItems } from '@/constants'
-import Curve from './Curve'
+import NavbarCurve from './NavbarCurve'
 
-const NavItem = ({ data }) => {
+const NavItem = ({ data, onClick }) => {
+  const navigate = useNavigate()
+  const location = useLocation()
   const isActive = location.pathname === data.href
 
   return (
@@ -15,14 +17,17 @@ const NavItem = ({ data }) => {
       animate="enter"
       exit="exit"
       initial="initial"
-      className={`nav-item ${isActive ? 'active' : ''}`}
+      className={`nav-item cursor-pointer ${isActive ? 'active' : ''}`}
+      onClick={() => {
+        navigate(data.href)
+        onClick()
+      }}
     >
-      <a href={data.href}>
-        {data.title}
-      </a>
+      {data.title}
     </motion.div>
   )
 }
+
 
 const menuSlide = {
   initial: {
@@ -164,7 +169,7 @@ const NavBar = () => {
                 </a>
               </div>
             </div>
-            <Curve />
+            <NavbarCurve />
           </motion.div>
         )}
       </AnimatePresence>
