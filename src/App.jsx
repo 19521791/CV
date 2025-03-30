@@ -2,13 +2,9 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from '@/components/NavBar'
 import Loader from '@/components/Loader'
-import Landing from '@/pages/Landing'
 
-import { Model } from '@/pages'
-import { About } from '@/pages'
-import { Projects } from '@/pages'
+import { Model, About, Projects, CoverLetter, Landing } from '@/pages'
 import NotFound from '@/components/NotFound'
-import { CoverLetter } from '@/pages'
 import { ImageProvider } from '@/utils/ImageGallery'
 
 const App = () => {

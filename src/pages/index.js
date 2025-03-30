@@ -1,7 +1,7 @@
 import Model from './Model'
 import About from './About'
 import Projects from './Projects'
-import Skills from './Skills'
 import CoverLetter from './CoverLetter'
+import Landing from './Landing'
 
-export { Model, About, Projects, Skills, CoverLetter }
+export { Model, About, Projects, CoverLetter, Landing }
