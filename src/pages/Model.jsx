@@ -7,7 +7,7 @@ import Island from '@/models/Island'
 import Sky from '@/models/Sky'
 import Bird from '@/models/Bird'
 import Plane from '@/models/Plane'
-import HomeInfo from '@/components/HomeInfo'
+import ModelInfo from '@/components/ModelInfo'
 
 const Model = () => {
   const [currentStage, setCurrentStage] = useState(1)
@@ -60,7 +60,7 @@ const Model = () => {
       {!isCanvasLoading && (
         <>
           <div className="absolute top-28 left-0 right-0 z-10 md:flex items-center justify-center hidden">
-            {currentStage && <HomeInfo currentStage={currentStage} />}
+            {currentStage && <ModelInfo currentStage={currentStage} />}
           </div>
 
           <Canvas

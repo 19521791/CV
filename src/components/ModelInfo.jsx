@@ -38,21 +38,21 @@ const renderContent = {
   3: (
     <InfoBox
       text="Curious to see what I've done? Check out my projects!"
-      link="/projects"
+      link="/work"
       btnText="Explore"
     />
   ),
   4: (
     <InfoBox
-      text="Discover the skills and technologies I use to build amazing solutions"
-      link="/skills"
-      btnText="View Skills"
+      text="Want to know how I can add value to your team?"
+      link="/cover-letter"
+      btnText="My Cover Letter"
     />
   )
 }
 
-const HomeInfo = ({ currentStage }) => {
+const ModelInfo = ({ currentStage }) => {
   return renderContent[currentStage] || null
 }
 
-export default HomeInfo
+export default ModelInfo

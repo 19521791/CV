@@ -47,35 +47,32 @@ const WorkflowItem = ({ children }) => (
 
 const Skills = () => {
   return (
-    <div className="max-container text-slate-700">
-      <h1 className="font-semibold text-5xl font-poppins mb-4 leading-snug">My Skills</h1>
-      <div>
-        <p className="text-xl font-semibold mb-6">Programming Languages & Tools:</p>
-        <div className="flex flex-wrap gap-12 cursor-pointer mb-6">
-          {skills.map((skill, index) => (
-            <SkillItem key={index} skill={skill} />
-          ))}
-        </div>
-
-        <p className="text-xl font-semibold mb-1 leading-tight">Workflow:</p>
-        <ul className="text-xl">
-          <WorkflowItem>Testing & Debugging</WorkflowItem>
-          <WorkflowItem>Git, Github for Teamwork</WorkflowItem>
-          <WorkflowItem>Agile Development & Scrum</WorkflowItem>
-          <li>
-            <i className="fa fa-check text-green-500 mr-2" />
-            <span className="font-semibold">English for work</span>
-            <ul className="list-disc list-inside text-lg ml-6">
-              <li className="pl-1 py-0.5">
-                <span className="-ml-1.5">For Reading: I can comfortably read and interpret documentation, project specifications.</span>
-              </li>
-              <li className="pl-1">
-                <span className="-ml-1.5">For Speaking: I am capable of basic communication and am always striving to improve everyday.</span>
-              </li>
-            </ul>
-          </li>
-        </ul>
+    <div>
+      <p className="text-xl font-semibold mb-6">Programming languages & Tools:</p>
+      <div className="flex flex-wrap gap-12 cursor-pointer mb-6">
+        {skills.map((skill, index) => (
+          <SkillItem key={index} skill={skill} />
+        ))}
       </div>
+
+      <p className="text-xl font-semibold mb-1 leading-tight">Others:</p>
+      <ul className="text-xl">
+        <WorkflowItem>Good understanding of OOP methodologies</WorkflowItem>
+        <WorkflowItem>Agile Development & Scrum</WorkflowItem>
+        <WorkflowItem>Experience using in linux</WorkflowItem>
+        <li>
+          <i className="fa fa-check text-green-500 mr-2" />
+          <span className="font-semibold">English for work</span>
+          <ul className="list-disc list-inside text-lg ml-6">
+            <li className="pl-1 py-0.5">
+              <span className="-ml-1.5">For Reading: I can comfortably read and interpret documentation, project specifications.</span>
+            </li>
+            <li className="pl-1">
+              <span className="-ml-1.5">For Speaking: I am capable of basic communication.</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   )
 }

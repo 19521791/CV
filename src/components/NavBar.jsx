@@ -1,144 +1,174 @@
-import { useState, useEffect, useRef, useContext } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import { ImageContext } from '@/utils/ImageGallery'
+/* eslint-disable react/prop-types */
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
+import { githubLink, linkedinLink, navItems } from '@/constants'
+import Curve from './Curve'
+
+const NavItem = ({ data }) => {
+  const isActive = location.pathname === data.href
+
+  return (
+    <motion.div
+      custom={data.index}
+      variants={slide}
+      animate="enter"
+      exit="exit"
+      initial="initial"
+      className={`nav-item ${isActive ? 'active' : ''}`}
+    >
+      <a href={data.href}>
+        {data.title}
+      </a>
+    </motion.div>
+  )
+}
+
+const menuSlide = {
+  initial: {
+    x: 'calc(100% + 100px)'
+  },
+  enter: {
+    x: '0%',
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+  },
+  exit: {
+    x: 'calc(100% + 100px)',
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+  }
+}
+
+const slide = {
+  initial: {
+    x: '80px'
+  },
+  enter: (i) => ({
+    x: '0px',
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i }
+  }),
+  exit: (i) => ({
+    x: '80px',
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i }
+  })
+}
 
 const NavBar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isActive, setIsActive] = useState(false)
+  const [showHint, setShowHint] = useState(false)
+
   const menuRef = useRef(null)
-  const toggleButtonRef = useRef(null)
+  const buttonRef = useRef(null)
+
   const location = useLocation()
-  const { images } = useContext(ImageContext)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  const isHomePage = location.pathname === '/'
 
   useEffect(() => {
-    setIsMenuOpen(false)
-  }, [location])
+    let timer
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMenuOpen(false)
-      }
+    if (isHomePage && !isActive) {
+      timer = setTimeout(() => {
+        setShowHint(true)
+      }, 500)
+    } else {
+      setShowHint(false)
     }
+    return () => clearTimeout(timer)
+  }, [isActive, isHomePage])
 
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
+  const handleClickOutside = useCallback((event) => {
+    if (
+      menuRef.current && menuRef.current.contains(event.target) ||
+      buttonRef.current && buttonRef.current.contains(event.target)
+    ) {
+      return
     }
+    setIsActive(false)
   }, [])
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target) &&
-        toggleButtonRef.current &&
-        !toggleButtonRef.current.contains(event.target)
-      ) {
-        setIsMenuOpen(false)
-      }
-    }
-
-    if (isMenuOpen) {
+    if (isActive) {
       document.addEventListener('mousedown', handleClickOutside)
     } else {
       document.removeEventListener('mousedown', handleClickOutside)
     }
 
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [isMenuOpen])
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isActive, handleClickOutside])
 
   return (
-    <div className="max-w-screen-xl text-base mx-auto absolute top-0 bg-transparent z-10 right-0 left-0">
-      <header className="py-6 md:mr-9 md:px-6">
-        <nav className="flex flex-row justify-between md:justify-start items-center relative">
-          <NavLink
-            to='/'
-            className="basis-3/6 text-center text-2xl font-semibold cursor-pointer pr-10 md:pr-0 flex flex-row justify-center items-center gap-2"
+    <>
+      <div
+        ref={buttonRef}
+        onClick={(e) => {
+          e.stopPropagation()
+          setIsActive(!isActive)
+        }}
+        className="nav-button"
+      >
+        {isHomePage && showHint && (
+          <motion.div
+            className="click-hint"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
           >
-            <img src={images['clown']} className="w-[30px] h-[30px]"/>
-          </NavLink>
+            Please click Here
+          </motion.div>
+        )}
+        <div className={`burger ${isActive ? 'burger-active' : ''}`}></div>
+      </div>
 
-          <div
-            id="top-menu"
+      <AnimatePresence mode="wait">
+        {isActive && (
+          <motion.div
             ref={menuRef}
-            className={`${
-              isMenuOpen ? 'absolute flex flex-col items-center gap-1 py-2 top-6 z-50 left-8 right-8 bg-slate-200 animate-slideDown rounded-lg' : 'hidden'
-            } basis-3/6 lg:basis-2/6 md:flex md:items-center md:justify-end md:gap-10 uppercase text-gray-500 md:text-slate-800 font-medium`}
+            variants={menuSlide}
+            animate="enter"
+            exit="exit"
+            initial="initial"
+            className="dlous-menu"
           >
-            <NavLink
-              to='/about'
-              className={({ isActive }) =>
-                isActive
-                  ? 'text-blue-500 font-semibold'
-                  : 'top-menu-item'
-              }
-            >
-              About
-            </NavLink>
+            <div className="dlous-menu-body">
+              <div className="dlous-nav">
+                <div className="dlous-nav-header">
+                  <p className="leading-snug tracking-wider text-[12px] md:text-base mb-6">
+                    Welcome to my Portfolio
+                  </p>
+                </div>
 
-            <NavLink
-              to='/projects'
-              className={({ isActive }) =>
-                isActive
-                  ? 'text-blue-500 font-semibold'
-                  : 'top-menu-item'
-              }
-            >
-              Projects
-            </NavLink>
-
-            <NavLink
-              to='/experience'
-              className={({ isActive }) =>
-                isActive
-                  ? 'text-blue-500 font-semibold'
-                  : 'top-menu-item'
-              }
-            >
-              Experience
-            </NavLink>
-
-            <NavLink
-              to='/skills'
-              className={({ isActive }) =>
-                isActive
-                  ? 'text-blue-500 font-semibold'
-                  : 'top-menu-item'
-              }
-            >
-              Skills
-            </NavLink>
-
-            <NavLink
-              to='/cover-letter'
-              className={({ isActive }) =>
-                isActive
-                  ? 'text-blue-500 font-semibold'
-                  : 'top-menu-item'
-              }
-            >
-              Letter
-            </NavLink>
-          </div>
-
-          <div
-            id="top-menu-icon"
-            ref={toggleButtonRef}
-            className="basis-1/6 md:hidden flex items-center cursor-pointer px-4"
-            onClick={toggleMenu}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-            </svg>
-          </div>
-        </nav>
-      </header>
-    </div>
+                {navItems.map((item, index) => (
+                  <NavItem
+                    key={index}
+                    data={{ ...item, index }}
+                    onClick={() => setIsActive(false)}
+                  />
+                ))}
+              </div>
+              <div className="dlous-nav-footer">
+                <a
+                  href={githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsActive(false)}
+                >
+                  Github
+                </a>
+                <a
+                  href={linkedinLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsActive(false)}
+                >
+                  Linkedin
+                </a>
+              </div>
+            </div>
+            <Curve />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 

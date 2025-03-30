@@ -22,7 +22,7 @@ const ProjectDetail = ({ title, description, bullets }) => (
 
 const Experience = () => {
   return (
-    <div className="max-container text-slate-700">
+    <div className="">
       <h1 className="font-semibold text-5xl font-poppins mb-4 leading-snug">
         Experience
       </h1>

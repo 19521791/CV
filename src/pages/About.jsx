@@ -1,154 +1,187 @@
+/* eslint-disable react/prop-types */
 import { useContext } from 'react'
 import { githubLink, linkedinLink } from '@/constants'
-import Astronaut from '@/models/Astronaut'
+import Magnetic from '@/utils/Magnetic'
 import { ImageContext } from '@/utils/ImageGallery'
+
+const Item = ({ src, text, strength=0.3 }) => {
+  return (
+    <Magnetic strength={strength}>
+      <div className='text-lg flex flex-row items-center justify-start'>
+        <img src={src} className='w-6 h-6 inline-block mr-2' />
+        <span>{ text }</span>
+      </div>
+    </Magnetic>
+  )
+}
 
 const About = () => {
   const { images } = useContext(ImageContext)
 
+  const getTimeByTimeZone = (timeZone) => {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).format(new Date())
+  }
+
   return (
-    <section className="relative max-container text-slate-700">
-      <div className="absolute right-0 top-1/6 hidden lg:block justify-center w-[400px] h-[400px]">
-        <Astronaut />
-      </div>
+    <section className="mx-auto p-4 sm:p-8 md:p-12 pb-12 lg:!pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px]">
+      <div className='info-container flex flex-col'>
+        <div className='flex flex-col xd:flex-row gap-6 sm:gap-10 xd:gap-4 xm:gap-5 lg:gap-6 xl:gap-10  xl:pb-[80px]'>
+          <div className='w-full flex justify-center'>
+            <img src={images['myself']} alt='My Self' className='h-[60vh] w-[90vw] sm:h-[600px] sm:w-[600px] md:h-[480px] md:w-[480px] xm:h-[500px] xm:w-[500px] lg:h-[400px] lg:w-[400px]
+            xl:h-[600px] xl:w-[600px] max-w-none rounded-md object-cover' />
+          </div>
 
-      <h1 className="text-5xl font-semibold font-poppins leading-snug mb-3 -ml-1">
-        Nguyen Phi <span className="blue-gradient_text drop-shadow">Long</span>
-      </h1>
+          <div className='xl:pt-5 lg:lex lg:flex-col xl:mb-10'>
+            <div className='paragraph lg:mr-[20px]'>
+              <h1 className='text-4xl sm:text-5xl xm:text-6xl mb-4 font-medium'>Who I Am, Briefly</h1>
+              <div className='text-xl md:leading-snug lg:leading-normal text-slate-700 lg:mb-7 xl:mb-8'>Hi, My name is Nguyen Phi Long. I&apos;m from Dak Lak and work as a backend developer.
+                I&apos;m passionate about building robust backend systems and exploring new technologies.
+                When I&apos;m not coding, if I&apos;m not hanging out with friends, I often hop on my motorbike and go on a trip to clear my mind.</div>
+            </div>
 
-      <div className="mb-4 font-semibold">
-        <div className="mb-1.5">
-          <i className="fa fa-address-card text-lg inline-block mr-2" />
-          <span className="text-xl">
-            Backend Web Developer
-          </span>
-        </div>
+            <div className='hidden lg:block'>
+              <div className='info-details info'>
+                <div className='flex flex-row lg:gap-16 xl:gap-20 mt-3'>
+                  <div className='info-contact flex flex-col lg:gap-3 xl:gap-4'>
+                    <Item src={images['mail']} text={'toannguyenvan145@gmail.com'} strength={0.05} />
+                    <Item src={images['phone']} text={'+84 393 277 584'} strength={0.05} />
+                    <Item src={images['location']} text={'Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City'} strength={0.05} />
+                  </div>
 
-        <div className="mb-1.5">
-          <i className="fa fa-map text-lg inline-block mr-2" />
-          <span className="text-xl">
-            Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City
-          </span>
-        </div>
+                  <div className='info-contact flex flex-col lg:gap-3 xl:gap-4'>
+                    <div>
+                      <a href={githubLink}>
+                        <Item src={images['github']} text={'Github'} />
+                      </a>
+                    </div>
+                    <div>
+                      <a href={linkedinLink}>
+                        <Item src={images['linkedin']} text={'LinkedIn'} />
+                      </a>
+                    </div>
 
-        <div className="mb-1.5">
-          <i className="fa fa-phone text-lg inline-block mr-2" />
-          <span className="text-xl">
-            +84 393277584
-          </span>
-        </div>
-
-        <div className="">
-          <i className="fa fa-envelope text-lg inline-block mr-2" />
-          <span className="text-xl">
-            toannguyenvan145@gmail.com
-          </span>
-        </div>
-      </div>
-
-      <div className="mb-5">
-        <div className="flex flex-row items-center gap-4">
-          <a href={githubLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
-            <img
-              src={images['github']}
-              alt="Github"
-              className="w-full h-full object-contain"
-            />
-          </a>
-          <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="rounded-lg w-10 h-10 hover:scale-110 transition-all ease-in-out duration-300">
-            <img
-              src={images['linkedin']}
-              alt="Linkedin"
-              className="w-full h-full object-contain"
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="mb-7 p-4 bg-blue-100 rounded-md shadow-md">
-        <p className="text-lg italic text-gray-700">
-          Thank you for taking the time to visit my CV.
-          <br />
-          My background in <span className="font-semibold">Ruby on Rails and fintech, honed over the past year</span>, equips me with the
-          skills to develop impactful solutions and optimize financial technologies for enhanced user
-          experiences.
-        </p>
-      </div>
-
-      <div className="mb-6">
-        <div className="text-xl mb-2">
-          <img src={images['ruby']} alt="rails" className="w-4 h-4 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
-          <span>
-            <span className="font-semibold">Back-end: </span>
-            I have experience working with <span className="font-semibold">Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, Capistrano</span>.
-            ExpressJS, MongoDB, Typescript, TypeOrm (gained through Personal Projects)
-          </span>
-        </div>
-
-        <div className="text-xl mb-2">
-          <img src={images['reactjs']} alt="react" className="w-4 h-4 md:w-5 md:h-5 inline-block mr-0.5 mb-1"/>
-          <span>
-            <span className="font-semibold">Front-end: </span>
-            ReactJS, Material UI, TailwindCSS, Axios (gained through Personal Projects).
-          </span>
-        </div>
-
-        <div className="text-xl mb-2">
-          <img src={images['whale']} alt="rails" className="w-5 h-5 md:w-4.5 md:h-4.5 inline-block mr-1 mb-1"/>
-          <span>
-            <span className="font-semibold">Devops: </span>
-            Docker, Docker Compose, Github Actions, Nginx, Ansible (gained through Personal Projects).
-          </span>
-        </div>
-      </div>
-
-      <div className="mb-5">
-        <p className="text-3xl font-semibold mb-2">Education</p>
-        <div className="flex flex-col md:flex-row md:justify-between">
-          <div className="flex-1">
-            <div className="flex flex-col">
-              <div className="flex flex-col md:flex-row md:justify-between mb-0.5">
-                <span className="text-2xl font-semibold mb-0.5">
-                  University of Information Technology
-                </span>
-                <span className="text-sky-600 whitespace-nowrap font-semibold text-lg mb-0.5">
-                  Sep 2019 - Up to Present
-                </span>
-              </div>
-
-              <p className="text-lg mb-1">
-                I have completed all my courses and am currently waiting for the
-                graduation ceremony, so I am available to work full-time without any
-                obstacles.
-              </p>
-              <div className="text-lg mb-1">
-                <i className="fa fa-book text-blue-500 mr-1.5" />
-                <span className="font-semibold">Major: </span>
-                <span>Computer Science</span>
-              </div>
-              <div className="text-lg">
-                <i className="fa fa-bookmark text-yellow-500 mr-1.5" />
-                <span className="font-semibold">GPA: </span>
-                <span>7.46</span>
+                    <Item src={images['time']} text={getTimeByTimeZone('Asia/Ho_Chi_Minh')} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-
-      <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between gap-4">
-        <div className="flex items-center">
-          <p className="font-extrabold text-2xl">Let&apos;s build something together!</p>
-        </div>
-        <div
-          className="w-[400px] h-[130px] bg-cover bg-center bg-no-repeat sm:w-[320px] sm:h-[110px]"
-          style={{ backgroundImage: `url(${images['pencil']})` }}
-        >
-          <div className="w-full h-full flex justify-center items-center relative">
-            <div className="absolute text-gray-600 text-lg">
-              toannguyenvan145@gmail.com
+        <p className='block lg:hidden mt-10'>Contact Details</p>
+        <div className='info-details info block lg:hidden'>
+          <div className='flex flex-col sm:gap-3 md:flex-row md:justify-around gap-3 md:gap-10 lg:gap-16 xl:gap-20 pt-2'>
+            <div className='info-contact flex flex-col gap-3'>
+              <Item src={images['mail']} text={'toannguyenvan145@gmail.com'} strength={0.05} />
+              <Item src={images['phone']} text={'+84 393 277 584'} strength={0.05} />
+              <Item src={images['location']} text={'Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City'} strength={0.05} />
             </div>
+
+            <div className='info-contact flex flex-col gap-3'>
+              <div>
+                <a href={githubLink}>
+                  <Item src={images['github']} text={'Github'} />
+                </a>
+              </div>
+              <div>
+                <a href={linkedinLink}>
+                  <Item src={images['linkedin']} text={'LinkedIn'} />
+                </a>
+              </div>
+
+              <Item src={images['time']} text={getTimeByTimeZone('Asia/Ho_Chi_Minh')} />
+            </div>
+          </div>
+        </div>
+
+        <p className=''>Tech Stack</p>
+        <div className='w-full text-lg text-[rgb(60,61,55)] border-t border-[rgb(201,201,201)]
+        pt-8 pb-20 info-contact'>
+
+          <div className='hidden lg:flex flex-row justify-around mx-10 xl:mx-20'>
+            <div className='flex flex-col gap-3 rounded-lg lg:border-2 lg:border-cyan-500 py-3 lg:p-3'>
+              <Item src={images['ruby']} text={'Ruby'} />
+              <Item src={images['rails']} text={'Ruby on Rails'} />
+              <Item src={images['postgres']} text={'Postgresql'} />
+              <Item src={images['redis']} text={'Redis'} />
+              <Item src={images['capistrano']} text={'Capistrano'} />
+              <Item src={images['git']} text={'GIT'} />
+            </div>
+
+            <div className='flex flex-col gap-3 py-3'>
+              <Item src={images['reactjs']} text={'ReactJS'} />
+              <Item src={images['javascript']} text={'Javascript'} />
+              <Item src={images['html']} text={'HTML'} />
+              <Item src={images['css']} text={'CSS'} />
+              <Item src={images['tailwind']} text={'Tailwind'} />
+            </div>
+
+            <div className='flex flex-col gap-3 py-3'>
+              <Item src={images['ansible']} text={'Ansible'} />
+              <Item src={images['nginx']} text={'Nginx'} />
+              <Item src={images['actions']} text={'Github Actions'} />
+              <Item src={images['docker']} text={'Docker'} />
+              <Item src={images['compose']} text={'Docker Compose'} />
+            </div>
+
+            <div className='flex flex-col gap-3 py-3'>
+              <Item src={images['nodejs']} text={'NodeJS'}/>
+              <Item src={images['express']} text={'ExpressJS'} />
+              <Item src={images['mongodb']} text={'MongoDB'} />
+            </div>
+          </div>
+
+          <div className='flex flex-row justify-around gap-10 lg:hidden'>
+            <div className='flex flex-col gap-3 rounded-lg py-3 p-3'>
+              <Item src={images['ruby']} text={'Ruby'} />
+              <Item src={images['rails']} text={'Ruby on Rails'} />
+              <Item src={images['postgres']} text={'Postgresql'} />
+              <Item src={images['redis']} text={'Redis'} />
+              <Item src={images['capistrano']} text={'Capistrano'} />
+              <Item src={images['git']} text={'GIT'} />
+
+              <Item src={images['nodejs']} text={'NodeJS'}/>
+              <Item src={images['express']} text={'ExpressJS'} />
+              <Item src={images['mongodb']} text={'MongoDB'} />
+              <Item src={images['docker']} text={'Docker'} />
+            </div>
+
+            <div className='flex flex-col gap-3 py-3'>
+              <Item src={images['reactjs']} text={'ReactJS'} />
+              <Item src={images['javascript']} text={'Javascript'} />
+              <Item src={images['html']} text={'HTML'} />
+              <Item src={images['css']} text={'CSS'} />
+              <Item src={images['tailwind']} text={'Tailwind'} />
+
+              <Item src={images['ansible']} text={'Ansible'} />
+              <Item src={images['nginx']} text={'Nginx'} />
+              <Item src={images['actions']} text={'Github Actions'} />
+              <Item src={images['compose']} text={'Docker Compose'} />
+            </div>
+
+          </div>
+
+        </div>
+
+        <p>University</p>
+        <div className='info info-contact flex flex-col gap-3'>
+          <div>
+            <Item src={images['university']} text={'University Information of Technology'} strength={0.05} />
+          </div>
+          <div>
+            <Item src={images['major']} text={'Major: Computer Science'} strength={0.05} />
+          </div>
+          <div>
+            <Item src={images['gpa']} text={'GPA: 7.4'} strength={0.05} />
+          </div>
+          <div>
+            <Item src={images['degree']} text={'Status: Completed courses (Awaiting graduation)'} strength={0.05} />
           </div>
         </div>
       </div>
@@ -157,3 +190,7 @@ const About = () => {
 }
 
 export default About
+
+{/* <div className="absolute bottom-20 -right-1/4 hidden lg:block justify-center w-[400px] h-[400px]">
+        <Astronaut />
+      </div> */}

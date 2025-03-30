@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { API_ROOT } from '@/constants'
 
 const token = import.meta.env.VITE_ACCESS_TOKEN
+const apiRoot = import.meta.env.VITE_API_ROOT
 
 export const fetchSignedUrlAPI = async () => {
-  const response = await axios.get(`${API_ROOT}/api/v1/signed_url`, { headers: { 'Authorization' : `${token}` } })
+  const response = await axios.get(`${apiRoot}/api/v1/signed_url`, { headers: { 'Authorization' : `${token}` } })
   return response.data
 }
