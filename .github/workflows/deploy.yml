@@ -71,21 +71,11 @@ jobs:
           script: |
             set -e
 
+            rm -rf ~/portfolio_backup_*
+
             echo "Backup current project..."
             if [ -d ~/portfolio ]; then
-
-              backup_dir=~/portfolio_backups
-              mkdir -p $backup_dir
-
-              backup_name=portfolio_backup_$(date +%s)
-              rsync -a --exclude='node_modules' ~/portfolio $backup_dir/$backup_name
-
-              cd $backup_dir
-              backup_count=$(ls -d portfolio_backup_* | wc -l)
-              if [ $backup_count -gt 2 ]; then
-                ls -dt portfolio_backup_* | tail -n +3 | xargs rm -rf
-                echo "Deleted the old backup version."
-              fi
+              mv ~/portfolio ~/portfolio_backup_$(date +%s)
             fi
 
             if [ ! -d ~/portfolio ]; then
@@ -108,14 +98,8 @@ jobs:
             echo "Build the project..."
             if ! npm run build; then
               echo "Build failed! Rolling back..."
-              latest_backup=$(ls -dt $backup_dir/portfolio_backup_* | head -n 1)
-              if [ -d "$latest_backup" ]; then
-                rm -rf ~/portfolio
-                cp -r $latest_backup ~/portfolio
-                echo "Restoring from the latest backup."
-              else
-                echo "No backup version found for restoration."
-              fi
+              rm -rf ~/portfolio
+              mv ~/portfolio_backup_* ~/portfolio
               exit 1
             fi
 
@@ -127,7 +111,10 @@ jobs:
             sudo chmod -R 755 /var/www/portfolio/dist
 
             echo "Clean up..."
-            rm -rf ~/portfolio
+            rm -rf ~/portfolio/dist
+            rm -rf ~/portfolio/node_modules
+            rm -rf ~/portfolio_backup_*/dist
+            rm -rf ~/portfolio_backup_*/node_modules
 
             echo "Restarting Nginx..."
             if command -v nginx &> /dev/null; then
