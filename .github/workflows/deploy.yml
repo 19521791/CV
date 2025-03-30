@@ -93,7 +93,7 @@ jobs:
             echo "VITE_API_ROOT=${{ secrets.VITE_API_ROOT }}" >> .env
 
             echo "Clean up dist folder..."
-            rm -rf dist
+            npm run clean
 
             echo "Build the project..."
             if ! npm run build; then
@@ -109,12 +109,6 @@ jobs:
             sudo cp -r ~/portfolio/dist /var/www/portfolio/
             sudo chown -R www-data:www-data /var/www/portfolio/dist
             sudo chmod -R 755 /var/www/portfolio/dist
-
-            echo "Clean up..."
-            rm -rf ~/portfolio/dist
-            rm -rf ~/portfolio/node_modules
-            rm -rf ~/portfolio_backup_*/dist
-            rm -rf ~/portfolio_backup_*/node_modules
 
             echo "Restarting Nginx..."
             if command -v nginx &> /dev/null; then
