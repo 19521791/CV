@@ -30,7 +30,7 @@ const App = () => {
           { isLoading ? ( <Loader /> ) :(
             <Routes>
               <Route exact path='/' element={<Landing />} />
-              <Route exact path='/about' element={<About />} />
+              <Route exact path='/profile' element={<About />} />
               <Route exact path='/work' element={<Projects />} />
               <Route exact path='/model' element={<Model />} />
               <Route exact path='/cover-letter' element={<CoverLetter />} />
