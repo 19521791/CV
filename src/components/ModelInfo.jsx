@@ -31,7 +31,7 @@ const renderContent = {
   2: (
     <InfoBox
       text="Passionate about solving problems and delivering high-quality solutions"
-      link="/about"
+      link="/profile"
       btnText="About Me"
     />
   ),
