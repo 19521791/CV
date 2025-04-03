@@ -23,12 +23,11 @@ const Landing = () => {
   const secondText = useRef(null)
   const slider = useRef(null)
 
-  const xPercent = useRef(0) // Lưu trạng thái qua các renders
-  const direction = useRef(-1) // Lưu trạng thái direction
+  const xPercent = useRef(0)
+  const direction = useRef(-1)
 
   const { images } = useContext(ImageContext)
 
-  // ✅ Sử dụng useCallback để không re-create hàm animate
   const animate = useCallback(() => {
     if (xPercent.current < -100) {
       xPercent.current = 0
@@ -61,7 +60,7 @@ const Landing = () => {
     })
 
     requestAnimationFrame(animate)
-  }, [animate]) // ✅ Thêm animate vào dependency array
+  }, [animate])
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className='landing'>
