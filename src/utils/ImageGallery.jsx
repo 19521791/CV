@@ -8,7 +8,7 @@ export const ImageContext = createContext()
 
 export const ImageProvider = ({ children }) => {
   const [images, setImages] = useState({})
-  const cable = createConsumer('wss://api.douglusnguyen.site/cable')
+  const cable = createConsumer('wss://api.hub.douglusnguyen.site/cable')
 
   const updateImageUrl = (key, newUrl) => {
     setImages((prevImages) => ({
