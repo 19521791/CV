@@ -2,7 +2,7 @@
 import { useContext } from 'react'
 import { githubLink, linkedinLink } from '@/constants'
 import Magnetic from '@/utils/Magnetic'
-import { ImageContext } from '@/utils/ImageGallery'
+import { ImageContext } from '@/contexts/ImageContext'
 
 const Item = ({ src, text, strength=0.3 }) => {
   return (
@@ -29,18 +29,23 @@ const About = () => {
   }
 
   return (
-    <section className="mx-auto p-4 sm:p-8 md:p-12 pb-12 lg:!pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px]">
+    <section className="mx-auto p-4 sm:p-8 md:p-12 pb-12 md:!pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px]">
       <div className='info-container flex flex-col'>
         <div className='flex flex-col xd:flex-row gap-6 sm:gap-10 xd:gap-4 xm:gap-5 lg:gap-6 xl:gap-10  xl:pb-[80px]'>
           <div className='w-full flex justify-center'>
-            <img src={images['myself']} alt='My Self' className='h-[60vh] w-[90vw] sm:h-[600px] sm:w-[600px] md:h-[480px] md:w-[480px] xm:h-[500px] xm:w-[500px] lg:h-[400px] lg:w-[400px]
-            xl:h-[600px] xl:w-[600px] max-w-none rounded-md object-cover' />
+            <img
+              src={images['myself']}
+              alt='My Self'
+              className='h-[60vh] w-[90vw] sm:h-[600px] sm:w-[600px] md:h-[480px] md:w-[480px] xm:h-[500px] xm:w-[500px] lg:h-[450px] lg:w-[450px]
+            xl:h-[600px] xl:w-[600px] max-w-none rounded-md object-cover'
+              loading='eager'
+            />
           </div>
 
           <div className='xl:pt-5 lg:lex lg:flex-col xl:mb-10'>
             <div className='paragraph lg:mr-[20px]'>
-              <h1 className='text-4xl sm:text-5xl xm:text-6xl mb-4 font-medium'>Who I Am, Briefly</h1>
-              <div className='text-xl md:leading-snug lg:leading-normal text-slate-700 lg:mb-7 xl:mb-8'>Hi, My name is Nguyen Phi Long. I&apos;m from Dak Lak and work as a backend developer.
+              <h1 className='text-4xl sm:text-5xl xm:text-6xl mb-4 font-medium font-[Sora]'>Who I Am, Briefly</h1>
+              <div className='text-xl md:leading-snug lg:leading-normal xl:leading-loose text-slate-700 lg:mb-7 xl:mb-8'>Hi, My name is Nguyen Phi Long. I&apos;m from Dak Lak and work as a backend developer.
                 I&apos;m passionate about building robust backend systems and exploring new technologies.
                 When I&apos;m not coding, if I&apos;m not hanging out with friends, I often hop on my motorbike and go on a trip to clear my mind.</div>
             </div>

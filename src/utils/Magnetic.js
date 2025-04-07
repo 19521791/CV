@@ -9,15 +9,13 @@ const Magnetic = ({ children, strength = 0.2, hoverScale = 1.05, className = '' 
     const element = magnetic.current
     if (!element) return
 
-    // Khởi tạo transform object nếu chưa có
     gsap.set(element, {
       x: 0,
       y: 0,
       scale: 1,
-      transformStyle: 'preserve-3d' // Giúp animation mượt hơn
+      transformStyle: 'preserve-3d'
     })
 
-    // Tạo animations
     animationRef.current.x = gsap.quickTo(element, 'x', {
       duration: 1,
       ease: 'elastic.out(1, 0.3)'
@@ -55,7 +53,6 @@ const Magnetic = ({ children, strength = 0.2, hoverScale = 1.05, className = '' 
       element.removeEventListener('mousemove', handleMouseMove)
       element.removeEventListener('mouseleave', handleMouseLeave)
 
-      // Reset về trạng thái ban đầu
       gsap.to(element, {
         x: 0,
         y: 0,

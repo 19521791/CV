@@ -1,6 +1,6 @@
 import { Html } from '@react-three/drei'
 
-const LoadObject = () => {
+const LoaderObject = () => {
   return (
     <Html>
       <div className="loader-container">
@@ -10,4 +10,4 @@ const LoadObject = () => {
   )
 }
 
-export default LoadObject
+export default LoaderObject
