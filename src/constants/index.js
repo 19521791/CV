@@ -1,4 +1,3 @@
-// LINK
 export const helloCleverLink = 'https://helloclever.co/'
 export const trelloLink = 'https://github.com/19521791/trello-backend'
 export const linkedinLink = 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/'
@@ -88,16 +87,6 @@ export const projectItems = [
   }
 ]
 
-// 48494A - used
-// 626D6E - used
-// E9EAEB
-// B1A994 - used
-// DCD0C2
-// 7E7E7E
-// D8D3CD
-// 363637
-// 101010 - used
-
 export const svgs = {
   ansible: '/images_test/ansible-svgrepo-com.svg',
   javascript: '/images_test/brackets-curly-svgrepo-com.svg',
@@ -133,6 +122,7 @@ export const svgs = {
   actions: '/images_test/git-compare-svgrepo-com.svg',
   myself: '/images_test/about_me.jpg'
 }
+
 export const navItems = [
   {
     title: 'Home',
@@ -155,3 +145,19 @@ export const navItems = [
     href: '/model'
   }
 ]
+
+export const colorHunt = {
+  'used': [
+    '#48494A',
+    '#626D6E',
+    '#B1A994',
+    '#101010'
+  ],
+  'available': [
+    '#101010',
+    '#DCD0C2',
+    '#7E7E7E',
+    '#D8D3CD',
+    '#363637'
+  ]
+}

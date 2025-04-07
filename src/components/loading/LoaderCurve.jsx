@@ -10,13 +10,21 @@ const text = {
   enter: {
     opacity: 0,
     top: -100,
-    transition: { duration: .75, delay: .35, ease: [0.76, 0, 0.24, 1] },
-    transitionEnd: { top: '47.5%' }
+    transition: {
+      duration: .75,
+      delay: .35,
+      ease: [0.76, 0, 0.24, 1]
+    },
+    transitionEnd: { top: '37.5%' }
   },
   exit: {
     opacity: 1,
-    top: '40%',
-    transition: { duration: .5, delay: .4, ease: [0.33, 1, 0.68, 1] }
+    top: '30%',
+    transition: {
+      duration: .5,
+      delay: .4,
+      ease: [0.33, 1, 0.68, 1]
+    }
   }
 }
 
@@ -51,7 +59,6 @@ const curve = (initialPath, targetPath) => {
     }
   }
 }
-
 
 const translate = {
   initial: {
@@ -88,7 +95,11 @@ const SVG = ({ height, width }) => {
   `
 
   return (
-    <motion.svg className='absolute top-0 left-0 w-full h-full' {...anim(translate)}>
+    <motion.svg
+      className='absolute top-0 left-0 w-full h-full pointer-events-none'
+      style={{ zIndex: 'var(--z-loader-curve)' }}
+      {...anim(translate)}
+    >
       <motion.path {...anim(curve(initialPath, targetPath))} />
     </motion.svg>
   )
@@ -107,16 +118,27 @@ const LoaderCurve = ({ children, backgroundColor }) => {
     return () => window.removeEventListener('resize', resize)
   }, [])
 
-
   return (
-    <div className='page fixed top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none' style={{ backgroundColor }}>
-      <div style={{ opacity: dimensions.width == null ? 1 : 0 }} className='absolute inset-0 bg-black transition-opacity delay-100' />
-      <motion.p className='absolute left-1/2 top-[40%] text-white text-[46px] z-30 transform -translate-x-1/2 text-center' {...anim(text)}>
-        {routes[location.pathname]}
-      </motion.p>
-      {dimensions.width != null && <SVG {...dimensions} />}
+    <>
+      <div
+        className='fixed top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none'
+        style={{ backgroundColor, zIndex: 'var(--z-loader-curve)' }}
+      >
+        <div style={{ opacity: dimensions.width == null ? 1 : 0 }} className='absolute inset-0 bg-black transition-opacity delay-100' />
+        <motion.p
+          className='absolute left-1/2 top-[30%] text-white text-[46px] transform -translate-x-1/2 text-center pointer-events-none'
+          style={{
+            zIndex: 'var(--z-loader-curve-content)',
+            transform: 'translateX(-50%)'
+          }}
+          {...anim(text)}
+        >
+          {routes[location.pathname]}
+        </motion.p>
+        {dimensions.width != null && <SVG {...dimensions} />}
+      </div>
       {children}
-    </div>
+    </>
   )
 }
 

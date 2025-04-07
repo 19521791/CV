@@ -1,65 +1,23 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+// import gsap from 'gsap'
 import { githubLink, linkedinLink, navItems } from '@/constants'
 import NavbarCurve from './NavbarCurve'
-
-const NavItem = ({ data, onClick }) => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const isActive = location.pathname === data.href
-
-  return (
-    <motion.div
-      custom={data.index}
-      variants={slide}
-      animate="enter"
-      exit="exit"
-      initial="initial"
-      className={`nav-item cursor-pointer ${isActive ? 'active' : ''}`}
-      onClick={() => {
-        navigate(data.href)
-        onClick()
-      }}
-    >
-      {data.title}
-    </motion.div>
-  )
-}
-
-
-const menuSlide = {
-  initial: {
-    x: 'calc(100% + 100px)'
-  },
-  enter: {
-    x: '0%',
-    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
-  },
-  exit: {
-    x: 'calc(100% + 100px)',
-    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
-  }
-}
-
-const slide = {
-  initial: {
-    x: '80px'
-  },
-  enter: (i) => ({
-    x: '0px',
-    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i }
-  }),
-  exit: (i) => ({
-    x: '80px',
-    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i }
-  })
-}
+import NavItem from './NavItem'
+import { menuSlide } from '../../utils/animate.props'
+import { useAnimation } from '@/contexts/AnimationContext'
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState(false)
   const [showHint, setShowHint] = useState(false)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false)
+  // const [isTransitioning, setIsTransitioning] = useState(false)
+
+  const { isEverythingReady } = useAnimation()
 
   const menuRef = useRef(null)
   const buttonRef = useRef(null)
@@ -68,9 +26,17 @@ const NavBar = () => {
   const isHomePage = location.pathname === '/'
 
   useEffect(() => {
+    if (isHomePage && isInitialLoad && isEverythingReady) {
+      setIsActive(true)
+      setIsMenuExpanded(true)
+      setIsInitialLoad(false)
+    }
+  }, [isEverythingReady])
+
+  useEffect(() => {
     let timer
 
-    if (isHomePage && !isActive) {
+    if (isHomePage && !isActive && !isMenuExpanded) {
       timer = setTimeout(() => {
         setShowHint(true)
       }, 500)
@@ -78,7 +44,7 @@ const NavBar = () => {
       setShowHint(false)
     }
     return () => clearTimeout(timer)
-  }, [isActive, isHomePage])
+  }, [isActive, isMenuExpanded, isHomePage])
 
   const handleClickOutside = useCallback((event) => {
     if (
@@ -88,6 +54,7 @@ const NavBar = () => {
       return
     }
     setIsActive(false)
+    setIsMenuExpanded(false)
   }, [])
 
   useEffect(() => {
@@ -102,6 +69,12 @@ const NavBar = () => {
     }
   }, [isActive, handleClickOutside])
 
+  useEffect(() => {
+    if (!isHomePage) {
+      setIsActive(false)
+    }
+  }, [location.pathname])
+
   return (
     <>
       <div
@@ -109,6 +82,8 @@ const NavBar = () => {
         onClick={(e) => {
           e.stopPropagation()
           setIsActive(!isActive)
+          setIsInitialLoad(false)
+          setIsMenuExpanded(false)
         }}
         className="nav-button"
       >
@@ -125,13 +100,14 @@ const NavBar = () => {
       </div>
 
       <AnimatePresence mode="wait">
-        {isActive && (
+        {( isActive || ( isHomePage && isMenuExpanded ) ) && (
           <motion.div
             ref={menuRef}
             variants={menuSlide}
             animate="enter"
             exit="exit"
             initial="initial"
+            transition={{ type: 'spring', stiffness: 100, damping: 15 }}
             className="dlous-menu"
           >
             <div className="dlous-menu-body">

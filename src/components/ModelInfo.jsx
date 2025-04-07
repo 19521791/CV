@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { ImageContext } from '@/utils/ImageGallery'
+import { ImageContext } from '@/contexts/ImageContext'
 
 const InfoBox = ({ text, link, btnText }) => {
   const { images } = useContext(ImageContext)
 
   return (
-    <div className="info-box">
+    <div className="info-box font-sans">
       <p className="font-medium sm:text-xl text-center">
         {text}
       </p>
@@ -21,7 +21,7 @@ const InfoBox = ({ text, link, btnText }) => {
 
 const renderContent = {
   1: (
-    <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
+    <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5 font-sans">
       Hi, I am <span className="font-semibold">Douglus Nguyen</span>
       <span className='text-orange-300 mx-2'>ʕ•́ᴥ•̀ʔっ</span>
       <br />
