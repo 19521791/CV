@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { githubLink, linkedinLink } from '@/constants'
 import Magnetic from '@/utils/Magnetic'
 import { ImageContext } from '@/contexts/ImageContext'
+import Footer from '@/components/Footer'
 
 const Item = ({ src, text, strength=0.3 }) => {
   return (
@@ -29,7 +30,7 @@ const About = () => {
   }
 
   return (
-    <section className="mx-auto p-4 sm:p-8 md:p-12 pb-12 md:!pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px]">
+    <main className="mx-auto p-4 sm:p-8 md:p-12 pb-12 md:!pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px]">
       <div className='info-container flex flex-col'>
         <div className='flex flex-col xd:flex-row gap-6 sm:gap-10 xd:gap-4 xm:gap-5 lg:gap-6 xl:gap-10  xl:pb-[80px]'>
           <div className='w-full flex justify-center'>
@@ -190,7 +191,9 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
+
+      <Footer />
+    </main>
   )
 }
 
