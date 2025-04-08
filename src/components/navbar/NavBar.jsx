@@ -1,23 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-// import gsap from 'gsap'
 import { githubLink, linkedinLink, navItems } from '@/constants'
 import NavbarCurve from './NavbarCurve'
 import NavItem from './NavItem'
 import { menuSlide } from '../../utils/animate.props'
-import { useAnimation } from '@/contexts/AnimationContext'
+import { AnimationContext } from '@/contexts/AnimationContext'
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState(false)
   const [showHint, setShowHint] = useState(false)
   const [isInitialLoad, setIsInitialLoad] = useState(true)
   const [isMenuExpanded, setIsMenuExpanded] = useState(false)
-  // const [isTransitioning, setIsTransitioning] = useState(false)
 
-  const { isEverythingReady } = useAnimation()
+  const { isEverythingReady } = useContext(AnimationContext)
 
   const menuRef = useRef(null)
   const buttonRef = useRef(null)
@@ -122,7 +120,10 @@ const NavBar = () => {
                   <NavItem
                     key={index}
                     data={{ ...item, index }}
-                    onClick={() => setIsActive(false)}
+                    onClick={() => {
+                      setIsActive(false)
+                      setIsMenuExpanded(false)
+                    }}
                   />
                 ))}
               </div>
