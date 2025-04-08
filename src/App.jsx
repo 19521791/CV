@@ -1,16 +1,15 @@
 
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import NavBar from '@/components/navbar/NavBar'
-import Preloader from '@/components/loading/Preloader'
+import LoaderProgress from '@/components/loading/LoaderProgress'
 import LoaderCurve from '@/components/loading/LoaderCurve'
 import { Model, About, Projects, CoverLetter, Landing } from '@/pages'
 import NotFound from '@/pages/NotFound'
-import { ImageProvider } from '@/contexts/ImageContext'
-import { AnimationProvider } from '@/contexts/AnimationContext'
+import { AnimationContext } from '@/contexts/AnimationContext'
 import { AnimatePresence } from 'framer-motion'
-import gsap from 'gsap'
+import ScrollToTop from '@/components/ScrollToTop'
 
 const AnimatedRoutes = ({ showCurve }) => {
   const location = useLocation()
@@ -36,38 +35,32 @@ const AnimatedRoutes = ({ showCurve }) => {
 }
 
 const App = () => {
-  const [isPreloadDone, setIsPreloadDone] = useState(() => {
+  const [hasSeenPreloader, setHasSeenPreloader] = useState(() => {
     return sessionStorage.getItem('hasSeenPreloader') === 'true'
   })
   const [startCurveAnimation, setStartCurveAnimation] = useState(() => {
     return sessionStorage.getItem('hasSeenPreloader') === 'true'
   })
 
+  const { isPreloadDone } = useContext(AnimationContext)
+
   useEffect(() => {
     if (sessionStorage.getItem('hasSeenPreloader') === 'true') return
 
-    const tl = gsap.timeline()
-
-    tl.to('.preloader', {
-      duration: 1.6,
-      onComplete: () => {
-        setStartCurveAnimation(true)
-        sessionStorage.setItem('hasSeenPreloader', 'true')
-        setIsPreloadDone(true)
-      }
-    })
-  }, [])
+    if (isPreloadDone) {
+      setStartCurveAnimation(true)
+      sessionStorage.setItem('hasSeenPreloader', 'true')
+      setHasSeenPreloader(true)
+    }
+  }, [isPreloadDone])
 
   return (
     <main className='bg-slate-300/20 min-h-[100vh]'>
       <Router>
-        <AnimationProvider>
-          <ImageProvider>
-            {!isPreloadDone && <Preloader />}
-            {isPreloadDone && <NavBar />}
-            <AnimatedRoutes showCurve={startCurveAnimation} />
-          </ImageProvider>
-        </AnimationProvider>
+        {!hasSeenPreloader && <LoaderProgress />}
+        {hasSeenPreloader && <NavBar />}
+        <ScrollToTop />
+        <AnimatedRoutes showCurve={startCurveAnimation} />
       </Router>
     </main>
   )

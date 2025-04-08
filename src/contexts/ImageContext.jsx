@@ -8,7 +8,7 @@ export const ImageContext = createContext()
 
 export const ImageProvider = ({ children }) => {
   const [images, setImages] = useState({})
-  const cable = createConsumer('wss://api.hub.douglusnguyen.site/cable')
+  // const cable = createConsumer('wss://api.hub.douglusnguyen.site/cable')
 
   const updateImageUrl = (key, newUrl) => {
     setImages((prevImages) => ({
@@ -27,17 +27,17 @@ export const ImageProvider = ({ children }) => {
         }
       })
 
-    const subscription = cable.subscriptions.create('SignedUrlChannel', {
-      received: (data) => {
-        if (data.key && data.signed_url && data.type === 'SIGNED_URLS_UPDATE') {
-          updateImageUrl(data.key, data.signed_url)
-        }
-      }
-    })
+    // const subscription = cable.subscriptions.create('SignedUrlChannel', {
+    //   received: (data) => {
+    //     if (data.key && data.signed_url && data.type === 'SIGNED_URLS_UPDATE') {
+    //       updateImageUrl(data.key, data.signed_url)
+    //     }
+    //   }
+    // })
 
-    return () => {
-      subscription.unsubscribe()
-    }
+    // return () => {
+    //   subscription.unsubscribe()
+    // }
   }, [])
 
   return (

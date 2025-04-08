@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 import { motion } from 'framer-motion'
 import { ImageContext } from '@/contexts/ImageContext'
-import { useAnimation } from '@/contexts/AnimationContext'
+import { AnimationContext } from '@/contexts/AnimationContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -30,7 +30,7 @@ const textAnimationConfig = {
 }
 
 const Landing = () => {
-  const { setIsEverythingReady } = useAnimation()
+  const { setIsEverythingReady } = useContext(AnimationContext)
   const { images } = useContext(ImageContext)
   const sliderRef = useRef(null)
   const firstTextRef = useRef(null)

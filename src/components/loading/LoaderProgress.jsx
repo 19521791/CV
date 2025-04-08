@@ -1,7 +1,10 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import gsap from 'gsap'
+import { AnimationContext } from '@/contexts/AnimationContext'
 
 const LoaderProgress = () => {
+  const { setIsPreloadDone } = useContext(AnimationContext)
+
   const handleContentLoaded = () => {
     const t1 = gsap.timeline()
 
@@ -90,14 +93,11 @@ const LoaderProgress = () => {
       .to('.pre-welcome .line p', {
         duration: speed / 2,
         yPercent: -100,
-        stagger: 0.2
+        stagger: 0.2,
+        onComplete: () => setIsPreloadDone(true)
       },
       '<'
       )
-      .to('.progress-bar', {
-        duration: speed / 1.5,
-        height: '100%'
-      })
   }
 
   useEffect(() => {
@@ -105,20 +105,20 @@ const LoaderProgress = () => {
   }, [])
 
   return (
-    <div className="loading-container">
+    <div className="fixed top-0 left-0 w-full h-[100dvh] text-white bg-black">
       <div className="loading-screen">
-        <div className="progress-bar"></div>
+        <div className="progress-bar absolute left-0 top-0 h-[6px] w-0 bg-white"></div>
 
-        <div className='pre-welcome font-[Sora]'>
-          <div className='line'>
+        <div className='pre-welcome absolute top-[50%] left-[20%] font-[Sora]'>
+          <div className='line h-[24px] sm:h-[32px] text-[20px] sm:text-[30px] my-[8px] overflow-hidden'>
             <p>Hi</p>
           </div>
-          <div className='line'>
+          <div className='line h-[24px] sm:h-[40px] text-[20px] sm:text-[30px] my-[8px] overflow-hidden'>
             <p>Nice to meet you.</p>
           </div>
         </div>
 
-        <div className="numbers">
+        <div className="numbers flex items-center h-[80px] absolute bottom-[25%] left-[8%] sm:bottom-[5%] sm:left-[5%] overflow-hidden">
           <div className='number number-1'>
             <div className='number-wrap'>
               <span>1</span>
