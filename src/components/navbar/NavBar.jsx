@@ -19,6 +19,7 @@ const NavBar = () => {
 
   const menuRef = useRef(null)
   const buttonRef = useRef(null)
+  const closeTimer = useRef(null)
 
   const location = useLocation()
   const isHomePage = location.pathname === '/'
@@ -43,6 +44,20 @@ const NavBar = () => {
     }
     return () => clearTimeout(timer)
   }, [isActive, isMenuExpanded, isHomePage])
+
+  const delayedCloseMenu = () => {
+    closeTimer.current = setTimeout(() => {
+      setIsActive(false)
+      setIsMenuExpanded(false)
+    }, 300)
+  }
+
+  const cancelDelayedClose = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current)
+      closeTimer.current = null
+    }
+  }
 
   const handleClickOutside = useCallback((event) => {
     if (
@@ -73,12 +88,24 @@ const NavBar = () => {
     }
   }, [location.pathname])
 
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current)
+    }
+  }, [])
+
   return (
     <>
       <div
         ref={buttonRef}
+        onMouseEnter={() => {
+          cancelDelayedClose()
+          setIsActive(true)
+        }}
+        onMouseLeave={delayedCloseMenu}
         onClick={(e) => {
           e.stopPropagation()
+          cancelDelayedClose()
           setIsActive(!isActive)
           setIsInitialLoad(false)
           setIsMenuExpanded(false)
@@ -87,19 +114,21 @@ const NavBar = () => {
       >
         {isHomePage && showHint && (
           <motion.div
-            className="click-hint"
+            className="click-hint cursor-pointer"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            Please click Here
+            Click or Hover Here
           </motion.div>
         )}
-        <div className={`burger ${isActive ? 'burger-active' : ''}`}></div>
+        <div className={`burger ${( isActive ) ? 'burger-active' : ''}`}></div>
       </div>
 
       <AnimatePresence mode="wait">
-        {( isActive || ( isHomePage && isMenuExpanded ) ) && (
+        {( isActive ) && (
           <motion.div
+            onMouseEnter={cancelDelayedClose}
+            onMouseLeave={delayedCloseMenu}
             ref={menuRef}
             variants={menuSlide}
             animate="enter"
