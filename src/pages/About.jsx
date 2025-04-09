@@ -129,7 +129,7 @@ const About = () => {
             </div>
 
             <div className='flex flex-col gap-3 py-3'>
-              <Item src={images['ansible']} text={'Ansible'} />
+              {/* <Item src={images['ansible']} text={'Ansible'} /> */}
               <Item src={images['nginx']} text={'Nginx'} />
               <Item src={images['actions']} text={'Github Actions'} />
               <Item src={images['docker']} text={'Docker'} />
@@ -155,7 +155,6 @@ const About = () => {
               <Item src={images['nodejs']} text={'NodeJS'}/>
               <Item src={images['express']} text={'ExpressJS'} />
               <Item src={images['mongodb']} text={'MongoDB'} />
-              <Item src={images['docker']} text={'Docker'} />
             </div>
 
             <div className='flex flex-col gap-3 py-3'>
@@ -165,9 +164,10 @@ const About = () => {
               <Item src={images['css']} text={'CSS'} />
               <Item src={images['tailwind']} text={'Tailwind'} />
 
-              <Item src={images['ansible']} text={'Ansible'} />
+              {/* <Item src={images['ansible']} text={'Ansible'} /> */}
               <Item src={images['nginx']} text={'Nginx'} />
               <Item src={images['actions']} text={'Github Actions'} />
+              <Item src={images['docker']} text={'Docker'} />
               <Item src={images['compose']} text={'Docker Compose'} />
             </div>
 
