@@ -54,6 +54,7 @@ const Modal = ({ modal, projects }) => {
                 src={signed_url}
                 alt="Image"
                 className='lg:h-[200px] lg:w-[300px] xl:h-[250px] xl:w-[350px]'
+                loading='eager'
               />
             </div>
           })

@@ -115,12 +115,22 @@ const Landing = () => {
       className='landing'
     >
       <div className='landing-image-container'>
-        <img
-          src={images?.landing}
-          className='landing-image'
-          alt='background'
-          loading='eager'
-        />
+        <div className='hidden lg:block'>
+          <img
+            src={images?.landing}
+            className='landing-image'
+            alt='background'
+            loading='eager'
+          />
+        </div>
+        <div className='block lg:hidden'>
+          <img
+            src={images?.myselflite}
+            className='absolute lg:hidden landing-image-lite'
+            alt='background'
+            loading='eager'
+          />
+        </div>
       </div>
       <div className='landing-slider-container'>
         <div ref={sliderRef} className='landing-slider'>
