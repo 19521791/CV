@@ -5,7 +5,21 @@ const ScrollToTop = () => {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    const mediaQuery = window.matchMedia('(max-width: 640px)')
+    const scrollBehavior = mediaQuery.matches ? 'auto' : 'smooth'
+
+    window.scrollTo({
+      top: 0,
+      behavior: scrollBehavior
+    })
+
+    const handleResize = (e) => {
+      const newBehavior = e.matches ? 'auto' : 'smooth'
+      window.scrollTo({ top: 0, behavior: newBehavior })
+    }
+
+    mediaQuery.addEventListener('change', handleResize)
+    return () => mediaQuery.removeEventListener('change', handleResize)
   }, [pathname])
 
   return null

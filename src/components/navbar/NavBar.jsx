@@ -20,6 +20,7 @@ const NavBar = () => {
   const menuRef = useRef(null)
   const buttonRef = useRef(null)
   const closeTimer = useRef(null)
+  const hoverTimer = useRef(null)
 
   const location = useLocation()
   const isHomePage = location.pathname === '/'
@@ -45,14 +46,33 @@ const NavBar = () => {
     return () => clearTimeout(timer)
   }, [isActive, isMenuExpanded, isHomePage])
 
+  const handleMouseEnter = () => {
+    cancelTimers()
+    hoverTimer.current = setTimeout(() => {
+      setIsActive(true)
+    }, 500)
+  }
+
+  const handleClick = (e) => {
+    e.stopPropagation()
+    cancelTimers()
+    setIsActive(!isActive)
+    setIsInitialLoad(false)
+    setIsMenuExpanded(false)
+  }
+
   const delayedCloseMenu = () => {
+    cancelTimers()
     closeTimer.current = setTimeout(() => {
       setIsActive(false)
-      setIsMenuExpanded(false)
     }, 300)
   }
 
-  const cancelDelayedClose = () => {
+  const cancelTimers = () => {
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current)
+      hoverTimer.current = null
+    }
     if (closeTimer.current) {
       clearTimeout(closeTimer.current)
       closeTimer.current = null
@@ -89,27 +109,16 @@ const NavBar = () => {
   }, [location.pathname])
 
   useEffect(() => {
-    return () => {
-      if (closeTimer.current) clearTimeout(closeTimer.current)
-    }
-  }, [])
+    return () => cancelTimers()
+  }, [cancelTimers])
 
   return (
     <>
       <div
         ref={buttonRef}
-        onMouseEnter={() => {
-          cancelDelayedClose()
-          setIsActive(true)
-        }}
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={delayedCloseMenu}
-        onClick={(e) => {
-          e.stopPropagation()
-          cancelDelayedClose()
-          setIsActive(!isActive)
-          setIsInitialLoad(false)
-          setIsMenuExpanded(false)
-        }}
+        onClick={handleClick}
         className="nav-button"
       >
         {isHomePage && showHint && (
@@ -127,7 +136,7 @@ const NavBar = () => {
       <AnimatePresence mode="wait">
         {( isActive ) && (
           <motion.div
-            onMouseEnter={cancelDelayedClose}
+            onMouseEnter={handleMouseEnter}
             onMouseLeave={delayedCloseMenu}
             ref={menuRef}
             variants={menuSlide}

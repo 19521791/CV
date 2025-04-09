@@ -63,8 +63,7 @@ const Landing = () => {
           end: window.innerHeight,
           onUpdate: e => {
             textAnimationConfig.direction = e.direction * -1
-          },
-          markers: import.meta.env.VITE_ENV === 'development'
+          }
         },
         x: '-500px'
       })

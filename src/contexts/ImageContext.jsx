@@ -8,7 +8,7 @@ export const ImageContext = createContext()
 
 export const ImageProvider = ({ children }) => {
   const [images, setImages] = useState({})
-  const cable = createConsumer(`${import.meta.env.VITE_WSS_PROTOCOL}://${ import.meta.env.VITE_WSS}`)
+  const cable = createConsumer(`${import.meta.env.VITE_WSS_PROTOCOL}://${import.meta.env.VITE_WSS}`)
 
   const updateImageUrl = (key, newUrl) => {
     setImages((prevImages) => ({
