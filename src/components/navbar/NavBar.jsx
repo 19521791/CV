@@ -14,6 +14,7 @@ const NavBar = () => {
   const [showHint, setShowHint] = useState(false)
   const [isInitialLoad, setIsInitialLoad] = useState(true)
   const [isMenuExpanded, setIsMenuExpanded] = useState(false)
+  const [isClickTriggered, setIsClickTriggered] = useState(false)
 
   const { isEverythingReady } = useContext(AnimationContext)
 
@@ -47,25 +48,37 @@ const NavBar = () => {
   }, [isActive, isMenuExpanded, isHomePage])
 
   const handleMouseEnter = () => {
-    cancelTimers()
-    hoverTimer.current = setTimeout(() => {
-      setIsActive(true)
-    }, 500)
+    if (!isClickTriggered) {
+      cancelTimers()
+      hoverTimer.current = setTimeout(() => {
+        if (!isClickTriggered) setIsActive(true)
+      }, 800)
+    }
   }
 
   const handleClick = (e) => {
     e.stopPropagation()
     cancelTimers()
-    setIsActive(!isActive)
+    setIsClickTriggered(true)
+
+    const newActiveState = !isActive
+
+    setIsActive(newActiveState)
     setIsInitialLoad(false)
     setIsMenuExpanded(false)
+
+    setTimeout(() => {
+      setIsClickTriggered(false)
+    }, 100)
   }
 
   const delayedCloseMenu = () => {
-    cancelTimers()
-    closeTimer.current = setTimeout(() => {
-      setIsActive(false)
-    }, 300)
+    if (!isClickTriggered) {
+      cancelTimers()
+      closeTimer.current = setTimeout(() => {
+        setIsActive(false)
+      }, 300)
+    }
   }
 
   const cancelTimers = () => {
