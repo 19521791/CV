@@ -29,6 +29,10 @@ export default {
         },
         'underline': '#C89F94'
       },
+      zIndex: {
+        'nav-content': 30,
+        'nav-burger-button': 40
+      },
       fontFamily: {
         worksans: ['Work Sans', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif']

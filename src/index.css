@@ -323,29 +323,6 @@ html::-webkit-scrollbar {
 
 /* navbar */
 
-.nav-button {
-  position: fixed;
-  right: 0;
-  margin: 20px;
-  width: 80px;
-  height: 80px;
-  background-color: #c9fd74;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: var(--z-nav-burger-button);
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 640px) {
-  .nav-button {
-    width: 60px;
-    height: 60px;
-  }
-}
-
 .click-hint {
   position: absolute;
   right: calc(100% + 15px);
@@ -362,12 +339,31 @@ html::-webkit-scrollbar {
   animation-delay: 500ms;
 }
 
-@keyframes typewriter {
+.click-hint-desktop {
+  animation: typewriter-desktop 2s steps(13) forwards, blinkCursor 0.9s infinite;
+  animation-delay: 500ms;
+}
+
+.click-hint-mobile {
+  animation: typewriter-mobile 2s steps(15) forwards, blinkCursor 0.9s infinite;
+  animation-delay: 500ms;
+}
+
+@keyframes typewriter-desktop {
   from {
     width: 0;
   }
   to {
-    width: 16ch;
+    width: 13ch;
+  }
+}
+
+@keyframes typewriter-mobile {
+  from {
+    width: 0;
+  }
+  to {
+    width: 12ch;
   }
 }
 
@@ -423,81 +419,15 @@ html::-webkit-scrollbar {
   transform: rotate(-45deg)
 }
 
-.dlous-menu {
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  background-color: rgb(41, 41, 41);
-  color: white;
-  z-index: var(--z-nav-content);
-}
-
 @media (max-width: 540px) {
   .dlous-menu {
     width: 100vw;
   }
 }
 
-.dlous-menu-body {
-  box-sizing: border-box;
-  height: 100%;
-  padding: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-@media (max-width: 640px) {
-  .dlous-menu-body {
-    padding: 100px;
-  }
-}
-
-.dlous-nav {
-  display: flex;
-  flex-direction: column;
-  font-size: 56px;
-  margin-top: 60px
-}
-
-@media (max-width: 640px) {
-  .dlous-nav {
-    margin-top: 40px;
-  }
-}
-
-.dlous-nav-header {
-  color: rgb(153, 153,153);
-  border-bottom: 1px solid rgb(153, 153, 153);
-  text-transform: uppercase;
-  font-size: 11px;
-  margin-bottom: 40px;
-}
-
-@media (max-width: 640px) {
-  .dlous-nav-header {
-    margin-bottom: 20px;
-  }
-}
-
-.dlous-nav-header a {
-  text-decoration: none;
-  color: white;
-  font-weight: 300;
-}
-
 .nav-item.active {
   color: #ffcc00;
   font-weight: bold;
-}
-
-.dlous-nav-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
 .svg-curve {
