@@ -30,7 +30,7 @@ const About = () => {
   }
 
   return (
-    <main className="mx-auto p-4 sm:p-8 md:p-12 pb-12 md:!pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px]">
+    <main className="mx-auto p-4 sm:p-8 pb-12 !pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px]">
       <div className='info-container flex flex-col'>
         <div className='flex flex-col xd:flex-row gap-6 sm:gap-10 xd:gap-4 xm:gap-5 lg:gap-6 xl:gap-10  xl:pb-[80px]'>
           <div className='w-full flex justify-center'>
@@ -110,7 +110,7 @@ const About = () => {
         <div className='w-full text-lg text-[rgb(60,61,55)] border-t border-[rgb(201,201,201)]
         pt-8 pb-20 info-contact'>
 
-          <div className='hidden lg:flex flex-row justify-around mx-10 xl:mx-20'>
+          <div className='hidden lg:flex flex-row justify-between mx-10 xl:mx-20'>
             <div className='flex flex-col gap-3 rounded-lg lg:border-2 lg:border-cyan-500 py-3 lg:p-3'>
               <Item src={images['ruby']} text={'Ruby'} />
               <Item src={images['rails']} text={'Ruby on Rails'} />
@@ -176,7 +176,7 @@ const About = () => {
         </div>
 
         <p>University</p>
-        <div className='info info-contact flex flex-col gap-3'>
+        <div className='info info-contact flex flex-col gap-3 md:!pl-[40px] xl:!pl-[80px]'>
           <div>
             <Item src={images['university']} text={'University Information of Technology'} strength={0.05} />
           </div>

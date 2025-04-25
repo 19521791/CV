@@ -9,15 +9,12 @@ import NavItem from './NavItem'
 import { menuSlide } from '../../utils/animate.props'
 import { AnimationContext } from '@/contexts/AnimationContext'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import { duration } from '@mui/material'
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState(false)
   const [showHint, setShowHint] = useState(false)
   const [isInitialLoad, setIsInitialLoad] = useState(true)
-  const [isMenuExpanded, setIsMenuExpanded] = useState(false)
-  const [isClickTriggered, setIsClickTriggered] = useState(false)
-  const [canHover, setCanHover] = useState(true)
+  const [isMenuExpanded, setIsMenuExpanded] = useState(true)
 
   const isMobile = useIsMobile()
 
@@ -40,16 +37,6 @@ const NavBar = () => {
     : { type: 'spring', stiffness: 100, damping: 15 }
 
   useEffect(() => {
-    const mq = window.matchMedia('(hover: hover)')
-    setCanHover(mq.matches)
-
-    const listener = (e) => setCanHover(e.matches)
-    mq.addEventListener('change', listener)
-
-    return () => mq.removeEventListener('change', listener)
-  }, [])
-
-  useEffect(() => {
     if (isHomePage && isInitialLoad && isEverythingReady) {
       setIsActive(true)
       setIsMenuExpanded(true)
@@ -60,7 +47,10 @@ const NavBar = () => {
   useEffect(() => {
     let timer
 
-    if (isHomePage && !isMenuExpanded) {
+    if (isHomePage && !isMenuExpanded && !isActive) {
+      console.log('🚀 ~ useEffect ~ isActive:', isActive)
+      console.log('🚀 ~ useEffect ~ isMenuExpanded:', isMenuExpanded)
+      console.log('🚀 ~ useEffect ~ isHomePage:', isHomePage)
       timer = setTimeout(() => {
         setShowHint(true)
       }, 500)
@@ -71,21 +61,20 @@ const NavBar = () => {
   }, [isActive, isMenuExpanded, isHomePage])
 
   const handleMouseEnter = () => {
-    if (isMobile || isClickTriggered) return
+    if (isMobile) return
     cancelTimers()
     hoverTimer.current = setTimeout(() => {
-      if (!isClickTriggered) {
-        setIsActive(true)
-        setIsMenuExpanded(true)
-      }
+      setIsActive(true)
+      setIsMenuExpanded(true)
     }, 50)
   }
 
   const delayedCloseMenu = () => {
-    if (isMobile || isClickTriggered) return
+    if (isMobile) return
     cancelTimers()
     closeTimer.current = setTimeout(() => {
       setIsActive(false)
+      setIsMenuExpanded(false)
     }, 300)
   }
 
@@ -93,18 +82,11 @@ const NavBar = () => {
     if (!isMobile) return
     e.stopPropagation()
     cancelTimers()
-    setIsClickTriggered(true)
-
-    const newActiveState = !isActive
-
-    setIsActive(newActiveState)
+    setIsActive(!isActive)
     setIsInitialLoad(false)
-    setIsMenuExpanded(true)
-
-    setTimeout(() => {
-      setIsClickTriggered(false)
-    }, 100)
+    setIsMenuExpanded(!isMenuExpanded)
   }
+
   const cancelTimers = () => {
     if (hoverTimer.current) {
       clearTimeout(hoverTimer.current)
@@ -156,7 +138,7 @@ const NavBar = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={delayedCloseMenu}
         onClick={handleClick}
-        className="nav-button fixed right-0 m-[20px] w-[60px] h-[60px] bg-[#c9fd74]
+        className="nav-button fixed right-0 m-[20px] w-[60px] h-[60px] bg-[#101010]
           rounded-full flex items-center justify-center cursor-pointer z-nav-burger-button
           transition-all duration-300 ease-in-out"
       >
@@ -166,7 +148,7 @@ const NavBar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            { isMobile ? <p>Just Click Here</p> : <p>Just Hover Here</p> }
+            { isMobile ? <p>Just Click Here</p> : <p>Hey, Hover Here ʕ╯• ⊱ •╰ʔ</p> }
           </motion.div>
         )}
         <div className={`burger ${( isActive ) ? 'burger-active' : ''}`}></div>
@@ -183,13 +165,13 @@ const NavBar = () => {
             exit="exit"
             initial="initial"
             transition={transition}
-            className="dlous-menu fixed right-0 top-0 h-[100vh] bg-[#292929] text-white z-nav-content"
+            className="dlous-menu fixed right-0 top-0 h-[100vh] bg-[#363637] text-[#F5F5F5] z-nav-content"
           >
             <div className="dlous-menu-body box-border h-[100%] pt-[80px] pr-[100px] pl-[80px]">
 
               <div className="dlous-nav text-[56px] mt-[40px] sm:mt-[60px] mb-20">
 
-                <div className="dlous-nav-header text-[#999] border-b-[1px] border-[#999] uppercase text-[11px] mb-5">
+                <div className="dlous-nav-header border-b-[1px] border-[#999] uppercase text-[11px] mb-5">
 
                   <p className="leading-snug tracking-wider text-[12px] mb-2">
                     Welcome to my Portfolio
@@ -212,6 +194,7 @@ const NavBar = () => {
                   href={githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className='footer'
                   onClick={() => setIsActive(false)}
                 >
                   Github
@@ -220,6 +203,7 @@ const NavBar = () => {
                   href={linkedinLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className='footer'
                   onClick={() => setIsActive(false)}
                 >
                   Linkedin

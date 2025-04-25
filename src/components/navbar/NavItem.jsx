@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { slide } from '@/utils/animate.props'
 import { useEffect, useState } from 'react'
 import { useIsMobile } from '@/hooks/useIsMobile'
+import Magnetic from '@/utils/Magnetic'
 
 const NavItem = ({ data, onClick }) => {
   const isMobile = useIsMobile()
@@ -39,7 +40,9 @@ const NavItem = ({ data, onClick }) => {
         onClick()
       }}
     >
-      {data.title}
+      <Magnetic strength={0.25}>
+        <p>{data.title}</p>
+      </Magnetic>
     </motion.div>
   )
 }
