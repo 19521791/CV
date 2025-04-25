@@ -2,19 +2,19 @@
 const ProjectCard = ({ index, title, link, signed_url, color, setModal }) => {
   return (
     <div
-      className="w-full h-full flex flex-col lg:flex-row items-center justify-between lg:justify-center lg:border-t lg:border-gray-300 mb-28 sm:mb-20
-    md:mb-28 lg:mb-0"
+      className="w-full h-full flex flex-col lg:flex-row items-center justify-between lg:justify-center lg:border-t
+        lg:border-gray-300 mb-28 sm:mb-20 md:mb-28 lg:mb-0"
       onMouseEnter={() => { if (window.matchMedia('(min-width: 1024px)').matches) setModal({ active: true, index: index }) }}
       onMouseLeave={() => { if (window.matchMedia('(min-width: 1024px)').matches) setModal({ active: false, index: index }) }}
     >
 
-      <a href={link} target="_blank" rel="noopener noreferrer" className="w-full h-full lg:py-[40px] xl:py-[45px] group">
+      <a href={link} target="_blank" rel="noopener noreferrer" className="w-full h-full lg:py-[40px] group">
 
         <div className="lg:hidden w-[88vw] h-[86vw] sm:w-[43vw] sm:h-[43vw] flex items-center justify-center
     mb-4 sm:mb-6 md:mb-8 lg:mb-0"
         style={{ backgroundColor: color }}
         >
-          <div className="w-[75vw] h-[45vw] sm:w-[37vw] sm:h-[20vw] flex items-center justify-center">
+          <div className="w-[75vw] h-[45vw] sm:w-[37vw] sm:h-[25vw] flex items-center justify-center">
             <img
               src={signed_url}
               alt={title}
@@ -28,7 +28,7 @@ const ProjectCard = ({ index, title, link, signed_url, color, setModal }) => {
     lg:group-hover:opacity-40 lg:group-hover:translate-x-2"
         >
           <h2
-            className="text-[35px] sm:text-[30px] md:text-[35px] lg:text-[40px] xl:text-[50px]
+            className="text-[35px] sm:text-[30px] md:text-[35px] lg:text-[40px]
         lg:pl-[60px] xl:pl-[100px] font-normal m-0 transition-all duration-500 ease-out"
           >
             {title}

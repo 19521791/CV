@@ -43,7 +43,7 @@ const Modal = ({ modal, projects }) => {
       variants={scaleAnimation}
       initial={'initial'}
       animate={active ? 'open' : 'closed'}
-      className="h-0 w-0 lg:h-[350px] lg:w-[400px] xl:h-[400px] xl:w-[450px] flex items-center justify-center absolute overflow-hidden pointer-events-none"
+      className="h-0 w-0 lg:h-[300px] lg:w-[350px] flex items-center justify-center absolute overflow-hidden pointer-events-none"
     >
       <div style={{ top: index * -100 + '%' }} className="h-full w-full absolute transition-[top] duration-[500ms] ease-[cubic-bezier(0.76,0,0.24,1)]">
         {
@@ -53,7 +53,7 @@ const Modal = ({ modal, projects }) => {
               <img
                 src={signed_url}
                 alt="Image"
-                className='lg:h-[200px] lg:w-[300px] xl:h-[250px] xl:w-[350px]'
+                className='lg:h-[180px] lg:w-[250px]'
                 loading='eager'
               />
             </div>

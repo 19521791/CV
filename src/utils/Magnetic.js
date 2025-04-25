@@ -17,11 +17,11 @@ const Magnetic = ({ children, strength = 0.2, hoverScale = 1.05, className = '' 
     })
 
     animationRef.current.x = gsap.quickTo(element, 'x', {
-      duration: 1,
+      duration: 1.4,
       ease: 'elastic.out(1, 0.3)'
     })
     animationRef.current.y = gsap.quickTo(element, 'y', {
-      duration: 1,
+      duration: 1.4,
       ease: 'elastic.out(1, 0.3)'
     })
     animationRef.current.scale = gsap.quickTo(element, 'scale', {

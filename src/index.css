@@ -17,7 +17,7 @@
 }
 
 body {
-  font-family: "JetBrains", sans-serif;
+  font-family: "Sora", sans-serif;
 }
 
 html {
@@ -39,7 +39,7 @@ html::-webkit-scrollbar {
   }
 
   .top-menu-item {
-    @apply cursor-pointer py-1 hover:text-slate-950 relative after:lg:absolute after:lg:bottom-0 after:lg:left-0 after:lg:bg-underline after:lg:h-0.5 after:lg:w-0 hover:after:lg:w-full after:lg:transition-all after:lg:ease-in-out after:lg:duration-300;
+    @apply cursor-pointer py-1 hover:text-slate-950 relative after:absolute after:bottom-0 after:left-0 after:bg-underline after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out after:duration-300;
   }
 
   .info-box {
@@ -323,33 +323,9 @@ html::-webkit-scrollbar {
 
 /* navbar */
 
-.nav-button {
-  position: fixed;
-  right: 0;
-  margin: 20px;
-  width: 80px;
-  height: 80px;
-  background-color: #c9fd74;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: var(--z-nav-burger-button);
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 640px) {
-  .nav-button {
-    width: 60px;
-    height: 60px;
-  }
-}
-
 .click-hint {
   position: absolute;
   right: calc(100% + 15px);
-  margin-right: 15px;
   white-space: nowrap;
   color: white;
   font-size: 25px;
@@ -362,12 +338,31 @@ html::-webkit-scrollbar {
   animation-delay: 500ms;
 }
 
-@keyframes typewriter {
+.click-hint-desktop {
+  animation: typewriter-desktop 2s steps(13) forwards, blinkCursor 0.9s infinite;
+  animation-delay: 500ms;
+}
+
+.click-hint-mobile {
+  animation: typewriter-mobile 2s steps(15) forwards, blinkCursor 0.9s infinite;
+  animation-delay: 500ms;
+}
+
+@keyframes typewriter-desktop {
   from {
     width: 0;
   }
   to {
-    width: 16ch;
+    width: 18ch;
+  }
+}
+
+@keyframes typewriter-mobile {
+  from {
+    width: 0;
+  }
+  to {
+    width: 10.5ch;
   }
 }
 
@@ -392,7 +387,7 @@ html::-webkit-scrollbar {
   content: "";
   display: block;
   width: 40%;
-  background-color: black;
+  background-color: #DCD0C2;
   height: 2px;
   margin: auto;
   position: relative;
@@ -404,7 +399,7 @@ html::-webkit-scrollbar {
   content: "";
   display: block;
   width: 40%;
-  background-color: black;
+  background-color: #DCD0C2;
   height: 2px;
   margin: auto;
   position: relative;
@@ -423,81 +418,18 @@ html::-webkit-scrollbar {
   transform: rotate(-45deg)
 }
 
-.dlous-menu {
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  background-color: rgb(41, 41, 41);
-  color: white;
-  z-index: var(--z-nav-content);
-}
-
 @media (max-width: 540px) {
   .dlous-menu {
     width: 100vw;
   }
 }
 
-.dlous-menu-body {
-  box-sizing: border-box;
-  height: 100%;
-  padding: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-@media (max-width: 640px) {
-  .dlous-menu-body {
-    padding: 100px;
-  }
-}
-
-.dlous-nav {
-  display: flex;
-  flex-direction: column;
-  font-size: 56px;
-  margin-top: 60px
-}
-
-@media (max-width: 640px) {
-  .dlous-nav {
-    margin-top: 40px;
-  }
-}
-
-.dlous-nav-header {
-  color: rgb(153, 153,153);
-  border-bottom: 1px solid rgb(153, 153, 153);
-  text-transform: uppercase;
-  font-size: 11px;
-  margin-bottom: 40px;
-}
-
-@media (max-width: 640px) {
-  .dlous-nav-header {
-    margin-bottom: 20px;
-  }
-}
-
-.dlous-nav-header a {
-  text-decoration: none;
-  color: white;
-  font-weight: 300;
-}
-
 .nav-item.active {
-  color: #ffcc00;
-  font-weight: bold;
+  color: #B1A994;
 }
 
-.dlous-nav-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  font-size: 16px;
-  cursor: pointer;
+.footer {
+  @apply pb-1 relative after:absolute after:bottom-0 after:left-0 after:bg-[#999] after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out after:duration-300;
 }
 
 .svg-curve {
@@ -506,7 +438,7 @@ html::-webkit-scrollbar {
   left: -99px;
   width: 100px;
   height: 100%;
-  fill: rgb(41, 41, 41);
+  fill: #363637;
   stroke: none;
   pointer-events: none;
 }
@@ -530,7 +462,7 @@ html::-webkit-scrollbar {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.9);
+  filter: brightness(0.95);
 }
 
 .landing-image-lite {

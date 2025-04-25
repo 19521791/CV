@@ -13,7 +13,7 @@ export default function CoverLetter() {
   }, [])
 
   return (
-    <div className="mx-auto p-4 sm:p-8 md:p-12 pb-12 !pt-[50px] xm:pt-0 min-h-[calc(100vh-80px)] bg-gray-100 flex justify-center items-center">
+    <div className="mx-auto p-4 sm:p-8 md:p-12 pb-12 !pt-[100px] xm:pt-0 min-h-[calc(100vh-80px)] bg-gray-100 flex justify-center items-center">
       <div
         className="max-w-3xl bg-white shadow-xl p-4 md:p-10 rounded-lg text-lg md:text-xl leading-relaxed text-gray-700 md:text-justify md:leading-7"
       >
