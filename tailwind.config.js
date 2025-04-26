@@ -30,6 +30,7 @@ export default {
         'underline': '#C89F94'
       },
       zIndex: {
+        'progress-bar': 5,
         'nav-content': 30,
         'nav-burger-button': 40
       },

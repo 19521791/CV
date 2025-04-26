@@ -126,7 +126,7 @@ const LoaderCurve = ({ children, backgroundColor }) => {
       >
         <div style={{ opacity: dimensions.width == null ? 1 : 0 }} className='absolute inset-0 bg-black transition-opacity delay-100' />
         <motion.p
-          className='absolute left-1/2 top-[25%] text-white text-[46px] transform -translate-x-1/2 text-center pointer-events-none'
+          className='absolute left-1/2 top-[25%] text-[#DCD0C2] text-[46px] transform -translate-x-1/2 text-center pointer-events-none'
           style={{
             zIndex: 'var(--z-loader-curve-content)',
             transform: 'translateX(-50%)'

@@ -543,35 +543,17 @@ html::-webkit-scrollbar {
 }
 
 /* about */
-.info-container p {
-  text-transform: uppercase;
-  font-size: 30px;
-  padding-bottom: 20px;
-  color: black;
-}
 
 .info {
-  width: 100%;
-  font-size: 18px;
-  color: rgb(60, 61, 55);
-  border-top: 1px solid rgb(201, 201, 201);
-  padding: 20px 50px 80px 0px;
+  @apply text-[18px] text-[#3c3d37] border-t-[1px] border-[#B1A994] pt-[20px] pb-[50px];
 }
 
 .info-details {
-  width: 100%;
-  font-size: 18px;
-  color: rgb(60, 61, 55);
-  border-top: 1px solid rgb(201, 201, 201);
+  @apply w-full text-[18px] text-[#3c3d37] ;
 }
 
 .info-contact {
-  font-size: 1.1rem;
-  line-height: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+  @apply text-[12px] font-normal tracking-[0.1em] text-gray-600;
 }
 
 /* Loading progress bar */
@@ -583,9 +565,9 @@ html::-webkit-scrollbar {
   overflow: hidden;
 } */
 
-.pre-welcome .line p {
+/* .pre-welcome .line p {
   transform: translateY(-100%);
-}
+} */
 
 .number {
   height: 80px;
@@ -624,6 +606,3 @@ html::-webkit-scrollbar {
   height: 80px;
 }
 
-.progress-bar {
-  z-index: var(--z-progress-bar);
-}

@@ -53,7 +53,7 @@ const Modal = ({ modal, projects }) => {
               <img
                 src={signed_url}
                 alt="Image"
-                className='lg:h-[180px] lg:w-[250px]'
+                className='lg:h-[200px] lg:w-[250px]'
                 loading='eager'
               />
             </div>

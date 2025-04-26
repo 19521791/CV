@@ -50,7 +50,7 @@ const LoaderProgress = () => {
         '.progress-bar',
         {
           duration: speed,
-          width: `${secondDigit * 10 + thirdDigit}%`
+          height: `${secondDigit * 10 + thirdDigit}%`
         },
         '<'
       )
@@ -69,7 +69,7 @@ const LoaderProgress = () => {
       '.progress-bar',
       {
         duration: speed,
-        width: '100%'
+        height: '100%'
       },
       '<'
     )
@@ -106,20 +106,20 @@ const LoaderProgress = () => {
   }, [])
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[100dvh] text-white bg-black">
+    <div className="fixed top-0 left-0 w-full h-[100dvh] text-[#F5F5F5] bg-[#101010] font-[Sora]">
       <div className="loading-screen">
-        <div className="progress-bar absolute left-0 top-0 h-[6px] w-0 bg-white"></div>
+        <div className="progress-bar absolute left-0 bottom-0 w-[6px] h-0 bg-[#DCD0C2] z-progress-bar" />
 
-        <div className='pre-welcome absolute top-[50%] left-[20%] font-[Sora]'>
+        <div className="pre-welcome absolute top-[30%] left-[25%] sm:top-1/3 sm:left-1/3 sm:-translate-x-1/2">
           <div className='line h-[24px] sm:h-[32px] text-[20px] sm:text-[30px] my-[8px] overflow-hidden'>
-            <p>Hi</p>
+            <p className='-translate-y-full'>Hi</p>
           </div>
           <div className='line h-[24px] sm:h-[40px] text-[20px] sm:text-[30px] my-[8px] overflow-hidden'>
-            <p>Nice to meet you.</p>
+            <p className='-translate-y-full'>Nice to meet you.</p>
           </div>
         </div>
 
-        <div className="numbers flex items-center h-[80px] absolute bottom-[25%] left-[8%] sm:bottom-[5%] sm:left-[5%] overflow-hidden">
+        <div className="numbers flex items-center h-[80px] absolute bottom-[35%] left-[8%] sm:bottom-[15%] sm:left-[10%] overflow-hidden">
           <div className='number number-1'>
             <div className='number-wrap'>
               <span>1</span>
