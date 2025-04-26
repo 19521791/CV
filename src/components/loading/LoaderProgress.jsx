@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from 'react'
 import gsap from 'gsap'
 import { AnimationContext } from '@/contexts/AnimationContext'
