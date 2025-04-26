@@ -545,7 +545,7 @@ html::-webkit-scrollbar {
 /* about */
 
 .info {
-  @apply w-full text-[18px] text-[#3c3d37] border-t border-[#B1A994] pt-[20px] pr-[50px] pb-[50px];
+  @apply text-[18px] text-[#3c3d37] border-t-[1px] border-[#B1A994] pt-[20px] pb-[50px];
 }
 
 .info-details {
