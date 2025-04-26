@@ -48,9 +48,6 @@ const NavBar = () => {
     let timer
 
     if (isHomePage && !isMenuExpanded && !isActive) {
-      console.log('🚀 ~ useEffect ~ isActive:', isActive)
-      console.log('🚀 ~ useEffect ~ isMenuExpanded:', isMenuExpanded)
-      console.log('🚀 ~ useEffect ~ isHomePage:', isHomePage)
       timer = setTimeout(() => {
         setShowHint(true)
       }, 500)
