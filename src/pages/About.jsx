@@ -1,18 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react'
 import { githubLink, linkedinLink } from '@/constants'
-import Magnetic from '@/utils/Magnetic'
 import { ImageContext } from '@/contexts/ImageContext'
 import Footer from '@/components/Footer'
 
-const Item = ({ src, text, strength=0.3 }) => {
+const Item = ({ src, text }) => {
   return (
-    <Magnetic strength={strength}>
-      <div className='text-lg flex flex-row items-center justify-start'>
-        <img src={src} className='w-6 h-6 inline-block mr-2' />
-        <span>{ text }</span>
-      </div>
-    </Magnetic>
+    <div className='text-base md:text-lg lg:text-xl flex flex-row items-center justify-start'>
+      <img src={src} className='hidden sm:inline-block w-6 h-6 mr-2' />
+      <div className='block sm:hidden w-1 h-1 rounded-full bg-black mr-2'></div>
+      <span>{ text }</span>
+    </div>
   )
 }
 
@@ -46,18 +44,18 @@ const About = () => {
           <div className='xl:pt-5 lg:lex lg:flex-col xl:mb-10'>
             <div className='paragraph lg:mr-[20px]'>
               <h1 className='text-4xl sm:text-5xl xm:text-6xl mb-4 font-medium font-[Sora]'>Who I Am, Briefly</h1>
-              <div className='text-xl md:leading-snug lg:leading-normal xl:leading-loose text-slate-700 lg:mb-7 xl:mb-8'>Hi, My name is Nguyen Phi Long. I&apos;m from Dak Lak and work as a backend developer.
+              <div className='text-base md:text-lg lg:text-xl md:leading-snug lg:leading-normal xl:leading-loose text-slate-600 lg:mb-7 xl:mb-8'>Hi, My name is Nguyen Phi Long. I&apos;m from Dak Lak and work as a backend developer.
                 I&apos;m passionate about building robust backend systems and exploring new technologies.
                 When I&apos;m not coding, if I&apos;m not hanging out with friends, I often hop on my motorbike and go on a trip to clear my mind.</div>
             </div>
 
             <div className='hidden lg:block'>
-              <div className='info-details info'>
+              <div className='info'>
                 <div className='flex flex-row lg:gap-16 xl:gap-20 mt-3'>
                   <div className='info-contact flex flex-col lg:gap-3 xl:gap-4'>
-                    <Item src={images['mail']} text={'toannguyenvan145@gmail.com'} strength={0.05} />
-                    <Item src={images['phone']} text={'+84 393 277 584'} strength={0.05} />
-                    <Item src={images['location']} text={'Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City'} strength={0.05} />
+                    <Item src={images['mail']} text={'toannguyenvan145@gmail.com'} />
+                    <Item src={images['phone']} text={'+84 393 277 584'} />
+                    <Item src={images['location']} text={'Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City'} />
                   </div>
 
                   <div className='info-contact flex flex-col lg:gap-3 xl:gap-4'>
@@ -80,13 +78,13 @@ const About = () => {
           </div>
         </div>
 
-        <p className='block lg:hidden mt-10'>Contact Details</p>
-        <div className='info-details info block lg:hidden'>
-          <div className='flex flex-col sm:gap-3 md:flex-row md:justify-around gap-3 md:gap-10 lg:gap-16 xl:gap-20 pt-2'>
+        <p className='block lg:hidden mt-10 text-xl pb-1'>Contact Details</p>
+        <div className='info block lg:hidden'>
+          <div className='flex flex-col sm:gap-3 md:flex-row md:justify-around gap-3 md:gap-10 lg:gap-16 xl:gap-20'>
             <div className='info-contact flex flex-col gap-3'>
-              <Item src={images['mail']} text={'toannguyenvan145@gmail.com'} strength={0.05} />
-              <Item src={images['phone']} text={'+84 393 277 584'} strength={0.05} />
-              <Item src={images['location']} text={'Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City'} strength={0.05} />
+              <Item src={images['mail']} text={'toannguyenvan145@gmail.com'} />
+              <Item src={images['phone']} text={'+84 393 277 584'} />
+              <Item src={images['location']} text={'Hiep Binh Phuoc, Thu Duc, Ho Chi Minh City'} />
             </div>
 
             <div className='info-contact flex flex-col gap-3'>
@@ -106,12 +104,10 @@ const About = () => {
           </div>
         </div>
 
-        <p className=''>Tech Stack</p>
-        <div className='w-full text-lg text-[rgb(60,61,55)] border-t border-[rgb(201,201,201)]
-        pt-8 pb-20 info-contact'>
-
+        <p className='text-xl pb-1'>Tech Stack</p>
+        <div className='info info-contact'>
           <div className='hidden lg:flex flex-row justify-between mx-10 xl:mx-20'>
-            <div className='flex flex-col gap-3 rounded-lg lg:border-2 lg:border-cyan-500 py-3 lg:p-3'>
+            <div className='flex flex-col gap-3 rounded-lg lg:border-[1px] lg:border-[#B1A994] py-3 lg:p-3'>
               <Item src={images['ruby']} text={'Ruby'} />
               <Item src={images['rails']} text={'Ruby on Rails'} />
               <Item src={images['postgres']} text={'Postgresql'} />
@@ -175,19 +171,19 @@ const About = () => {
 
         </div>
 
-        <p>University</p>
-        <div className='info info-contact flex flex-col gap-3 md:!pl-[40px] xl:!pl-[80px]'>
+        <p className='text-xl pb-1'>University</p>
+        <div className='info info-contact flex flex-col gap-3 md:!pl-[20px] xl:!pl-[80px]'>
           <div>
-            <Item src={images['university']} text={'University Information of Technology'} strength={0.05} />
+            <Item src={images['university']} text={'University Information of Technology'} />
           </div>
           <div>
-            <Item src={images['major']} text={'Major: Computer Science'} strength={0.05} />
+            <Item src={images['major']} text={'Major: Computer Science'}/>
           </div>
           <div>
-            <Item src={images['gpa']} text={'GPA: 7.4'} strength={0.05} />
+            <Item src={images['gpa']} text={'GPA: 7.4'}/>
           </div>
           <div>
-            <Item src={images['degree']} text={'Status: Completed courses (Awaiting graduation)'} strength={0.05} />
+            <Item src={images['degree']} text={'Status: Completed courses (Awaiting graduation)'} />
           </div>
         </div>
       </div>
