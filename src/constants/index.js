@@ -123,6 +123,17 @@ export const svgs = {
   myself: '/images_test/about_me.jpg'
 }
 
+export const terminal = {
+  branch: '/images/branch-terminal.svg',
+  checkIcon: '/images/check-terminal.svg',
+  folder: '/images/folder-terminal.svg',
+  gitIcon: '/images/terminal-gi.svg',
+  time: '/images/time-terminal.svg',
+  ubuntu: '/images/ubuntu-terminal.svg',
+  vim: '/images/vim-terminal.svg',
+  background: '/images/wp4918883-lo-fi-desktop-wallpapers.jpg'
+}
+
 export const navItems = [
   {
     title: 'Home',

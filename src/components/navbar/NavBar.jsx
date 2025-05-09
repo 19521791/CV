@@ -141,11 +141,11 @@ const NavBar = () => {
       >
         {isHomePage && showHint && (
           <motion.div
-            className={`click-hint ${isMobile ? 'click-hint-mobile' : 'click-hint-desktop'}`}
+            className={`click-hint italic font-poppins ${isMobile ? 'click-hint-mobile' : 'click-hint-desktop'}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            { isMobile ? <p>Just Click Here</p> : <p>Hey, Hover Here ʕ╯• ⊱ •╰ʔ</p> }
+            { isMobile ? <p className='text-xl'>Tap here to explore</p> : <p>Hover to open menu</p> }
           </motion.div>
         )}
         <div className={`burger ${( isActive ) ? 'burger-active' : ''}`}></div>

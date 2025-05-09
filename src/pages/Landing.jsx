@@ -6,12 +6,15 @@ import { ScrollTrigger } from 'gsap/all'
 import { motion } from 'framer-motion'
 import { ImageContext } from '@/contexts/ImageContext'
 import { AnimationContext } from '@/contexts/AnimationContext'
+import GearIcon from '@/components/icons/GearIcon'
+import DBIcon from '@/components/icons/DBIcon'
+import RocketIcon from '@/components/icons/RocketIcon'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const slideUp = {
   initial: { y: 0, opacity: 0 },
-  enter: {
+  enter: {  
     y: 0,
     opacity: 1,
     transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1] }
@@ -131,12 +134,46 @@ const Landing = () => {
           />
         </div>
       </div>
+      <div className='hidden lg:block'>
+        <div className="bg-transparent absolute top-[24%] left-[33%] xl:left-[38%] font-mono p-6 rounded-xl max-w-[800px] mx-auto mt-20">
+          <div className='flex flex-row items-center text-[#e0e0e0] gap-2 mb-2'>
+            <GearIcon />
+            <p className='text-2xl font-semibold'>Nguyen Phi Long</p>
+          </div>
+          <div className='text-[#d6f1ff] flex items-center gap-2 mb-3 ml-5'>
+            <DBIcon />
+            <p className="text-xl">Backend Developer</p>
+          </div>
+          <div className='text-[#f5f5f5] flex items-center gap-2 ml-10'>
+            <RocketIcon />
+            <p className="text-lg italic">Ruby, Rails, PostgreSQL, Redis, Sidekiq, Capistrano</p>
+          </div>
+        </div>
+      </div>
+
       <div className='landing-slider-container'>
         <div ref={sliderRef} className='landing-slider'>
           <p ref={firstTextRef}>Backend Developer -</p>
           <p ref={secondTextRef}>Backend Developer -</p>
         </div>
       </div>
+
+      {/* <div className='block lg:hidden'>
+        <div className="bg-transparent absolute top-[24%] left-[33%] xl:left-[38%] font-mono p-6 rounded-xl max-w-[800px] mx-auto mt-20">
+          <div className='flex flex-row items-center text-[#e0e0e0] gap-4 mb-2'>
+            <FolderIcon />
+            <p className='text-2xl font-semibold drop-shadow-[0_0_4px_#00ffff]'>Nguyen Phi Long</p>
+          </div>
+          <div className='text-[#d6f1ff] flex items-center gap-4 mb-3 ml-5'>
+            <Terminal size={20} />
+            <p className="text-base">Backend Developer</p>
+          </div>
+          <div className='text-[#f5f5f5] flex items-center gap-4 ml-10'>
+            <Terminal size={20} />
+            <p className="text-base italic">Ruby, Rails, PostgreSQL, Redis, Sidekiq, Capistrano</p>
+          </div>
+        </div>
+      </div> */}
     </motion.main>
   )
 }
