@@ -13,8 +13,8 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 const NavBar = () => {
   const [isActive, setIsActive] = useState(false)
   const [showHint, setShowHint] = useState(false)
-  const [isInitialLoad, setIsInitialLoad] = useState(true)
-  const [isMenuExpanded, setIsMenuExpanded] = useState(true)
+  const [isHovering, setIsHovering] = useState(false)
+  const hoverLock = useRef(null)
 
   const isMobile = useIsMobile()
 
@@ -36,18 +36,27 @@ const NavBar = () => {
     ? { duration: 0 }
     : { type: 'spring', stiffness: 100, damping: 15 }
 
+  // waiting background ready to show menu
   useEffect(() => {
-    if (isHomePage && isInitialLoad && isEverythingReady) {
+    if (isHomePage && isEverythingReady) {
+      console.log('🚀 ~ useEffect ~ isEverythingReady:', isEverythingReady)
+      console.log('🚀 ~ useEffect ~ isHomePage:', isHomePage)
+      console.log('🚀 ~ useEffect ~ isHomePage:', isActive)
       setIsActive(true)
-      setIsMenuExpanded(true)
-      setIsInitialLoad(false)
+
+      const autoCloseTimer = setTimeout(() => {
+        setIsActive(false)
+      }, 2000)
+
+      return () => clearTimeout(autoCloseTimer)
     }
   }, [isEverythingReady])
 
+  // Set time for showing hint
   useEffect(() => {
     let timer
 
-    if (isHomePage && !isMenuExpanded && !isActive) {
+    if (isHomePage && !isActive) {
       timer = setTimeout(() => {
         setShowHint(true)
       }, 500)
@@ -55,35 +64,42 @@ const NavBar = () => {
       setShowHint(false)
     }
     return () => clearTimeout(timer)
-  }, [isActive, isMenuExpanded, isHomePage])
+  }, [isActive, isHomePage])
 
+  // Not hover in mobile, hover in desktop
   const handleMouseEnter = () => {
     if (isMobile) return
-    cancelTimers()
-    hoverTimer.current = setTimeout(() => {
-      setIsActive(true)
-      setIsMenuExpanded(true)
-    }, 50)
-  }
 
-  const delayedCloseMenu = () => {
-    if (isMobile) return
+    hoverLock.current = true
+    setIsHovering(true)
     cancelTimers()
-    closeTimer.current = setTimeout(() => {
-      setIsActive(false)
-      setIsMenuExpanded(false)
+    setIsActive(true)
+
+    setTimeout(() => {
+      hoverLock.current = false
     }, 300)
   }
 
+  // Close menu after hover, not click
+  const delayedCloseMenu = () => {
+    if (isMobile || hoverLock.current) return
+
+    cancelTimers()
+    closeTimer.current = setTimeout(() => {
+      setIsActive(false)
+      setIsHovering(false)
+    }, 200)
+  }
+
+  // Click in mobile
   const handleClick = (e) => {
     if (!isMobile) return
     e.stopPropagation()
     cancelTimers()
     setIsActive(!isActive)
-    setIsInitialLoad(false)
-    setIsMenuExpanded(!isMenuExpanded)
   }
 
+  // Collect garbage
   const cancelTimers = () => {
     if (hoverTimer.current) {
       clearTimeout(hoverTimer.current)
@@ -95,6 +111,7 @@ const NavBar = () => {
     }
   }
 
+  // Click outside to close menu
   const handleClickOutside = useCallback((event) => {
     if (
       menuRef.current && menuRef.current.contains(event.target) ||
@@ -103,9 +120,9 @@ const NavBar = () => {
       return
     }
     setIsActive(false)
-    setIsMenuExpanded(false)
   }, [])
 
+  // Call click outside
   useEffect(() => {
     if (isActive) {
       document.addEventListener('mousedown', handleClickOutside)
@@ -118,16 +135,13 @@ const NavBar = () => {
     }
   }, [isActive, handleClickOutside])
 
-  useEffect(() => {
-    if (!isHomePage) {
-      setIsActive(false)
-    }
-  }, [location.pathname])
-
+  // Collect garbage
   useEffect(() => {
     return () => cancelTimers()
   }, [cancelTimers])
 
+        console.log('🚀 ~ NavBar ~ isActive:', isActive)
+        console.log('🚀 ~ NavBar ~ isActive:', isActive)
   return (
     <>
       <div
@@ -158,7 +172,7 @@ const NavBar = () => {
             onMouseLeave={delayedCloseMenu}
             ref={menuRef}
             variants={menuVariant}
-            animate="enter"
+            animate={isHovering ? 'enter' : 'exit'}
             exit="exit"
             initial="initial"
             transition={transition}
@@ -181,7 +195,6 @@ const NavBar = () => {
                     data={{ ...item, index }}
                     onClick={() => {
                       setIsActive(false)
-                      setIsMenuExpanded(false)
                     }}
                   />
                 ))}
