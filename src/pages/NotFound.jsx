@@ -1,7 +1,8 @@
-/* eslint-disable react/no-unknown-property */
+
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import Rocket from '@/models/Rocket'
+import LogoIcon from '@/components/icons/LogoIcon'
 
 const NotFound = () => {
   return (
@@ -16,12 +17,13 @@ const NotFound = () => {
         </div>
         <div className="basis-1/2 w-full h-[800px] flex justify-center items-center">
           <div className="w-full h-full">
-            <Canvas camera={{ position: [0, 1, 3] }}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[1, 1, 1]} intensity={1} />
-              <Rocket scale={[7, 7, 7]} position={[0, -1, 0]} castShadow receiveShadow/>
-              <OrbitControls />
-            </Canvas>
+            {/* <Canvas camera={{ position: [0, 1, 3] }}> */}
+            {/*   <ambientLight intensity={0.5} /> */}
+            {/*   <directionalLight position={[1, 1, 1]} intensity={1} /> */}
+            {/*   <Rocket scale={[7, 7, 7]} position={[0, -1, 0]} castShadow receiveShadow/> */}
+            {/*   <OrbitControls /> */}
+            {/* </Canvas> */}
+            <LogoIcon />
           </div>
         </div>
       </div>

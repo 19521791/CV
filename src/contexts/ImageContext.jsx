@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from 'react'
 // import { createConsumer } from '@rails/actioncable'

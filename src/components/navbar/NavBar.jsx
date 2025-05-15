@@ -13,8 +13,6 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 const NavBar = () => {
   const [isActive, setIsActive] = useState(false)
   const [showHint, setShowHint] = useState(false)
-  const [isHovering, setIsHovering] = useState(false)
-  const hoverLock = useRef(null)
 
   const isMobile = useIsMobile()
 
@@ -22,8 +20,7 @@ const NavBar = () => {
 
   const menuRef = useRef(null)
   const buttonRef = useRef(null)
-  const closeTimer = useRef(null)
-  const hoverTimer = useRef(null)
+  const timeoutRef = useRef(null)
 
   const location = useLocation()
   const isHomePage = location.pathname === '/'
@@ -39,9 +36,6 @@ const NavBar = () => {
   // waiting background ready to show menu
   useEffect(() => {
     if (isHomePage && isEverythingReady) {
-      console.log('🚀 ~ useEffect ~ isEverythingReady:', isEverythingReady)
-      console.log('🚀 ~ useEffect ~ isHomePage:', isHomePage)
-      console.log('🚀 ~ useEffect ~ isHomePage:', isActive)
       setIsActive(true)
 
       const autoCloseTimer = setTimeout(() => {
@@ -54,61 +48,47 @@ const NavBar = () => {
 
   // Set time for showing hint
   useEffect(() => {
-    let timer
+    const handleScroll = () => {
+      if (isActive) setShowHint(false)
+      if (showHint) return
 
-    if (isHomePage && !isActive) {
-      timer = setTimeout(() => {
-        setShowHint(true)
-      }, 500)
-    } else {
-      setShowHint(false)
+      if (isHomePage && !isActive) setShowHint(true)
+
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = setTimeout(() => {
+        setShowHint(false)
+      }, 3000)
     }
-    return () => clearTimeout(timer)
-  }, [isActive, isHomePage])
+
+    window.addEventListener('wheel', handleScroll, { passive: true })
+    window.addEventListener('touchmove', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('wheel', handleScroll)
+      window.removeEventListener('touchmove', handleScroll)
+      clearTimeout(timeoutRef.current)
+    }
+  }, [isHomePage, isActive])
 
   // Not hover in mobile, hover in desktop
   const handleMouseEnter = () => {
     if (isMobile) return
-
-    hoverLock.current = true
-    setIsHovering(true)
-    cancelTimers()
+    setShowHint(false)
     setIsActive(true)
-
-    setTimeout(() => {
-      hoverLock.current = false
-    }, 300)
   }
 
   // Close menu after hover, not click
   const delayedCloseMenu = () => {
-    if (isMobile || hoverLock.current) return
-
-    cancelTimers()
-    closeTimer.current = setTimeout(() => {
-      setIsActive(false)
-      setIsHovering(false)
-    }, 200)
+    if (isMobile) return
+    setIsActive(false)
   }
 
   // Click in mobile
   const handleClick = (e) => {
     if (!isMobile) return
     e.stopPropagation()
-    cancelTimers()
+    setShowHint(false)
     setIsActive(!isActive)
-  }
-
-  // Collect garbage
-  const cancelTimers = () => {
-    if (hoverTimer.current) {
-      clearTimeout(hoverTimer.current)
-      hoverTimer.current = null
-    }
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current)
-      closeTimer.current = null
-    }
   }
 
   // Click outside to close menu
@@ -135,19 +115,11 @@ const NavBar = () => {
     }
   }, [isActive, handleClickOutside])
 
-  // Collect garbage
-  useEffect(() => {
-    return () => cancelTimers()
-  }, [cancelTimers])
-
-        console.log('🚀 ~ NavBar ~ isActive:', isActive)
-        console.log('🚀 ~ NavBar ~ isActive:', isActive)
   return (
     <>
       <div
         ref={buttonRef}
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={delayedCloseMenu}
         onClick={handleClick}
         className="nav-button fixed right-0 m-[20px] w-[60px] h-[60px] bg-[#101010]
           rounded-full flex items-center justify-center cursor-pointer z-nav-burger-button
@@ -172,7 +144,7 @@ const NavBar = () => {
             onMouseLeave={delayedCloseMenu}
             ref={menuRef}
             variants={menuVariant}
-            animate={isHovering ? 'enter' : 'exit'}
+            animate="enter"
             exit="exit"
             initial="initial"
             transition={transition}
