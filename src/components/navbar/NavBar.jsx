@@ -36,6 +36,7 @@ const NavBar = () => {
   // waiting background ready to show menu
   useEffect(() => {
     if (isHomePage && isEverythingReady) {
+      if (isMobile) return
       setIsActive(true)
 
       const autoCloseTimer = setTimeout(() => {
@@ -57,7 +58,7 @@ const NavBar = () => {
       clearTimeout(timeoutRef.current)
       timeoutRef.current = setTimeout(() => {
         setShowHint(false)
-      }, 3000)
+      }, 4000)
     }
 
     window.addEventListener('wheel', handleScroll, { passive: true })
@@ -131,7 +132,7 @@ const NavBar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            { isMobile ? <p className='text-xl'>Tap here to explore</p> : <p>Hover to open menu</p> }
+            { isMobile ? <p className='text-xl'>Tap here</p> : <p>Hover to open menu</p> }
           </motion.div>
         )}
         <div className={`burger ${( isActive ) ? 'burger-active' : ''}`}></div>
@@ -154,7 +155,7 @@ const NavBar = () => {
 
               <div className="dlous-nav text-[56px] mt-[40px] sm:mt-[60px] mb-20">
 
-                <div className="dlous-nav-header border-b-[1px] border-[#999] uppercase text-[11px] mb-5">
+                <div className="dlous-nav-header border-b-[1px] border-[#999] uppercase text-[11px] mb-8 sm:mb-5">
 
                   <p className="leading-snug tracking-wider text-[12px] mb-2">
                     Welcome to my Portfolio

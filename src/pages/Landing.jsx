@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useRef, useContext, useEffect } from 'react'
+import { useRef, useContext, useEffect, useLayoutEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
@@ -35,7 +35,7 @@ const slideUp = {
 
 const textAnimationConfig = { xPercent: 0, direction: -1, speed: 0.1 }
 
-const iconAnimationConfig = { xPercent: 0, direction: -1, speed: 0.1 }
+const iconAnimationConfig = { xPercent: 0, direction: -1, speed: 0.15 }
 
 const SLIDER_BOUNDARY = { MIN: -100, MAX: 0, RESET: 0, MOVE_DISTANCE: '-500px' }
 
@@ -126,6 +126,17 @@ const Landing = () => {
     }
   }, [])
 
+  // useEffect(() => {
+  //   const el = iconSliderRef.current
+  //   const totalWidth = el.scrollWidth / 2 // vì có 2 nhóm identical
+
+  //   const tl = gsap.timeline({ repeat: -1, ease: 'none' })
+  //   tl.to(el, {
+  //     x: -totalWidth,
+  //     duration: 20
+  //   })
+  // }, [])
+
   useEffect(() => {
     if (!images?.landing) return
 
@@ -151,8 +162,13 @@ const Landing = () => {
     }
   }, [images?.landing])
 
+  // useEffect(() => {
+  //   const icon1Width = firstIconRef.current.offsetWidth
+  //   secondIconRef.current.style.left = `${icon1Width + 16}px`
+  // }, [])
+
   return (
-    <motion.main
+    <motion.section
       variants={slideUp}
       initial='initial'
       animate='enter'
@@ -166,12 +182,12 @@ const Landing = () => {
         />
       </div>
 
-      <div className="absolute -top-[4%] left-[2%] w-full box-border items-center">
+      <div className="absolute -top-[4%] left-[2%] xl:-top-[2%] xl:left-[4%] w-full box-border items-center">
         <LogoIcon />
       </div>
 
       {biggerLgScreen && (
-        <div className='absolute top-[24%] left-[32%] xl:left-[35%] font-mono p-6 rounded-xl max-w-[800px] mx-auto mt-20'>
+        <div className='absolute top-[24%] left-[32%] xl:left-[35%] 3xl:left-[38%] font-mono p-6 rounded-xl max-w-[800px] mx-auto mt-20'>
           <div className='flex flex-row items-center text-[#FFFFFF] gap-2 mb-2'>
             <GearIcon />
             <div className='landing-icon relative flex items-center justify-center'>
@@ -233,13 +249,15 @@ const Landing = () => {
           <p className='text-white'>test</p>
         </div>
 
-        <div className='absolute bottom-[8%] sm:bottom-[10%] w-full overflow-hidden'>
-          <div ref={iconSliderRef} className='relative flex w-full gap-5 sm:gap-10'>
+        <div className='absolute bottom-[8%] sm:bottom-[10%] w-max'>
+          <div
+            ref={iconSliderRef}
+            className='relative w-max'>
             <div
               ref={firstIconRef}
-              className='relative w-full flex flex-row items-center gap-5 sm:gap-10'
+              className='flex w-full items-center gap-5 sm:gap-10 m-0 pr-[20px]'
             >
-              <RubyIcon className='w-20 h-20' fill='#f5f5f5' />
+              <RubyIcon className='w-16 h-16' fill='#f5f5f5' />
               <RailsIcon className='w-40 h-40' fill='#f5f5f5' />
               <PostgresIcon className='w-20 h-20' fill='#f5f5f5' />
               <RedisIcon className='w-20 h-20' fill='#f5f5f5' />
@@ -248,9 +266,9 @@ const Landing = () => {
             </div>
             <div
               ref={secondIconRef}
-              className='absolute w-full left-[calc(100%+1rem)] top-0 flex items-center gap-5 sm:gap-10'
+              className='w-full absolute left-full top-0 flex items-center gap-5 sm:gap-10 m-0'
             >
-              <RubyIcon className='w-20 h-20' fill='#f5f5f5' />
+              <RubyIcon className='w-16 h-16' fill='#f5f5f5' />
               <RailsIcon className='w-40 h-40' fill='#f5f5f5' />
               <PostgresIcon className='w-20 h-20' fill='#f5f5f5' />
               <RedisIcon className='w-20 h-20' fill='#f5f5f5' />
@@ -267,7 +285,7 @@ const Landing = () => {
           <p ref={secondTextRef}>Backend Developer -</p>
         </div>
       </div>
-    </motion.main>
+    </motion.section>
   )
 }
 

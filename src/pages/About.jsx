@@ -7,9 +7,9 @@ import { useIsMobile, useIsDesktop } from '@/hooks/useIsMobile'
 
 const Item = ({ src, text }) => {
   return (
-    <div className='text-base md:text-lg lg:text-xl flex flex-row items-center justify-start'>
+    <div className='text-base font-medium sm:font-normal sm:text-base md:text-lg lg:text-xl flex flex-row items-center justify-start'>
       <img src={src} className='hidden sm:inline-block w-6 h-6 mr-2' />
-      <div className='inline-block sm:hidden w-1 h-1 rounded-full bg-black mr-2'></div>
+      <div className='inline-block sm:hidden w-1 h-1 rounded-full bg-slate-400 mr-2'></div>
       <span>{text}</span>
     </div>
   )
@@ -20,6 +20,7 @@ const About = () => {
 
   const smallerLgScreen = useIsMobile(1024)
   const biggerLgScreen = useIsDesktop(1024)
+  const smallerSmScreen = useIsMobile(680)
 
   const getTimeByTimeZone = (timeZone) => {
     return new Intl.DateTimeFormat('en-US', {
@@ -195,7 +196,14 @@ const About = () => {
             <Item src={images['gpa']} text={'GPA: 7.4'} />
           </div>
           <div>
-            <Item src={images['degree']} text={'Status: Completed courses (Awaiting graduation)'} />
+            { smallerSmScreen
+              ? (
+                <Item src={images['degree']} text={'Status: Awaiting graduation'} />
+              )
+              : (
+                <Item src={images['degree']} text={'Status: Completed courses (Awaiting graduation)'} />
+              )
+            }
           </div>
         </div>
       </div>

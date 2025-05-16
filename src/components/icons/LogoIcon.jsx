@@ -5,7 +5,7 @@ const LogoIcon = () => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 1200"
       preserveAspectRatio="xMidYMid meet"
-      className="w-40 h-40"
+      className="w-40 h-40 3xl:w-[180px] 3xl:h-[180px]"
     >
       <g
         transform="translate(0,1200) scale(0.1,-0.1)"

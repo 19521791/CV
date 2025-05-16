@@ -344,7 +344,7 @@ html::-webkit-scrollbar {
 }
 
 .click-hint-mobile {
-  animation: typewriter-mobile 2s steps(15) forwards, blinkCursor 0.9s infinite;
+  animation: typewriter-mobile 2s steps(19) forwards, blinkCursor 0.9s infinite;
   animation-delay: 500ms;
 }
 
@@ -362,7 +362,7 @@ html::-webkit-scrollbar {
     width: 0;
   }
   to {
-    width: 13ch;
+    width: 6ch;
   }
 }
 

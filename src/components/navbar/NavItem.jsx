@@ -34,7 +34,7 @@ const NavItem = ({ data, onClick }) => {
       animate="enter"
       exit="exit"
       initial="initial"
-      className={`nav-item cursor-pointer ${isActive ? 'active' : ''}`}
+      className={`nav-item my-1 cursor-pointer ${isActive ? 'active' : ''}`}
       onClick={() => {
         navigate(data.href)
         onClick()
