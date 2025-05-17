@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useRef, useContext, useEffect, useLayoutEffect } from 'react'
+import { useRef, useContext, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
@@ -18,7 +18,8 @@ import SidekiqIcon from '@/components/icons/SidekiqIcon'
 import CapIcon from '@/components/icons/CapIcon'
 import LogoIcon from '@/components/icons/LogoIcon'
 import { useIsMobile, useIsDesktop } from '@/hooks/useIsMobile'
-import { Terminal } from 'lucide-react'
+import { Terminal, MoveRight } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,6 +47,7 @@ const Landing = () => {
   const smallerLgScreen = useIsMobile(1024)
   const biggerLgScreen = useIsDesktop(1024)
   const biggerXmScreen = useIsDesktop(896)
+  const smallerXmScreen = useIsMobile(896)
 
   const textSliderRef = useRef(null)
   const firstTextRef = useRef(null)
@@ -54,6 +56,8 @@ const Landing = () => {
   const iconSliderRef = useRef(null)
   const firstIconRef = useRef(null)
   const secondIconRef = useRef(null)
+
+  const navigate = useNavigate()
 
   useGSAP(() => {
     const animateText = () => {
@@ -126,17 +130,6 @@ const Landing = () => {
     }
   }, [])
 
-  // useEffect(() => {
-  //   const el = iconSliderRef.current
-  //   const totalWidth = el.scrollWidth / 2 // vì có 2 nhóm identical
-
-  //   const tl = gsap.timeline({ repeat: -1, ease: 'none' })
-  //   tl.to(el, {
-  //     x: -totalWidth,
-  //     duration: 20
-  //   })
-  // }, [])
-
   useEffect(() => {
     if (!images?.landing) return
 
@@ -161,11 +154,6 @@ const Landing = () => {
       img.onload = img.onerror = null
     }
   }, [images?.landing])
-
-  // useEffect(() => {
-  //   const icon1Width = firstIconRef.current.offsetWidth
-  //   secondIconRef.current.style.left = `${icon1Width + 16}px`
-  // }, [])
 
   return (
     <motion.section
@@ -204,28 +192,36 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className='text-[#E8E8E8] flex items-center gap-2 ml-10'>
+          <div className='text-[#E8E8E8] flex items-center gap-2 ml-10 mb-3'>
             <RocketIcon />
             <div className='landing-icon relative flex items-center justify-center'>
-              <p className='text-lg italic'>
+              <p className='text-base italic'>
                 Ruby, Rails, PostgreSQL, Redis, Sidekiq, Capistrano
               </p>
               <div className='indicator -right-[4%] top-1/2' />
             </div>
           </div>
+
+          <div
+            className='text-[#E8E8E8] flex items-center gap-2 ml-16 cursor-pointer'
+            onClick={() => navigate('/profile')}
+          >
+            <MoveRight />
+            <p>See More</p>
+          </div>
         </div>
       )}
 
       {biggerXmScreen && smallerLgScreen && (
-        <div className='absolute top-[20%] right-0 font-mono p-6 rounded-xl mx-auto mt-20'>
+        <div className='absolute top-[20%] right-0 font-mono py-6 px-4 rounded-xl mx-auto mt-16'>
           <div className='flex flex-row items-center justify-end text-[#e0e0e0] gap-2 mb-2 mr-5'>
             <div className='flex items-center'>
               <FolderIcon />
-              <span className='text-blue-500 font-semibold text-xl ml-[1px]'>
+              <span className='text-green-400 font-semibold text-xl ml-[1px]'>
                 ~
               </span>
             </div>
-            <p className='text-2xl font-semibold drop-shadow-[0_0_4px_#00ffff]'>
+            <p className='text-2xl font-semibold'>
               Nguyen Phi Long
             </p>
           </div>
@@ -235,20 +231,43 @@ const Landing = () => {
             <p className='text-base'>Backend Developer</p>
           </div>
 
-          <div className='text-[#f5f5f5] flex flex-col items-center gap-4'>
-            {/* <Terminal size={20} className='text-green-400' /> */}
-            <span className='text-base italic'>Ruby, Rails</span>
-            <span className='text-base italic ml-16'>PostgreSQL, Redis</span>
-            <span className='text-base italic ml-24'>Sidekiq, Capistrano</span>
+          <div className='text-[#f5f5f5] flex flex-col items-center gap-4 mb-3'>
+            <span className='text-sm italic'>Ruby - Rails</span>
+            <span className='text-sm italic ml-16'>PostgreSQL - Redis</span>
+            <span className='text-sm italic ml-24'>Sidekiq - Capistrano</span>
+          </div>
+
+          <div
+            className='text-[#E8E8E8] text-xs flex items-center gap-2 ml-28 cursor-pointer'
+            onClick={() => navigate('/profile')}
+          >
+            <MoveRight />
+            <p>See More</p>
+          </div>
+        </div>
+      )}
+
+      {smallerXmScreen && (
+        <div className='absolute top-[43%] left-1/2 -translate-x-1/2 sm:top-[30%] md:top-[25%] sm:left-auto sm:translate-x-0 sm:right-0 font-mono md:p-4 rounded-xl mt-20 w-[90%] max-w-xs text-center pl-10'>
+          <p className='text-2xl text-[#e0e0e0] font-semibold mb-3'>
+            Nguyen Phi Long
+          </p>
+          <p className='text-base text-[#d6f1ff] mb-3'>Backend Developer</p>
+          <p className='text-base text-[#d6f1ff] mb-3'>
+            Ruby - Rails - Postgres
+          </p>
+
+          <div
+            className='text-[#E8E8E8] text-xs flex justify-center items-center gap-2 mt-4 cursor-pointer'
+            onClick={() => navigate('/profile')}
+          >
+            <MoveRight />
+            <p>See More</p>
           </div>
         </div>
       )}
 
       <div className='block xm:hidden'>
-        <div className='absolute top-[20%] left-[20%] font-mono p-6 rounded-xl mx-auto mt-20'>
-          <p className='text-white'>test</p>
-        </div>
-
         <div className='absolute bottom-[8%] sm:bottom-[10%] w-max'>
           <div
             ref={iconSliderRef}
