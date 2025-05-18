@@ -79,13 +79,20 @@ export const projectItems = [
     tag: 'fullstack'
   },
   {
-    title: 'Nine Dash Line',
-    src: 'ninedash',
+    title: 'Note App',
+    src: '',
     description: 'Personal Project',
-    color: '#626D6E',
-    link: 'https://github.com/19521791/server-nodejs',
-    timeline: '12/2023 - 2/2024',
-    tag: 'computervision'
+    color: '#363637',
+    link: '',
+    timeline: ''
+  },
+  {
+    title: 'Flash Card',
+    src: '',
+    description: 'Personal Project',
+    color: '#D8D3CD',
+    link: '',
+    timeline: ''
   },
   {
     title: 'Portfolio',
@@ -95,6 +102,55 @@ export const projectItems = [
     link: 'https://github.com/19521791/CV',
     timeline: '3/2025 - 5/2025',
     tag: 'fullstack'
+  },
+  {
+    title: 'Nine Dash Line',
+    src: 'ninedash',
+    description: 'Personal Project',
+    color: '#626D6E',
+    link: 'https://github.com/19521791/server-nodejs',
+    timeline: '12/2023 - 2/2024',
+    tag: 'computervision'
+  },
+  {
+    title: 'Lane Detection',
+    src: '',
+    description: 'Personal Project',
+    color: '#7E7E7E',
+    link: '',
+    timeline: ''
+  },
+  {
+    title: 'Traffic Light',
+    src: '',
+    description: 'Personal Project',
+    color: '#DCD0C2',
+    link: '',
+    timeline: ''
+  },
+  {
+    title: 'Data Visualization',
+    src: '',
+    description: 'Personal Project',
+    color: '#F1F1F1',
+    link: '',
+    timeline: ''
+  },
+  {
+    title: 'Data Preprocessing',
+    src: '',
+    description: 'Personal Project',
+    color: '#E0D9D1',
+    link: '',
+    timeline: ''
+  },
+  {
+    title: 'Gaussian Naive Bayes',
+    src: '',
+    description: 'Personal Project',
+    color: '#E9EAEB',
+    link: '',
+    timeline: ''
   }
 ]
 
@@ -143,7 +199,7 @@ export const groupProjects = [
         title: 'Flash Card',
         src: '',
         description: 'Personal Project',
-        color: '',
+        color: '#D8D3CD',
         link: '',
         timeline: ''
       }
@@ -164,7 +220,7 @@ export const groupProjects = [
         title: 'Lane Detection',
         src: '',
         description: 'Personal Project',
-        color: '',
+        color: '#7E7E7E',
         link: '',
         timeline: ''
       },
@@ -172,7 +228,7 @@ export const groupProjects = [
         title: 'Traffic Light',
         src: '',
         description: 'Personal Project',
-        color: '',
+        color: '#DCD0C2',
         link: '',
         timeline: ''
       }
@@ -185,7 +241,7 @@ export const groupProjects = [
         title: 'Gaussian Naive Bayes',
         src: '',
         description: 'Personal Project',
-        color: '',
+        color: '#E9EAEB',
         link: '',
         timeline: ''
       },
@@ -193,7 +249,7 @@ export const groupProjects = [
         title: 'Data Preprocessing',
         src: '',
         description: 'Personal Project',
-        color: '',
+        color: '#E0D9D1',
         link: '',
         timeline: ''
       },
@@ -201,7 +257,7 @@ export const groupProjects = [
         title: 'Data Visualization',
         src: '',
         description: 'Personal Project',
-        color: '',
+        color: '#101010',
         link: '',
         timeline: ''
       }
@@ -284,13 +340,11 @@ export const colorHunt = {
     '#48494A',
     '#626D6E',
     '#B1A994',
-    '#101010'
-  ],
-  'available': [
     '#101010',
-    '#DCD0C2',
-    '#7E7E7E',
+    '#363637',
     '#D8D3CD',
-    '#363637'
+    '#7E7E7E',
+    '#DCD0C2',
+    '#101010'
   ]
 }

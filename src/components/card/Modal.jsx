@@ -43,8 +43,9 @@ const Modal = ({ modal, projects }) => {
       variants={scaleAnimation}
       initial={'initial'}
       animate={active ? 'open' : 'closed'}
-      className="h-0 w-0 lg:h-[300px] lg:w-[330px] flex items-center justify-center absolute overflow-hidden pointer-events-none"
+      className="h-0 w-0 lg:h-[300px] lg:w-[330px] flex items-center justify-center fixed overflow-hidden pointer-events-none z-50"
     >
+
       <div style={{ top: index * -100 + '%' }} className="h-full w-full absolute transition-[top] duration-[500ms] ease-[cubic-bezier(0.76,0,0.24,1)]">
         {
           projects.map((project, index) => {
