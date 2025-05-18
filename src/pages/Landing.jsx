@@ -248,7 +248,7 @@ const Landing = () => {
       )}
 
       {smallerXmScreen && (
-        <div className='absolute top-[43%] left-1/2 -translate-x-1/2 sm:top-[30%] md:top-[25%] sm:left-auto sm:translate-x-0 sm:right-0 font-mono md:p-4 rounded-xl mt-20 w-[90%] max-w-xs text-center pl-10'>
+        <div className='absolute top-[40%] left-1/2 -translate-x-1/2 sm:top-[30%] md:top-[25%] sm:left-auto sm:translate-x-0 sm:right-0 font-mono md:p-4 rounded-xl mt-20 w-[90%] max-w-xs text-center pl-10'>
           <p className='text-2xl text-[#e0e0e0] font-semibold mb-3'>
             Nguyen Phi Long
           </p>

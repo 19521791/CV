@@ -1,3 +1,6 @@
+import { color } from 'framer-motion'
+import { Timeline } from 'gsap/gsap-core'
+
 export const helloCleverLink = 'https://helloclever.co/'
 export const trelloLink = 'https://github.com/19521791/trello-backend'
 export const linkedinLink = 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/'
@@ -60,30 +63,149 @@ export const projectItems = [
   {
     title: 'Hello Clever',
     src: 'helloclever',
-    description: 'Hello Clever Payment Gateway',
+    description: 'Payment Gateway',
     color: '#101010',
-    link: 'https://helloclever.co/'
+    link: 'https://helloclever.co/',
+    timeline: '6/2023 - 9/2024',
+    tag: 'fintech'
   },
   {
-    title: 'Trello Board Clone',
+    title: 'Trello Clone',
     src: 'trelloboard',
-    description: 'Trello Board Clone',
+    description: 'Personal Project',
     color: '#B1A994',
-    link: 'https://github.com/19521791/trello-backend'
+    link: 'https://github.com/19521791/trello-backend',
+    timeline: '4/2024 - 6/2024',
+    tag: 'fullstack'
   },
   {
     title: 'Nine Dash Line',
     src: 'ninedash',
-    description: 'Nine Dash Line',
+    description: 'Personal Project',
     color: '#626D6E',
-    link: 'https://github.com/19521791/server-nodejs'
+    link: 'https://github.com/19521791/server-nodejs',
+    timeline: '12/2023 - 2/2024',
+    tag: 'computervision'
   },
   {
     title: 'Portfolio',
     src: 'portfolio',
-    description: 'Portfolio',
+    description: 'Personal Project',
     color: '#48494A',
-    link: 'https://github.com/19521791/CV'
+    link: 'https://github.com/19521791/CV',
+    timeline: '3/2025 - 5/2025',
+    tag: 'fullstack'
+  }
+]
+
+export const groupProjects = [
+  {
+    group: 'Fintech',
+    items: [
+      {
+        title: 'Hello Clever',
+        src: 'helloclever',
+        description: 'Payment Gateway',
+        color: '#101010',
+        link: 'https://helloclever.co/',
+        timeline: '6/2023 - 9/2024'
+      }
+    ]
+  },
+  {
+    group: 'Full-stack',
+    items: [
+      {
+        title: 'Trello Clone',
+        src: 'trelloboard',
+        description: 'Personal Project',
+        color: '#B1A994',
+        link: 'https://github.com/19521791/trello-backend',
+        timeline: '4/2024 - 6/2024'
+      },
+      {
+        title: 'Note App',
+        src: '',
+        description: 'Personal Project',
+        color: '#363637',
+        link: '',
+        timeline: ''
+      },
+      {
+        title: 'Portfolio',
+        src: 'portfolio',
+        description: 'Personal Project',
+        color: '#4849A',
+        link: 'https://github.com/19521791/CV',
+        timeline: '3/2025 - 5/2025'
+      },
+      {
+        title: 'Flash Card',
+        src: '',
+        description: 'Personal Project',
+        color: '',
+        link: '',
+        timeline: ''
+      }
+    ]
+  },
+  {
+    group: 'Computer Vision',
+    items: [
+      {
+        title: 'Nine Dash Line',
+        src: 'ninedash',
+        description: 'Personal Project',
+        color: '#626D6E',
+        link: 'https://github.com/19521791/server-nodejs',
+        timeline: '12/2023 - 2/2024'
+      },
+      {
+        title: 'Lane Detection',
+        src: '',
+        description: 'Personal Project',
+        color: '',
+        link: '',
+        timeline: ''
+      },
+      {
+        title: 'Traffic Light',
+        src: '',
+        description: 'Personal Project',
+        color: '',
+        link: '',
+        timeline: ''
+      }
+    ]
+  },
+  {
+    group: 'Machine Learning',
+    items: [
+      {
+        title: 'Gaussian Naive Bayes',
+        src: '',
+        description: 'Personal Project',
+        color: '',
+        link: '',
+        timeline: ''
+      },
+      {
+        title: 'Data Preprocessing',
+        src: '',
+        description: 'Personal Project',
+        color: '',
+        link: '',
+        timeline: ''
+      },
+      {
+        title: 'Data Visualization',
+        src: '',
+        description: 'Personal Project',
+        color: '',
+        link: '',
+        timeline: ''
+      }
+    ]
   }
 ]
 
