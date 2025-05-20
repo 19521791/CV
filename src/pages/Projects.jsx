@@ -2,12 +2,11 @@ import { useContext, useState } from 'react'
 import { ImageContext } from '@/contexts/ImageContext'
 import ProjectCard from '@/components/card/ProjectCard'
 import Modal from '@/components/card/Modal'
-import { projectItems, groupProjects } from '@/constants'
+import { projectItems } from '@/constants'
 
 const Projects = () => {
   const { images } = useContext(ImageContext)
   const [modal, setModal] = useState({ active: false, index: 0 })
-  let globalIndex = 0
   return (
     <>
       <section className="mx-auto p-4 sm:p-8 md:p-12 pb-12 !pt-[100px]

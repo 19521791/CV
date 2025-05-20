@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import NavBar from '@/components/navbar/NavBar'
 import LoaderProgress from '@/components/loading/LoaderProgress'
 import LoaderCurve from '@/components/loading/LoaderCurve'
-import { Model, About, Projects, CoverLetter, Landing } from '@/pages'
+import { Model, About, Projects, CoverLetter, Landing, Work } from '@/pages'
 import NotFound from '@/pages/NotFound'
 import { AnimationContext } from '@/contexts/AnimationContext'
 import { AnimatePresence } from 'framer-motion'
@@ -22,7 +22,8 @@ const AnimatedRoutes = ({ showCurve }) => {
             <Routes location={location}>
               <Route exact path='/' element={<Landing />} />
               <Route exact path='/profile' element={<About />} />
-              <Route exact path='/work' element={<Projects />} />
+              {/* <Route exact path='/work' element={<Projects />} /> */}
+              <Route exect path='work' element={<Work />} />
               <Route exact path='/model' element={<Model />} />
               <Route exact path='/cover-letter' element={<CoverLetter />} />
               <Route path="*" element={<NotFound />} />

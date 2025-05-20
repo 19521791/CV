@@ -1,6 +1,3 @@
-import { color } from 'framer-motion'
-import { Timeline } from 'gsap/gsap-core'
-
 export const helloCleverLink = 'https://helloclever.co/'
 export const trelloLink = 'https://github.com/19521791/trello-backend'
 export const linkedinLink = 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/'
@@ -66,33 +63,8 @@ export const projectItems = [
     description: 'Payment Gateway',
     color: '#101010',
     link: 'https://helloclever.co/',
-    timeline: '6/2023 - 9/2024',
-    tag: 'fintech'
-  },
-  {
-    title: 'Trello Clone',
-    src: 'trelloboard',
-    description: 'Personal Project',
-    color: '#B1A994',
-    link: 'https://github.com/19521791/trello-backend',
-    timeline: '4/2024 - 6/2024',
-    tag: 'fullstack'
-  },
-  {
-    title: 'Note App',
-    src: '',
-    description: 'Personal Project',
-    color: '#363637',
-    link: '',
-    timeline: ''
-  },
-  {
-    title: 'Flash Card',
-    src: '',
-    description: 'Personal Project',
-    color: '#D8D3CD',
-    link: '',
-    timeline: ''
+    timeline: '06/2023 - 09/2024',
+    tag: 'Fintech'
   },
   {
     title: 'Portfolio',
@@ -100,8 +72,26 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#48494A',
     link: 'https://github.com/19521791/CV',
-    timeline: '3/2025 - 5/2025',
-    tag: 'fullstack'
+    timeline: '03/2025 - 05/2025',
+    tag: 'Full-stack'
+  },
+  {
+    title: 'Trello Clone',
+    src: 'trelloboard',
+    description: 'Personal Project',
+    color: '#E9EAEB',
+    link: 'https://github.com/19521791/trello-backend',
+    timeline: '04/2024 - 06/2024',
+    tag: 'Full-stack'
+  },
+  {
+    title: 'Note App',
+    src: 'note',
+    description: 'Personal Project',
+    color: '#363637',
+    link: 'https://github.com/19521791/note-app',
+    timeline: '08/2023 - 10/2023',
+    tag: 'Full-stack'
   },
   {
     title: 'Nine Dash Line',
@@ -109,161 +99,56 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#626D6E',
     link: 'https://github.com/19521791/server-nodejs',
-    timeline: '12/2023 - 2/2024',
-    tag: 'computervision'
-  },
-  {
-    title: 'Lane Detection',
-    src: '',
-    description: 'Personal Project',
-    color: '#7E7E7E',
-    link: '',
-    timeline: ''
+    timeline: '06/2023 - 07/2023',
+    tag: 'Computer Vision'
   },
   {
     title: 'Traffic Light',
-    src: '',
+    src: 'trafficlight',
     description: 'Personal Project',
     color: '#DCD0C2',
-    link: '',
-    timeline: ''
+    link: 'https://github.com/19521791/Traffic_Light_Detection',
+    timeline: '03/2023 - 06/2023',
+    tag: 'Computer Vision'
+  },
+  {
+    title: 'Lane Detection',
+    src: 'laneline',
+    description: 'Personal Project',
+    color: '#7E7E7E',
+    link: 'https://github.com/19521791/Lane_Detection',
+    timeline: '12/2022 - 04/2023',
+    tag: 'Computer Vision'
   },
   {
     title: 'Data Visualization',
-    src: '',
+    src: 'visualize',
     description: 'Personal Project',
-    color: '#F1F1F1',
-    link: '',
-    timeline: ''
+    color: '#B1A994',
+    link: 'https://github.com/19521791/Data_Visualization',
+    timeline: '2023',
+    tag: 'Machine Learning'
   },
   {
     title: 'Data Preprocessing',
-    src: '',
+    src: 'preprocessing',
     description: 'Personal Project',
     color: '#E0D9D1',
-    link: '',
-    timeline: ''
+    link: 'https://github.com/19521791/Data_Preprocessing',
+    timeline: '2023',
+    tag: 'Machine Learning'
   },
   {
     title: 'Gaussian Naive Bayes',
-    src: '',
+    src: 'gaussian',
     description: 'Personal Project',
     color: '#E9EAEB',
-    link: '',
-    timeline: ''
+    link: 'https://github.com/19521791/Gaussian_Naive_Bayes',
+    timeline: '2023',
+    tag: 'Machine Learning'
   }
 ]
 
-export const groupProjects = [
-  {
-    group: 'Fintech',
-    items: [
-      {
-        title: 'Hello Clever',
-        src: 'helloclever',
-        description: 'Payment Gateway',
-        color: '#101010',
-        link: 'https://helloclever.co/',
-        timeline: '6/2023 - 9/2024'
-      }
-    ]
-  },
-  {
-    group: 'Full-stack',
-    items: [
-      {
-        title: 'Trello Clone',
-        src: 'trelloboard',
-        description: 'Personal Project',
-        color: '#B1A994',
-        link: 'https://github.com/19521791/trello-backend',
-        timeline: '4/2024 - 6/2024'
-      },
-      {
-        title: 'Note App',
-        src: '',
-        description: 'Personal Project',
-        color: '#363637',
-        link: '',
-        timeline: ''
-      },
-      {
-        title: 'Portfolio',
-        src: 'portfolio',
-        description: 'Personal Project',
-        color: '#4849A',
-        link: 'https://github.com/19521791/CV',
-        timeline: '3/2025 - 5/2025'
-      },
-      {
-        title: 'Flash Card',
-        src: '',
-        description: 'Personal Project',
-        color: '#D8D3CD',
-        link: '',
-        timeline: ''
-      }
-    ]
-  },
-  {
-    group: 'Computer Vision',
-    items: [
-      {
-        title: 'Nine Dash Line',
-        src: 'ninedash',
-        description: 'Personal Project',
-        color: '#626D6E',
-        link: 'https://github.com/19521791/server-nodejs',
-        timeline: '12/2023 - 2/2024'
-      },
-      {
-        title: 'Lane Detection',
-        src: '',
-        description: 'Personal Project',
-        color: '#7E7E7E',
-        link: '',
-        timeline: ''
-      },
-      {
-        title: 'Traffic Light',
-        src: '',
-        description: 'Personal Project',
-        color: '#DCD0C2',
-        link: '',
-        timeline: ''
-      }
-    ]
-  },
-  {
-    group: 'Machine Learning',
-    items: [
-      {
-        title: 'Gaussian Naive Bayes',
-        src: '',
-        description: 'Personal Project',
-        color: '#E9EAEB',
-        link: '',
-        timeline: ''
-      },
-      {
-        title: 'Data Preprocessing',
-        src: '',
-        description: 'Personal Project',
-        color: '#E0D9D1',
-        link: '',
-        timeline: ''
-      },
-      {
-        title: 'Data Visualization',
-        src: '',
-        description: 'Personal Project',
-        color: '#101010',
-        link: '',
-        timeline: ''
-      }
-    ]
-  }
-]
 
 export const svgs = {
   ansible: '/images_test/ansible-svgrepo-com.svg',
