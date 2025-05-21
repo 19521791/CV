@@ -33,7 +33,7 @@ const About = () => {
   }
 
   return (
-    <main className="mx-auto p-4 sm:p-8 pb-12 !pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px]">
+    <main className="mx-auto p-4 sm:p-8 pb-12 !pt-[100px] min-h-[calc(100vh-80px)] max-w-[1500px] font-neuetral">
       <div className='info-container flex flex-col'>
         <div className='flex flex-col xd:flex-row gap-6 sm:gap-10 xd:gap-4 xm:gap-5 lg:gap-6 xl:gap-10  xl:pb-[80px]'>
           <div className='w-full flex justify-center'>

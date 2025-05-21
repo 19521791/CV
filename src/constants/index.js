@@ -1,6 +1,3 @@
-import { color } from 'framer-motion'
-import { Timeline } from 'gsap/gsap-core'
-
 export const helloCleverLink = 'https://helloclever.co/'
 export const trelloLink = 'https://github.com/19521791/trello-backend'
 export const linkedinLink = 'https://www.linkedin.com/in/nguyen-phi-long-a48961265/'
@@ -61,216 +58,183 @@ export const skills = [
 
 export const projectItems = [
   {
+    id: 1,
     title: 'Hello Clever',
     src: 'helloclever',
     description: 'Payment Gateway',
     color: '#101010',
     link: 'https://helloclever.co/',
-    timeline: '6/2023 - 9/2024',
-    tag: 'Fintech'
+    timeline: '06/2023 - 09/2024',
+    tag: 'Fintech',
+    company: 'Rexy Technology',
+    role: 'Backend Developer',
+    tech: {
+      frontend: '',
+      backend: 'Ruby, Ruby on Rails, Postgres, Redis, Sidekiq'
+    },
+    paragraph: ['The first Australian buy-to-earn platform that makes shopping, payments, and money management easier for all.'],
+    responsibilities: [
+      'Implemented Two-Factor Authentication (2FA) via SMS/Google Authenticator and integrated Google reCAPTCHA to prevent brute- force attacks.',
+      'Built APIs for money transfer operations (Payout), improved performance, and handled scheduling/cancellation logic.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Restricted password reset requests to 3 times/day to prevent abuse.',
+      'Wrote documentation for public APIs.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+    ]
   },
   {
-    title: 'Trello Clone',
-    src: 'trelloboard',
-    description: 'Personal Project',
-    color: '#B1A994',
-    link: 'https://github.com/19521791/trello-backend',
-    timeline: '4/2024 - 6/2024',
-    tag: 'Full-stack'
-  },
-  {
-    title: 'Note App',
-    src: '',
-    description: 'Personal Project',
-    color: '#363637',
-    link: '',
-    timeline: '',
-    tag: 'Full-stack'
-  },
-  {
-    title: 'Flash Card',
-    src: '',
-    description: 'Personal Project',
-    color: '#D8D3CD',
-    link: '',
-    timeline: '',
-    tag: 'Full-stack'
-  },
-  {
+    id: 2,
     title: 'Portfolio',
     src: 'portfolio',
     description: 'Personal Project',
     color: '#48494A',
     link: 'https://github.com/19521791/CV',
-    timeline: '3/2025 - 5/2025',
-    tag: 'Full-stack'
+    timeline: '03/2025 - 05/2025',
+    tag: 'Full-stack',
+    company: '',
+    role: '',
+    tech: {
+      frontend: 'ReactJS, Tailwind, MUI, Framer Motion, GSAP',
+      backend: 'Ruby, Rails, Postgres, Sidekiq, Capistrano',
+      deploy: 'Github Actions, Nginx, S3'
+    },
+    responsibilities: [
+      'Set up the CI/CD pipeline with GitHub Actions.',
+      'Configured Nginx for serving ReactJS application.',
+      'Ensured an automated build and deployment process.'
+    ],
+    paragraph: []
   },
   {
+    id: 3,
+    title: 'Trello Clone',
+    src: 'trelloboard',
+    description: 'Personal Project',
+    color: '#E9EAEB',
+    link: 'https://github.com/19521791/trello-backend',
+    timeline: '04/2024 - 06/2024',
+    tag: 'Full-stack',
+    company: '',
+    role: '',
+    tech: {},
+    paragraph: [],
+    responsibilities: []
+  },
+  {
+    id: 4,
+    title: 'Note App',
+    src: 'note',
+    description: 'Personal Project',
+    color: '#363637',
+    link: 'https://github.com/19521791/note-app',
+    timeline: '08/2023 - 10/2023',
+    tag: 'Full-stack',
+    company: '',
+    role: '',
+    tech: {},
+    paragraph: [],
+    responsibilities: []
+  },
+  {
+    id: 5,
     title: 'Nine Dash Line',
     src: 'ninedash',
     description: 'Personal Project',
     color: '#626D6E',
     link: 'https://github.com/19521791/server-nodejs',
-    timeline: '12/2023 - 2/2024',
-    tag: 'Computer Vision'
+    timeline: '06/2023 - 07/2023',
+    tag: 'Computer Vision',
+    company: '',
+    role: '',
+    tech: {},
+    paragraph: [],
+    responsibilities: []
   },
   {
-    title: 'Lane Detection',
-    src: '',
-    description: 'Personal Project',
-    color: '#7E7E7E',
-    link: '',
-    timeline: '',
-    tag: 'Computer Vision'
-  },
-  {
+    id: 6,
     title: 'Traffic Light',
-    src: '',
+    src: 'trafficlight',
     description: 'Personal Project',
     color: '#DCD0C2',
-    link: '',
-    timeline: '',
-    tag: 'Computer Vision'
+    link: 'https://github.com/19521791/Traffic_Light_Detection',
+    timeline: '03/2023 - 06/2023',
+    tag: 'Computer Vision',
+    company: '',
+    role: '',
+    tech: {},
+    paragraph: [],
+    responsibilities: []
   },
   {
-    title: 'Data Visualization',
-    src: '',
+    id: 7,
+    title: 'Lane Detection',
+    src: 'laneline',
     description: 'Personal Project',
-    color: '#F1F1F1',
-    link: '',
-    timeline: '',
-    tag: 'Machine Learning'
+    color: '#7E7E7E',
+    link: 'https://github.com/19521791/Lane_Detection',
+    timeline: '12/2022 - 04/2023',
+    tag: 'Computer Vision',
+    company: '',
+    role: '',
+    tech: {},
+    paragraph: [],
+    responsibilities: []
   },
   {
+    id: 8,
+    title: 'Data Visualization',
+    src: 'visualize',
+    description: 'Personal Project',
+    color: '#B1A994',
+    link: 'https://github.com/19521791/Data_Visualization',
+    timeline: '2023',
+    tag: 'Machine Learning',
+    company: '',
+    role: '',
+    tech: {},
+    paragraph: [],
+    responsibilities: []
+  },
+  {
+    id: 9,
     title: 'Data Preprocessing',
-    src: '',
+    src: 'preprocessing',
     description: 'Personal Project',
     color: '#E0D9D1',
-    link: '',
-    timeline: '',
-    tag: 'Machine Learning'
+    link: 'https://github.com/19521791/Data_Preprocessing',
+    timeline: '2023',
+    tag: 'Machine Learning',
+    company: '',
+    role: '',
+    tech: {},
+    paragraph: [],
+    responsibilities: []
   },
   {
+    id: 10,
     title: 'Gaussian Naive Bayes',
-    src: '',
+    src: 'gaussian',
     description: 'Personal Project',
     color: '#E9EAEB',
-    link: '',
-    timeline: '',
-    tag: 'Machine Learning'
+    link: 'https://github.com/19521791/Gaussian_Naive_Bayes',
+    timeline: '2023',
+    tag: 'Machine Learning',
+    company: '',
+    role: '',
+    tech: {},
+    paragraph: [],
+    responsibilities: []
   }
 ]
 
-export const groupProjects = [
-  {
-    group: 'Fintech',
-    items: [
-      {
-        title: 'Hello Clever',
-        src: 'helloclever',
-        description: 'Payment Gateway',
-        color: '#101010',
-        link: 'https://helloclever.co/',
-        timeline: '6/2023 - 9/2024'
-      }
-    ]
-  },
-  {
-    group: 'Full-stack',
-    items: [
-      {
-        title: 'Trello Clone',
-        src: 'trelloboard',
-        description: 'Personal Project',
-        color: '#B1A994',
-        link: 'https://github.com/19521791/trello-backend',
-        timeline: '4/2024 - 6/2024'
-      },
-      {
-        title: 'Note App',
-        src: '',
-        description: 'Personal Project',
-        color: '#363637',
-        link: '',
-        timeline: ''
-      },
-      {
-        title: 'Portfolio',
-        src: 'portfolio',
-        description: 'Personal Project',
-        color: '#4849A',
-        link: 'https://github.com/19521791/CV',
-        timeline: '3/2025 - 5/2025'
-      },
-      {
-        title: 'Flash Card',
-        src: '',
-        description: 'Personal Project',
-        color: '#D8D3CD',
-        link: '',
-        timeline: ''
-      }
-    ]
-  },
-  {
-    group: 'Computer Vision',
-    items: [
-      {
-        title: 'Nine Dash Line',
-        src: 'ninedash',
-        description: 'Personal Project',
-        color: '#626D6E',
-        link: 'https://github.com/19521791/server-nodejs',
-        timeline: '12/2023 - 2/2024'
-      },
-      {
-        title: 'Lane Detection',
-        src: '',
-        description: 'Personal Project',
-        color: '#7E7E7E',
-        link: '',
-        timeline: ''
-      },
-      {
-        title: 'Traffic Light',
-        src: '',
-        description: 'Personal Project',
-        color: '#DCD0C2',
-        link: '',
-        timeline: ''
-      }
-    ]
-  },
-  {
-    group: 'Machine Learning',
-    items: [
-      {
-        title: 'Gaussian Naive Bayes',
-        src: '',
-        description: 'Personal Project',
-        color: '#E9EAEB',
-        link: '',
-        timeline: ''
-      },
-      {
-        title: 'Data Preprocessing',
-        src: '',
-        description: 'Personal Project',
-        color: '#E0D9D1',
-        link: '',
-        timeline: ''
-      },
-      {
-        title: 'Data Visualization',
-        src: '',
-        description: 'Personal Project',
-        color: '#101010',
-        link: '',
-        timeline: ''
-      }
-    ]
-  }
-]
 
 export const svgs = {
   ansible: '/images_test/ansible-svgrepo-com.svg',
