@@ -2,18 +2,29 @@ import { useContext, useState } from 'react'
 import { ImageContext } from '@/contexts/ImageContext'
 import Modal from '@/components/card/Modal'
 import { projectItems } from '@/constants'
+import ProjectDetailModal from '@/components/card/ProjectDetailModal'
 
 const Work = () => {
   const { images } = useContext(ImageContext)
   const [modal, setModal] = useState({ active: false, index: 0 })
+  const [openModal, setOpenModal] = useState(false)
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [currentProjectId, setCurrentProjectId] = useState(1)
+
+  const currentProject = projectItems.find(p => p.id === currentProjectId)
+
+  const handleClick = (project) => {
+    if (modal) {
+      setCurrentProjectId(project.id)
+      setOpenModal(true)
+    }
+  }
 
   return (
     <section className="mx-auto p-4 sm:p-8 md:p-14 pb-12 !pt-[100px] max-w-[1500px] font-neuetral">
       <p className='uppercase pb-10 lg:pb-5 lg:mb-6 text-xl'>Standout Projects</p>
 
-      {/* Desktop Table View */}
       <div className="hidden lg:block">
-        {/* Table Header - Điều chỉnh tỷ lệ cột */}
         <div className="grid grid-cols-12 gap-4 border-b-[2px] border-gray-200 border-opacity-50 mix-blend-luminosity
  pb-4 uppercase text-[clamp(0.6rem,0.8vw,0.75rem)] text-slate-500">
           <div className="col-span-5 xl:col-span-5 2xl:col-span-5 pl-16 xl:pl-20 py-6">
@@ -31,20 +42,19 @@ const Work = () => {
         </div>
 
 
-        {/* Projects List */}
         <div className="font-neuetral cursor-pointer">
           {projectItems.map((project, index) => (
             <a
               key={index}
-              href={project.link}
+              // href={project.link}
               target="_blank"
               rel="noopener noreferrer"
               className="group grid grid-cols-12 gap-4 py-[clamp(1.5rem,2vw,2.5rem)] border-b-[2px] border-gray-200 border-opacity-50 mix-blend-luminosity
  transition-all duration-500 ease-out"
               onMouseEnter={() => setModal({ active: true, index })}
               onMouseLeave={() => setModal({ active: false, index })}
+              onClick={() => handleClick(project)}
             >
-              {/* Project Column */}
               <div className="col-span-5 xl:col-span-5 2xl:col-span-5 flex items-center pl-16 xl:pl-20 transition-all duration-500 ease-out group-hover:-translate-x-2">
                 <div className="px-4 2xl:px-0 text-[clamp(1.5rem,2vw,2.75rem)] group-hover:mix-blend-luminosity group-hover:opacity-40 transition-all duration-500">
                   {project.title}
@@ -75,7 +85,6 @@ const Work = () => {
         </div>
       </div>
 
-      {/* Mobile Grid View (giữ nguyên) */}
       <div className="lg:hidden grid grid-cols-1 grid-rows-1 sm:grid-cols-2 sm:gap-4 md:gap-8">
         {projectItems.map((project, index) => (
           <div
@@ -92,7 +101,7 @@ const Work = () => {
             }}
           >
             <a
-              href={project.link}
+              // href={project.link}
               target="_blank"
               rel="noopener noreferrer"
               className='group'
@@ -110,8 +119,6 @@ const Work = () => {
                   />
                 </div>
               </div>
-              {/* <h3 className="font-medium text-lg">{project.title}</h3>
-              <p className="">{project.timeline}</p> */}
               <div
                 className='flex flex-col gap-2 sm:gap-2 md:gap-3 lg:gap-0 items-start lg:flex-row lg:items-center
     lg:justify-between w-full cursor-pointer transition-all duration-500 ease-out
@@ -142,6 +149,16 @@ const Work = () => {
           signed_url: images?.[p.src] || ''
         }))}
       />
+
+      <ProjectDetailModal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        project={currentProject}
+        currentProjectId={currentProjectId}
+        allProjects={projectItems}
+        onChangeProject={(newId) => setCurrentProjectId(newId)}
+      />
+
     </section>
   )
 }

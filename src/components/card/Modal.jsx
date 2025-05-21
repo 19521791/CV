@@ -79,7 +79,7 @@ const Modal = ({ modal, projects }) => {
       </motion.div>
       <motion.div
         ref={cursor}
-        className='w-[80px] h-[80px] rounded-full bg-[#455CE9] text-white fixed flex items-center justify-center text-lg font-medium pointer-events-none z-[60]'
+        className='w-[80px] h-[80px] rounded-full bg-[#455CE9] text-white fixed flex items-center justify-center text-base 2xl:text-lg font-normal 2xl:font-medium pointer-events-none z-[60]'
         variants={scaleAnimation}
         initial="initial"
         animate={active ? 'open' : 'closed'}
@@ -87,7 +87,7 @@ const Modal = ({ modal, projects }) => {
       </motion.div>
       <motion.div
         ref={cursorLabel}
-        className='w-[80px] h-[80px] rounded-full bg-transparent text-white fixed flex items-center justify-center text-lg font-medium pointer-events-none z-[61]'
+        className='w-[80px] h-[80px] rounded-full bg-transparent text-white fixed flex items-center justify-center text-base 2xl:text-lg font-normal 2xl:font-medium pointer-events-none z-[61]'
         variants={scaleAnimation}
         initial="initial"
         animate={active ? 'open' : 'closed'}
