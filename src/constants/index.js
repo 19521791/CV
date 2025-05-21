@@ -67,7 +67,7 @@ export const projectItems = [
     color: '#101010',
     link: 'https://helloclever.co/',
     timeline: '6/2023 - 9/2024',
-    tag: 'fintech'
+    tag: 'Fintech'
   },
   {
     title: 'Trello Clone',
@@ -76,7 +76,7 @@ export const projectItems = [
     color: '#B1A994',
     link: 'https://github.com/19521791/trello-backend',
     timeline: '4/2024 - 6/2024',
-    tag: 'fullstack'
+    tag: 'Full-stack'
   },
   {
     title: 'Note App',
@@ -84,7 +84,8 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#363637',
     link: '',
-    timeline: ''
+    timeline: '',
+    tag: 'Full-stack'
   },
   {
     title: 'Flash Card',
@@ -92,7 +93,8 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#D8D3CD',
     link: '',
-    timeline: ''
+    timeline: '',
+    tag: 'Full-stack'
   },
   {
     title: 'Portfolio',
@@ -101,7 +103,7 @@ export const projectItems = [
     color: '#48494A',
     link: 'https://github.com/19521791/CV',
     timeline: '3/2025 - 5/2025',
-    tag: 'fullstack'
+    tag: 'Full-stack'
   },
   {
     title: 'Nine Dash Line',
@@ -110,7 +112,7 @@ export const projectItems = [
     color: '#626D6E',
     link: 'https://github.com/19521791/server-nodejs',
     timeline: '12/2023 - 2/2024',
-    tag: 'computervision'
+    tag: 'Computer Vision'
   },
   {
     title: 'Lane Detection',
@@ -118,7 +120,8 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#7E7E7E',
     link: '',
-    timeline: ''
+    timeline: '',
+    tag: 'Computer Vision'
   },
   {
     title: 'Traffic Light',
@@ -126,7 +129,8 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#DCD0C2',
     link: '',
-    timeline: ''
+    timeline: '',
+    tag: 'Computer Vision'
   },
   {
     title: 'Data Visualization',
@@ -134,7 +138,8 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#F1F1F1',
     link: '',
-    timeline: ''
+    timeline: '',
+    tag: 'Machine Learning'
   },
   {
     title: 'Data Preprocessing',
@@ -142,7 +147,8 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#E0D9D1',
     link: '',
-    timeline: ''
+    timeline: '',
+    tag: 'Machine Learning'
   },
   {
     title: 'Gaussian Naive Bayes',
@@ -150,7 +156,8 @@ export const projectItems = [
     description: 'Personal Project',
     color: '#E9EAEB',
     link: '',
-    timeline: ''
+    timeline: '',
+    tag: 'Machine Learning'
   }
 ]
 
