@@ -2,7 +2,7 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useState, useEffect } from 'react'
 import LoaderObject from '@/components/loading/LoaderObject'
-import Loader from '@/components/loading/Preloader'
+import PreLoader from '@/components/loading/Preloader'
 import Island from '@/models/Island'
 import Sky from '@/models/Sky'
 import Bird from '@/models/Bird'
@@ -55,7 +55,7 @@ const Model = () => {
 
   return (
     <section className="w-full h-screen relative">
-      {isCanvasLoading && <Loader />}
+      {isCanvasLoading && <PreLoader />}
 
       {!isCanvasLoading && (
         <>

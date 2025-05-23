@@ -21,8 +21,7 @@ const ScrollIndicator = ({ contentRef }) => {
     return () => node.removeEventListener('scroll', handleScroll)
   }, [contentRef])
 
-  // Tính toán vị trí dựa trên scroll progress
-  const yPosition = scrollProgress * -50 // Di chuyển lên trên tối đa 50px
+  const yPosition = scrollProgress * -50
 
   return (
     <AnimatePresence>
@@ -31,7 +30,7 @@ const ScrollIndicator = ({ contentRef }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{
             opacity: 1,
-            y: 30 + yPosition // Kết hợp vị trí ban đầu và di chuyển khi scroll
+            y: 30 + yPosition
           }}
           exit={{
             y: -window.innerHeight * 0.8,
@@ -49,7 +48,6 @@ const ScrollIndicator = ({ contentRef }) => {
             zIndex: 50
           }}
         >
-          {/* Giữ nguyên animation gốc */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -76,13 +74,13 @@ const ScrollIndicator = ({ contentRef }) => {
                 initial={{ y: '-100%' }}
                 animate={{
                   y: '100%',
-                  opacity: scrollProgress < 0.9 ? 1 : 0 // Ẩn khi gần đến đáy
+                  opacity: scrollProgress < 0.9 ? 1 : 0
                 }}
                 transition={{
                   delay: 0.8,
                   duration: 1.2,
                   ease: [0.2, 0.4, 0.3, 1],
-                  repeat: scrollProgress < 0.9 ? Infinity : 0, // Ngừng lặp khi gần đáy
+                  repeat: scrollProgress < 0.9 ? Infinity : 0,
                   repeatDelay: 1
                 }}
                 style={{
