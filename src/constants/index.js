@@ -74,20 +74,11 @@ export const projectItems = [
     },
     paragraph: ['The first Australian buy-to-earn platform that makes shopping, payments, and money management easier for all.'],
     responsibilities: [
-      'Implemented Two-Factor Authentication (2FA) via SMS/Google Authenticator and integrated Google reCAPTCHA to prevent brute- force attacks.',
+      'Implemented Two-Factor Authentication (2FA) via SMS/Google Authenticator and integrated Google reCAPTCHA to prevent brute-force attacks.',
       'Built APIs for money transfer operations (Payout), improved performance, and handled scheduling/cancellation logic.',
       'Applied dynamic fee calculation models and managed bulk data export functionality.',
       'Restricted password reset requests to 3 times/day to prevent abuse.',
-      'Wrote documentation for public APIs.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
-      'Applied dynamic fee calculation models and managed bulk data export functionality.',
+      'Wrote documentation for public APIs.'
     ]
   },
   {
@@ -102,16 +93,24 @@ export const projectItems = [
     company: '',
     role: '',
     tech: {
-      frontend: 'ReactJS, Tailwind, MUI, Framer Motion, GSAP',
+      frontend: 'React.js, TailwindCSS, MUI, Framer Motion, GSAP',
       backend: 'Ruby, Rails, Postgres, Sidekiq, Capistrano',
       deploy: 'Github Actions, Nginx, S3'
     },
     responsibilities: [
+      'Built with ReactJS and styled using TailwindCSS and Material UI, integrated animation libraries such as Framer Motion and GSAP',
       'Set up the CI/CD pipeline with GitHub Actions.',
-      'Configured Nginx for serving ReactJS application.',
+      'Auto-refreshes signed URLs with Rails, Sidekiq',
+      'Deployed with GitHub Actions, served through Nginx and S3.',
       'Ensured an automated build and deployment process.'
     ],
-    paragraph: []
+    paragraph: [
+      'This portfolio was designed not just as a personal website, but as a hands-on environment to explore animation and deployment techniques in full-stack development.'
+    ],
+    images: [
+      'test',
+      'test'
+    ]
   },
   {
     id: 3,
@@ -124,9 +123,19 @@ export const projectItems = [
     tag: 'Full-stack',
     company: '',
     role: '',
-    tech: {},
-    paragraph: [],
-    responsibilities: []
+    tech: {
+      frontend: 'React.js, TailwindCSS, MUI, DndKit',
+      backend: 'Node.js, Express.js, MongoDB, Joi'
+    },
+    paragraph: ['A Trello-inspired task management app demonstrating full-stack and drag-and-drop UI capabilities.'],
+    responsibilities: [
+      'Designed and implemented the backend using MVC architecture.',
+      'Developed dynamic drag-and-drop UI with DndKit for smooth task reordering.'
+    ],
+    images: [
+      'test',
+      'test'
+    ]
   },
   {
     id: 4,
@@ -139,9 +148,22 @@ export const projectItems = [
     tag: 'Full-stack',
     company: '',
     role: '',
-    tech: {},
-    paragraph: [],
-    responsibilities: []
+    tech: {
+      frontend: 'React.js, FireBase, MUI',
+      backend: 'Node.js, MongoDB, Apollo Server'
+    },
+    paragraph: [
+      'A full-stack note-taking app with real-time sync and clean UI, built to enhance productivity and practice GraphQL APIs.'
+    ],
+    responsibilities: [
+      'Built a GraphQL API using Apollo Server and MongoDB to manage notes and user data.',
+      'Integrated Firebase Authentication for secure login and user session handling.',
+      'Implemented responsive UI with MUI components and custom themes.'
+    ],
+    images: [
+      'test',
+      'test'
+    ]
   },
   {
     id: 5,
@@ -154,9 +176,23 @@ export const projectItems = [
     tag: 'Computer Vision',
     company: '',
     role: '',
-    tech: {},
-    paragraph: [],
-    responsibilities: []
+    tech: {
+      extra: 'Python, OpenCV, Keras, Tensorflow'
+    },
+    paragraph: [
+      'Developed a RESTful API for detecting nine-dash line in the image or video.'
+    ],
+    responsibilities: [
+      'Developed custom data transformation pipelines to preprocessed raw images.',
+      'Trained the model on custom data.',
+      'Employed model quantization techniques.',
+      'Established RESTful APIs.',
+      'Deployed using Docker.'
+    ],
+    images: [
+      'test',
+      'test'
+    ]
   },
   {
     id: 6,
@@ -169,9 +205,22 @@ export const projectItems = [
     tag: 'Computer Vision',
     company: '',
     role: '',
-    tech: {},
-    paragraph: [],
-    responsibilities: []
+    tech: {
+      extra: 'Python, Pytorch'
+    },
+    paragraph: [
+      'Designed and implemented a highly accurate service for detecting traffic light.'
+    ],
+    responsibilities: [
+      'Preprocessed and augmented the dataset to improve performance.',
+      'Labeled large volumes of data',
+      'Trained on custom data to detect and classify traffic light.',
+      'Conducted thorough evaluations of the model, such as precision-recall curves, F1 scores, and confusion matrix.'
+    ],
+    images: [
+      'test',
+      'test'
+    ]
   },
   {
     id: 7,
@@ -184,9 +233,22 @@ export const projectItems = [
     tag: 'Computer Vision',
     company: '',
     role: '',
-    tech: {},
-    paragraph: [],
-    responsibilities: []
+    tech: {
+      extra: 'Python, OpenCV, Keras, Tensorflow'
+    },
+    paragraph: [
+      'Designed and implemented a service for detecting lanes in real-time video streams. Utilized computer vision techniques and trained the CNN model on a large dataset of driving footage.'
+    ],
+    responsibilities: [
+      'Conducted in-depth research on the layers of the CNN models to understand their behavior.',
+      'Implemented a convolutional neural network (CNN) model for image-to-image translation.',
+      'Trained the CNN model using variety of optimization techniques.',
+      'Calculated and analyzed confusion matrix and performance metrics to evaluate the performance of the CNN model.'
+    ],
+    images: [
+      'test',
+      'test'
+    ]
   },
   {
     id: 8,
@@ -199,9 +261,16 @@ export const projectItems = [
     tag: 'Machine Learning',
     company: '',
     role: '',
-    tech: {},
-    paragraph: [],
-    responsibilities: []
+    tech: {
+      extra: 'Python, Numpy, Pandas, Matplotlib'
+    },
+    paragraph: [
+      'Utilized knowledge of Matplotlib to create visually appealing data visulizations, effectively communicating complex.'
+    ],
+    responsibilities: [
+      'Collected data from various source.',
+      'Analyzed and visualized complex dataset.'
+    ]
   },
   {
     id: 9,
@@ -214,7 +283,9 @@ export const projectItems = [
     tag: 'Machine Learning',
     company: '',
     role: '',
-    tech: {},
+    tech: {
+      extra: 'Python, Numpy, Matplotlib, Seaborn'
+    },
     paragraph: [],
     responsibilities: []
   },
@@ -229,7 +300,9 @@ export const projectItems = [
     tag: 'Machine Learning',
     company: '',
     role: '',
-    tech: {},
+    tech: {
+      extra: 'Python, Sklearn, Pandas'
+    },
     paragraph: [],
     responsibilities: []
   }

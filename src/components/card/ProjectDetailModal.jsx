@@ -14,7 +14,7 @@ import {
   ListItemText,
   Stack
 } from '@mui/material'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback, useLayoutEffect } from 'react'
 import {
   Close,
   ArrowBack,
@@ -23,12 +23,10 @@ import {
 } from '@mui/icons-material'
 import { motion, AnimatePresence } from 'framer-motion'
 import { RemoveScroll } from 'react-remove-scroll'
+import ScrollIndicator from '@components/ScrollIndicator'
 
 const dropIn = {
-  hidden: {
-    y: '-100vh',
-    opacity: 0
-  },
+  hidden: { y: '-100vh', opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
@@ -39,10 +37,7 @@ const dropIn = {
       stiffness: 500
     }
   },
-  exit: {
-    y: '100vh',
-    opacity: 0
-  }
+  exit: { y: '100vh', opacity: 0 }
 }
 
 const slideFadeVariants = {
@@ -78,12 +73,20 @@ const slideFadeVariants = {
 const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
   const [selectedProject, setSelectedProject] = useState(project)
   const [direction, setDirection] = useState(0)
+  const [isContentReady, setIsContentReady] = useState(false)
+  const [isScrollable, setIsScrollable] = useState(false)
+
+  const contentRef = useRef()
 
   useEffect(() => {
-    setSelectedProject(project)
-  }, [project])
+    if (!open) {
+      setSelectedProject(project)
+      setDirection(0)
+    }
+  }, [open, project])
 
   const currentIndex = allProjects.findIndex(p => p.id === selectedProject.id)
+
   const isFirst = currentIndex === 0
   const isLast = currentIndex === allProjects.length - 1
 
@@ -103,6 +106,84 @@ const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
     }
   }
 
+  const hasAnyTech =
+    !!selectedProject.tech?.frontend ||
+    !!selectedProject.tech?.backend ||
+    !!selectedProject.tech?.deploy ||
+    !!selectedProject.tech?.extra
+
+  const checkScrollable = useCallback(() => {
+    if (contentRef.current) {
+      clearTimeout(window.scrollCheckTimeout)
+
+      window.scrollCheckTimeout = setTimeout(() => {
+        const { scrollHeight, clientHeight } = contentRef.current
+        const canScroll = scrollHeight > clientHeight + 5
+
+        setIsScrollable(canScroll)
+      }, 100)
+    }}, [contentRef])
+
+  useLayoutEffect(() => {
+    if (contentRef.current && isContentReady) {
+      contentRef.current.scrollTop = 0
+      checkScrollable()
+    }
+  }, [selectedProject, isContentReady, checkScrollable])
+
+  useLayoutEffect(() => {
+    const node = contentRef.current
+    if (!node) return
+
+    setIsScrollable(false)
+    node.scrollTop = 0
+
+    const performCheck = () => {
+      const isReady = node.scrollHeight > 0
+      setIsContentReady(isReady)
+      checkScrollable()
+    }
+
+    const timers = [
+      setTimeout(performCheck, 50),
+      setTimeout(performCheck, 300)
+    ]
+
+    const checkReady = () => {
+      const isReady = node.scrollHeight > 0
+      setIsContentReady(isReady)
+    }
+
+    const fullCheck = () => {
+      checkReady()
+      checkScrollable()
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      checkScrollable()
+    })
+    resizeObserver.observe(node)
+
+    const images = contentRef.current.querySelectorAll('img')
+    const loadListeners = Array.from(images).map(img => {
+      img.addEventListener('load', fullCheck)
+      return () => img.removeEventListener('load', fullCheck)
+    })
+
+    return () => {
+      timers.forEach(timer => clearTimeout(timer))
+      resizeObserver.disconnect()
+      clearTimeout(window.scrollCheckTimeout)
+      loadListeners.forEach(cleanup => cleanup())
+    }
+  }, [selectedProject, checkScrollable])
+
+  useEffect(() => {
+    return () => {
+      setIsContentReady(false)
+    }
+  }, [])
+
   return (
     <AnimatePresence>
       {open && (
@@ -117,21 +198,21 @@ const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
               top: 0,
               left: 0,
               width: '100vw',
-              height: '100vh',
+              height: '100dvh',
               backgroundColor: 'rgba(0, 0, 0, 0.7)',
-              zIndex: 1300
+              zIndex: 100
             }}
             onClick={onClose}
           />
-          <RemoveScroll>
+          <RemoveScroll enabled={open} removeScrollBar={false} allowPinchZoom>
             <Modal
               open={open}
               onClose={onClose}
               closeAfterTransition
               hideBackdrop
               sx={{
-                zIndex: 1300,
-                overflow: 'hidden',
+                zIndex: 100,
+                overflow: 'auto',
                 '& .MuiTypography-root, & .MuiButton-root, & .MuiInputBase-root': {
                   fontFamily: 'Neue Montreal, sans-serif !important'
                 }
@@ -145,22 +226,21 @@ const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
                 exit="exit"
                 variants={dropIn}
                 onClick={onClose}
-                sx={{ outline: 'none', border: 'none', touchAction: 'none' }}
+                sx={{ outline: 'none', border: 'none', touchAction: 'none', alignItems: 'flex-start' }}
               >
                 <Box
                   onClick={(e) => e.stopPropagation()}
                   onWheel={(e) => e.stopPropagation()}
                   sx={{
                     width: { xs: '90vw', md: 900 },
-                    maxHeight: '90vh'
+                    minHeight: '40vh',
+                    height: 'auto',
+                    willChange: 'scroll-position'
                   }}
                 >
                   <AnimatePresence
                     mode="wait"
                     custom={direction}
-                    onExitComplete={() => {
-                      document.body.style.overflow = 'auto'
-                    }}
                   >
                     <motion.div
                       key={selectedProject.id}
@@ -169,24 +249,18 @@ const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      style={{ width: '100%', height: '100%' }}
-                      className='modal-container'
-                      onScroll={(e) => {
-                        e.stopPropagation()
-                        const { scrollTop, scrollHeight, clientHeight } = e.currentTarget
-                        if (scrollTop === 0) {
-                          e.currentTarget.scrollTop = 1
-                        } else if (scrollTop + clientHeight >= scrollHeight) {
-                          e.currentTarget.scrollTop = scrollHeight - clientHeight - 1
-                        }
-                      }}
+                      style={{ width: '100%' }}
+                      onAnimationStart={() => setIsContentReady(false)}
+                      onAnimationComplete={() => setIsContentReady(true)}
+                      className='w-[90vw] max-h-[90vh] my-[5vh] mx-auto rounded-[24px] relative bg-white shadow-[0_0_24px_rgba(0,0,0,0.1)] p-8 border border-[#ddd] flex flex-col'
                     >
+                      {selectedProject.title !== 'Hello Clever' && isScrollable && <ScrollIndicator contentRef={contentRef} />}
                       <IconButton
                         onClick={onClose}
                         sx={{
                           position: 'absolute',
-                          right: 16,
-                          top: 16,
+                          right: 10,
+                          top: 8,
                           color: 'text.secondary',
                           '&:hover': {
                             backgroundColor: 'action.hover',
@@ -198,30 +272,33 @@ const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
                       </IconButton>
 
                       {/* Header Section */}
-                      <Box sx={{ mb: 4 }}>
+                      <Box sx={{
+                        mb: { xs: 0, sm: 2 },
+                        position: 'sticky',
+                        top: 0,
+                        zIndex: 110,
+                        borderBottom: '1px solid #eee'
+                      }}>
                         <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>
                           {selectedProject?.title}
                         </Typography>
 
                         <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 1 }}>
                           {selectedProject?.role && (
-                            <Chip label={selectedProject.role} color="primary" size="small" variant="filled" sx={{ px: 1, py: 2 }}/>
+                            <Chip label={selectedProject.role} color="primary" size="small" variant="filled" sx={{ px: 1, py: 2 }} />
                           )}
                           {selectedProject?.company && (
-                            <Chip label={selectedProject.company} size="small" variant="outlined" sx={{ px: 1, py: 2 }}/>
+                            <Chip label={selectedProject.company} size="small" variant="outlined" sx={{ px: 1, py: 2 }} />
                           )}
                           {selectedProject?.timeline && (
-                            <Chip label={selectedProject.timeline} size="small" variant="outlined" sx={{ px: 1, py: 2 }}/>
+                            <Chip label={selectedProject.timeline} size="small" variant="outlined" sx={{ px: 1, py: 2 }} />
                           )}
                         </Stack>
 
                         {selectedProject?.description && (
                           <Typography
                             variant="overline"
-                            sx={{
-                              letterSpacing: 1.5,
-                              textTransform: 'uppercase'
-                            }}
+                            sx={{ letterSpacing: 1.5, textTransform: 'uppercase' }}
                           >
                             {selectedProject.description}
                           </Typography>
@@ -229,186 +306,226 @@ const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
                       </Box>
 
 
-                      {/* Paragraph Content */}
-                      <Box sx={{ mb: 4 }}>
-                        {selectedProject.paragraph.map((item, index) => (
-                          <Typography
-                            key={`para-${index}`}
-                            variant="body1"
-                            sx={{
-                              mb: 2,
-                              lineHeight: 1.6
-                            }}
-                          >
-                            {item}
-                          </Typography>
-                        ))}
-                      </Box>
-
-
-                      {/* Tech Stack Section */}
-                      {(selectedProject.tech?.frontend || selectedProject.tech?.backend || selectedProject.tech?.deploy) && (
-                        <Box sx={{ mb: 4 }}>
-                          <Typography
-                            variant="h6"
-                            sx={{
-                              fontWeight: 600,
-                              mb: 2,
-                              color: 'text.primary'
-                            }}
-                          >
-                      Tech Stack
-                          </Typography>
-
-                          <Grid container spacing={2}>
-                            {selectedProject.tech.frontend && (
-                              <Grid item xs={12} sm={4}>
-                                <Paper elevation={0} sx={{
-                                  p: 2,
-                                  height: '100%',
-                                  backgroundColor: 'grey.50',
-                                  border: '1px solid',
-                                  borderColor: 'divider',
-                                  borderRadius: 2
-                                }}>
-                                  <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                              Frontend
-                                  </Typography>
-                                  <Typography variant="body2">
-                                    {selectedProject.tech.frontend}
-                                  </Typography>
-                                </Paper>
-                              </Grid>
-                            )}
-
-                            {selectedProject.tech.backend && (
-                              <Grid item xs={12} sm={4}>
-                                <Paper elevation={0} sx={{
-                                  p: 2,
-                                  height: '100%',
-                                  backgroundColor: 'grey.50',
-                                  border: '1px solid',
-                                  borderColor: 'divider',
-                                  borderRadius: 2
-                                }}>
-                                  <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                              Backend
-                                  </Typography>
-                                  <Typography variant="body2">
-                                    {selectedProject.tech.backend}
-                                  </Typography>
-                                </Paper>
-                              </Grid>
-                            )}
-
-                            {selectedProject.tech.deploy && (
-                              <Grid item xs={12} sm={4}>
-                                <Paper elevation={0} sx={{
-                                  p: 2,
-                                  height: '100%',
-                                  backgroundColor: 'grey.50',
-                                  border: '1px solid',
-                                  borderColor: 'divider',
-                                  borderRadius: 2
-                                }}>
-                                  <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                              Deployment
-                                  </Typography>
-                                  <Typography variant="body2">
-                                    {selectedProject.tech.deploy}
-                                  </Typography>
-                                </Paper>
-                              </Grid>
-                            )}
-                          </Grid>
-                        </Box>
-                      )}
-
-                      {/* Responsibilities Section */}
-                      {selectedProject?.responsibilities?.length > 0 && (
-                        <Box sx={{
-                          mb: 4,
-                          border: '1px solid',
-                          borderColor: 'divider',
-                          borderRadius: 2,
-                          overflow: 'hidden'
+                      <Box
+                        ref={contentRef}
+                        sx={{
+                          overflowY: 'auto',
+                          scrollbarWidth: 'none',
+                          position: 'relative',
+                          height: '100%',
+                          maxHeight: 'calc(100% - 200px)',
+                          overscrollBehavior: 'contain'
                         }}>
-                          <Typography
-                            variant="h6"
-                            sx={{
-                              fontWeight: 500,
-                              p: 2,
-                              bgcolor: 'grey.50',
-                              borderBottom: '1px solid',
-                              borderColor: 'divider'
-                            }}
-                          >
-                      Responsibilities
-                          </Typography>
-
-                          <Box sx={{
-                            maxHeight: 400,
-                            overflowY: 'auto',
-                            p: 2,
-                            pb: 3,
-                            pr: 3,
-                            '&::-webkit-scrollbar': {
-                              width: '6px'
-                            },
-                            '&::-webkit-scrollbar-thumb': {
-                              backgroundColor: (theme) => theme.palette.grey[400],
-                              borderRadius: '3px'
-                            },
-                            '&::-webkit-scrollbar-track': {
-                              backgroundColor: (theme) => theme.palette.grey[100]
-                            }
-                          }}>
-                            <List dense disablePadding>
-                              {selectedProject.responsibilities.map((item, index) => (
-                                <ListItem
-                                  key={`resp-${index}`}
-                                  sx={{
-                                    px: 0,
-                                    // py: 1,
-                                    alignItems: 'flex-start',
-                                    '&:hover': {
-                                      bgcolor: 'action.hover',
-                                      borderRadius: 1
-                                    }
-                                  }}
-                                >
-                                  <ListItemIcon sx={{
-                                    minWidth: 28,
-                                    mt: '10px'
-                                  }}>
-                                    <FiberManualRecord sx={{
-                                      fontSize: 10,
-                                      color: 'primary.main'
-                                    }} />
-                                  </ListItemIcon>
-                                  <ListItemText
-                                    primary={item}
-                                    primaryTypographyProps={{
-                                      variant: 'body2',
-                                      sx: { lineHeight: 1.6, pr: 1 }
-                                    }}
-                                  />
-                                </ListItem>
-                              ))}
-                            </List>
+                        {/* Paragraph Content */}
+                        <Box sx={{ flex: 1, pr: '16px' }}>
+                          <Box sx={{ mb: 2 }}>
+                            {selectedProject.paragraph.map((item, index) => (
+                              <Typography key={`para-${index}`} variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
+                                {item}
+                              </Typography>
+                            ))}
                           </Box>
                         </Box>
-                      )}
+
+
+                        {/* Tech Stack Section */}
+                        {(hasAnyTech) && (
+                          <Box sx={{ mb: 4 }}>
+                            <Typography
+                              variant="h6"
+                              sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}
+                            >
+                              Tech Stack
+                            </Typography>
+
+                            <Grid container spacing={2}>
+                              {selectedProject.tech.frontend && (
+                                <Grid item xs={12} sm={4}>
+                                  <Paper elevation={0} sx={{
+                                    p: 2,
+                                    height: '100%',
+                                    backgroundColor: 'grey.50',
+                                    border: '1px solid',
+                                    borderColor: 'divider',
+                                    borderRadius: 2
+                                  }}>
+                                    <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+                                      Frontend
+                                    </Typography>
+                                    <Typography variant="body2">
+                                      {selectedProject.tech.frontend}
+                                    </Typography>
+                                  </Paper>
+                                </Grid>
+                              )}
+
+                              {selectedProject.tech.backend && (
+                                <Grid item xs={12} sm={4}>
+                                  <Paper elevation={0} sx={{
+                                    p: 2,
+                                    height: '100%',
+                                    backgroundColor: 'grey.50',
+                                    border: '1px solid',
+                                    borderColor: 'divider',
+                                    borderRadius: 2
+                                  }}>
+                                    <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+                                      Backend
+                                    </Typography>
+                                    <Typography variant="body2">
+                                      {selectedProject.tech.backend}
+                                    </Typography>
+                                  </Paper>
+                                </Grid>
+                              )}
+
+                              {selectedProject.tech.deploy && (
+                                <Grid item xs={12} sm={4}>
+                                  <Paper elevation={0} sx={{
+                                    p: 2,
+                                    height: '100%',
+                                    backgroundColor: 'grey.50',
+                                    border: '1px solid',
+                                    borderColor: 'divider',
+                                    borderRadius: 2
+                                  }}>
+                                    <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+                                      Deployment
+                                    </Typography>
+                                    <Typography variant="body2">
+                                      {selectedProject.tech.deploy}
+                                    </Typography>
+                                  </Paper>
+                                </Grid>
+                              )}
+
+                              {selectedProject.tech.extra && (
+                                <Grid item xs={12} sm={4}>
+                                  <Paper elevation={0} sx={{
+                                    p: 2,
+                                    height: '100%',
+                                    backgroundColor: 'grey.50',
+                                    border: '1px solid',
+                                    borderColor: 'divider',
+                                    borderRadius: 2
+                                  }}>
+                                    <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+                                      Tools
+                                    </Typography>
+                                    <Typography variant="body2">
+                                      {selectedProject.tech.extra}
+                                    </Typography>
+                                  </Paper>
+                                </Grid>
+                              )}
+                            </Grid>
+                          </Box>
+                        )}
+
+                        {/* Responsibilities Section */}
+                        {selectedProject?.responsibilities?.length > 0 && (
+                          <Box
+                            sx={{
+                              border: '1px solid',
+                              borderColor: 'divider',
+                              borderRadius: 2,
+                              display: 'flex',
+                              flexDirection: 'column',
+                              mb: 2
+                            }}>
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                fontWeight: 600,
+                                p: 2,
+                                bgcolor: 'grey.50',
+                                borderBottom: '1px solid',
+                                borderColor: 'divider'
+                              }}
+                            >
+                              Responsibilities
+                            </Typography>
+
+                            <Box sx={{
+                              flex: 1,
+                              display: 'block',
+                              position: 'relative',
+                              pl: 2,
+                              pb: 2,
+                              pr: 2,
+                              pt: 1
+                            }}>
+                              <List dense disablePadding sx={{ scrollPaddingTop: '50px', scrollPaddingBottom: '50px' }}>
+                                {selectedProject.responsibilities.map((item, index) => (
+                                  <ListItem
+                                    key={`resp-${index}`}
+                                    sx={{
+                                      px: 0,
+                                      alignItems: 'flex-start',
+                                      '&:hover': {
+                                        bgcolor: 'action.hover',
+                                        borderRadius: 1
+                                      }
+                                    }}
+                                  >
+                                    <ListItemIcon sx={{ minWidth: 28, mt: '10px' }}>
+                                      <FiberManualRecord sx={{ fontSize: 10, color: 'primary.main' }} />
+                                    </ListItemIcon>
+                                    <ListItemText
+                                      primary={item}
+                                      primaryTypographyProps={{ variant: 'body2', sx: { lineHeight: 1.6, pr: 1 } }}
+                                    />
+                                  </ListItem>
+                                ))}
+                              </List>
+                            </Box>
+                          </Box>
+                        )}
+
+                        {/* Sreenshots */}
+                        {selectedProject.title !== 'Hello Clever' && selectedProject.images?.length > 0 && (
+                          <Box sx={{ mb: 4 }}>
+                            <Typography
+                              variant="h6"
+                              sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}
+                            >
+                              Screenshots
+                            </Typography>
+
+                            <Grid container spacing={2}>
+                              {selectedProject.images.map((img, index) => (
+                                <Grid item xs={12} sm={6} md={4} key={index}>
+                                  <Box
+                                    component="img"
+                                    src={img}
+                                    alt={`screenshot-${index}`}
+                                    sx={{
+                                      width: '100%',
+                                      borderRadius: 2,
+                                      maxHeight: '60dvh',
+                                      objectFit: 'contain'
+                                    }}
+                                  />
+                                </Grid>
+                              ))}
+                            </Grid>
+                          </Box>
+                        )}
+                      </Box>
 
                       {/* Navigation Buttons */}
                       <Box
                         sx={{
                           display: 'flex',
                           justifyContent: 'space-between',
-                          mt: 4,
+                          mt: 3,
                           pt: 2,
-                          borderTop: '1px solid',
-                          borderColor: 'divider'
+                          borderTop: '1px solid #eee',
+                          borderColor: 'divider',
+                          position: 'sticky',
+                          bottom: 0,
+                          backgroundColor: 'white',
+                          zIndex: 110
                         }}
                       >
                         <Button

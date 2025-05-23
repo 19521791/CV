@@ -153,9 +153,7 @@ const Work = () => {
         open={openModal}
         onClose={() => setOpenModal(false)}
         project={currentProject}
-        currentProjectId={currentProjectId}
         allProjects={projectItems}
-        onChangeProject={(newId) => setCurrentProjectId(newId)}
       />
 
     </section>
