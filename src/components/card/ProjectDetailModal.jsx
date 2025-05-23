@@ -93,34 +93,21 @@ const slideFadeVariants = {
 }
 
 const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
-  const [selectedProject, setSelectedProject] = useState(project)
+  const [selectedProject, setSelectedProject] = useState({})
   const [direction, setDirection] = useState(0)
   const [isContentReady, setIsContentReady] = useState(false)
   const [isScrollable, setIsScrollable] = useState(false)
-  const [isBlurred, setIsBlurred] = useState(false)
 
   const contentRef = useRef()
-
-  useEffect(() => {
-    if (!open) {
-      setSelectedProject(project)
-      setDirection(0)
-    }
-  }, [open, project])
-
-  useEffect(() => {
-    if (open) {
-      setIsBlurred(true)
-    } else {
-      const timer = setTimeout(() => setIsBlurred(false), 500)
-      return () => clearTimeout(timer)
-    }
-  }, [open])
 
   const currentIndex = allProjects.findIndex((p) => p.id === selectedProject.id)
 
   const isFirst = currentIndex === 0
   const isLast = currentIndex === allProjects.length - 1
+
+  useEffect(() => {
+    setSelectedProject(project)
+  }, [project])
 
   const handlePrev = () => {
     if (!isFirst) {
@@ -393,7 +380,7 @@ const ProjectDetailModal = ({ open, onClose, project, allProjects }) => {
                         {/* Paragraph Content */}
                         <Box sx={{ flex: 1, pr: '16px' }}>
                           <Box sx={{ mb: 2 }}>
-                            {selectedProject.paragraph.map((item, index) => (
+                            {selectedProject?.paragraph?.map((item, index) => (
                               <Typography
                                 key={`para-${index}`}
                                 variant='body1'

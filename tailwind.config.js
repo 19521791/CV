@@ -27,7 +27,21 @@ export default {
         blue: {
           500: '#2b77e7'
         },
-        'underline': '#C89F94'
+        'underline': '#C89F94',
+        latte: {
+          50: '#FFF8F0',
+          100: '#FAF6F0',
+          200: '#F0E6D2',
+          300: '#D2B48C', // Màu tan
+          400: '#C4A484', // Latte nhạt
+          500: '#A67C52', // Cà phê sữa
+          600: '#8B5A2B', // Nâu trung
+          700: '#6F4E37', // Nâu đậm
+        },
+        accent: {
+          copper: '#B87333', // Đồng (thay thế amber)
+          rust: '#B7410E' // Gỉ sắt (điểm nhấn)
+        }
       },
       zIndex: {
         'progress-bar': 5,
@@ -43,13 +57,18 @@ export default {
         card: '0px 1px 2px 0px rgba(0, 0, 0, 0.05)'
       },
       keyframes: {
-        slideDown: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(0)' }
+        fadeIn: {
+          from: { opacity: 0, transform: 'translateY(10px)' },
+          to: { opacity: 1, transform: 'translateY(0)' }
+        },
+        fadeOut: {
+          from: { opacity: 1, transform: 'translateY(0)' },
+          to: { opacity: 0, transform: 'translateY(10px)' }
         }
       },
       animation: {
-        slideDown: 'slideDown .5s ease-in-out'
+        fadeIn: 'fadeIn 0.3s ease-out',
+        fadeOut: 'fadeOut 0.2s ease-in forwards'
       }
     }
   },

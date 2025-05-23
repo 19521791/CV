@@ -8,15 +8,16 @@ const Work = () => {
   const { images } = useContext(ImageContext)
   const [modal, setModal] = useState({ active: false, index: 0 })
   const [openModal, setOpenModal] = useState(false)
-  const [currentProjectId, setCurrentProjectId] = useState(1)
-
-  const currentProject = projectItems.find(p => p.id === currentProjectId)
+  const [currentProject, setCurrentProject] = useState({})
 
   const handleClick = (project) => {
-    if (modal) {
-      setCurrentProjectId(project.id)
-      setOpenModal(true)
-    }
+    setCurrentProject(project)
+    setOpenModal(true)
+  }
+
+  const handleClose = () => {
+    setCurrentProject({})
+    setOpenModal(false)
   }
 
   return (
@@ -151,7 +152,7 @@ const Work = () => {
 
       <ProjectDetailModal
         open={openModal}
-        onClose={() => setOpenModal(false)}
+        onClose={handleClose}
         project={currentProject}
         allProjects={projectItems}
       />
